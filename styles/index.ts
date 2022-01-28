@@ -1,0 +1,1 @@
+export {default as muiTheme, createEmotionCache} from './theme';

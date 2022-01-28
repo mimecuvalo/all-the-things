@@ -1,0 +1,72 @@
+import { Container, List, ListItem } from '@mui/material';
+
+import Forbidden from 'components/error/403';
+import Unauthorized from 'components/error/401';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
+import Link from 'next/link';
+
+const drawerWidth = 240;
+
+const isAuthenticated = (req, res, next) =>
+  authorization.isAuthenticated(req.session.user) ? next() : res.sendStatus(401);
+
+const isAdmin = (req, res, next) =>
+  authorization.isAdmin(req.session.user) || process.env.NODE_ENV === 'development'
+    ? next()
+    : res.status(403).send('I call shenanigans.');
+
+const USER_QUERY = gql`
+  {
+    user @client {
+      oauth {
+        email
+      }
+    }
+  }
+`;
+
+export default function Admin() {
+  // XXX re-enable
+  // const { data } = useQuery(USER_QUERY);
+  // const user = data?.user;
+
+  // if (!user) {
+  //   return <Unauthorized />;
+  // }
+
+  // if (!user?.model?.superuser && process.env.NODE_ENV !== 'development') {
+  //   return <Forbidden />;
+  // }
+
+  return <AdminApp />;
+}
+
+function AdminApp() {
+  return (
+    <Container>
+      <List className="notranslate">
+        <ListItem>
+          <Link href="/admin" passHref>
+            <a>System Info</a>
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link href="/admin/exceptions" passHref>
+            <a>Exceptions</a>
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link href="/admin/experiments" passHref>
+            <a>Experiments</a>
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link href="/admin/repl" passHref>
+            <a>REPL</a>
+          </Link>
+        </ListItem>
+      </List>
+    </Container>
+  );
+}
