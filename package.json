@@ -15,7 +15,7 @@
     "url": "https://github.com/mimecuvalo/all-the-things/issues"
   },
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "dev": "open http://localhost:3000 && NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

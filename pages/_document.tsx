@@ -3,9 +3,45 @@ import { createEmotionCache, muiTheme } from 'styles';
 
 import { StrictMode } from 'react';
 import createEmotionServer from '@emotion/server/create-instance';
+import crypto from 'crypto';
+import { v4 } from 'uuid';
 
 const HOSTNAME = 'www.example.com';
 const TITLE = 'Next.js Example';
+
+const generateCsp = (): [csp: string, nonce: string] => {
+  const hash = crypto.createHash('sha256');
+  hash.update(v4());
+  const nonce = hash.digest('base64');
+
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const cspDirectives = {
+    'connect-src': [isDevelopment ? '*' : "'self'"],
+    'default-src': ["'none'"],
+    'font-src': ["'self'", 'https:'],
+    'frame-ancestors': ["'self'"],
+    'frame-src': ["'self'", 'http:', 'https:'],
+    'img-src': ['data:', 'http:', 'https:'],
+    'manifest-src': ["'self'"],
+    'media-src': ["'self'", 'blob:'],
+    'object-src': ["'self'"],
+    'report-uri': ['/api/report-csp-violation'],
+    'script-src': ["'self'", 'https://cdn.auth0.com', 'https://storage.googleapis.com'].concat(
+      isDevelopment ? ["'unsafe-inline'", "'unsafe-eval'"] : [`'nonce-${nonce}'`]
+    ),
+
+    // XXX(mime): we have inline styles around - can we pass nonce around the app properly?
+    'style-src': ["'self'", 'https:', "'unsafe-inline'"], //(req, res) => `'nonce-${nonce}'`],
+  };
+  if (!isDevelopment) {
+    cspDirectives['upgrade-insecure-requests'] = [];
+  }
+  const csp = Object.keys(cspDirectives)
+    .map((directive) => `${directive} ${cspDirectives[directive].join(' ')}`)
+    .join('; ');
+
+  return [csp, nonce];
+};
 
 export default class MyDocument extends Document {
   // Based off of: https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
@@ -46,6 +82,7 @@ export default class MyDocument extends Document {
 
   render(): JSX.Element {
     const locale = 'en';
+    const [csp, nonce] = generateCsp();
 
     return (
       <StrictMode>
@@ -53,6 +90,8 @@ export default class MyDocument extends Document {
           <Head>
             <meta charSet="utf-8" />
             <meta name="theme-color" content={muiTheme.palette.primary.main} />
+            <meta property="csp-nonce" content={nonce} />
+            <meta httpEquiv="Content-Security-Policy" content={csp} />
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link rel="shortcut icon" href="/images/favicon.ico" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
@@ -64,7 +103,7 @@ export default class MyDocument extends Document {
             <meta name="description" content="website created using all-the-things." />
             <meta name="generator" content="all-the-things. https://github.com/mimecuvalo/all-the-things" />
             <OpenGraphMetadata title={TITLE} />
-            <StructuredMetaData title={TITLE} />
+            <StructuredMetaData title={TITLE} nonce={nonce} />
             {/*
               manifest.json provides metadata used when your web app is added to the
               homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -84,10 +123,11 @@ export default class MyDocument extends Document {
               experiments={experiments}
               locale={locale}
               locales={locales}
+              nonce={nonce}
               user={user}
             /> */}
 
-            <WindowErrorScript />
+            <WindowErrorScript nonce={nonce} />
 
             {/* <script
               dangerouslySetInnerHTML={{
@@ -95,7 +135,7 @@ export default class MyDocument extends Document {
               }}
             /> */}
 
-            <NextScript />
+            <NextScript nonce={nonce} />
           </body>
         </Html>
       </StrictMode>
@@ -123,12 +163,13 @@ function OpenGraphMetadata({ title }) {
 
 // This needs to be filled out by the developer to provide content for the site.
 // Learn more here: https://developers.google.com/search/docs/guides/intro-structured-data
-function StructuredMetaData({ title }) {
+function StructuredMetaData({ nonce, title }) {
   // TODO(mime): combine with url_factory code.
   const url = `https://${HOSTNAME}`;
 
   return (
     <script
+      nonce={nonce}
       type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: `
@@ -203,9 +244,10 @@ function ConfigurationScript({
 // If there is an error that occurs upon page load, i.e. when executing the initial app code,
 // then we send the error up to the server via this mechanism.
 // Once the app is loaded, then the rest of error reporting goes through error.js -> logError.
-function WindowErrorScript() {
+function WindowErrorScript({ nonce }) {
   return (
     <script
+      nonce={nonce}
       dangerouslySetInnerHTML={{
         __html: `
         var hasGlobalErrorFired = false;
