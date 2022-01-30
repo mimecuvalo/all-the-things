@@ -119,7 +119,6 @@ class MyDocument extends Document {
             {/* <ConfigurationScript
               appTime={appTime}
               appVersion={appVersion}
-              csrfToken={csrfToken}
               defaultLocale={defaultLocale}
               experiments={experiments}
               locale={locale}
@@ -210,17 +209,7 @@ function StructuredMetaData({ nonce, title }) {
 }
 
 // Passes key initial, bootstrap data to the client.
-function ConfigurationScript({
-  appTime,
-  appVersion,
-  csrfToken,
-  defaultLocale,
-  experiments,
-  locale,
-  locales,
-  nonce,
-  user,
-}) {
+function ConfigurationScript({ appTime, appVersion, defaultLocale, experiments, locale, locales, nonce, user }) {
   return (
     <script
       nonce={nonce}
@@ -231,7 +220,6 @@ function ConfigurationScript({
             appVersion: '${appVersion}',
             auth0_client_id: '${process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID}',
             auth0_domain: '${process.env.NEXT_PUBLIC_AUTH0_DOMAIN}',
-            csrf: '${csrfToken}',
             defaultLocale: '${defaultLocale}',
             experiments: ${JSON.stringify(experiments)},
             locale: '${locale}',

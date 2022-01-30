@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloLink, HttpLink, split } from '@apollo/client';
-import { dataIdFromObject, initializeLocalState } from 'data/local_state';
-import { resolvers, typeDefs } from 'data/local_state';
+import { dataIdFromObject, initializeLocalState } from 'data/localState';
+import { resolvers, typeDefs } from 'data/localState';
 
 import { BatchHttpLink } from '@apollo/client/link/batch-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -42,7 +42,7 @@ export default function createApolloClient() {
     request: async (op) => {
       op.setContext({
         headers: {
-          'x-xsrf-token': configuration.csrf || '',
+          'x-xsrf-token': '',
         },
       });
     },

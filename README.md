@@ -19,9 +19,9 @@ This template includes scripts and configuration used by [Next.js](https://nextj
 - **accessibility (a11y) analyzer**: via [axe](https://www.google.com/search?q=axe-core&oq=axe-core&aqs=chrome..69i57.1485j0j7&sourceid=chrome&ie=UTF-8). in the bottom corner of CRA you’ll see a menu that will give you a list of items your site is violating in terms of a11y.
 - **admin panel**: exception view and extensible panel to add custom admin capabilities.
 - **authentication**: via [Auth0](https://auth0.com/). gives you the ability to login using Google/Facebook.
-- **bundle size analyzer**: à la [CRA’s docs](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size) and [source-map-explorer](https://www.npmjs.com/package/source-map-explorer). do `yarn analyze` after creating a build.
-- **component Libary (UI)**: via [Material-UI](https://material-ui.com/). ([Semantic UI](https://react.semantic-ui.com/) is a good alternative, too.)
-- **CSP nonce**: via [helmetjs](https://helmetjs.github.io/).
+- **bundle size analyzer**: via [source-map-explorer](https://www.npmjs.com/package/source-map-explorer). do `yarn analyze` after creating a build.
+- **component Libary (UI)**: via [Material-UI](https://mui.com/).
+- **CSP nonce**
 - **documentation**: adds some standard and GitHub-specific Markdown files using best practices. files include:
   - [changelog](https://keepachangelog.com)
   - [code of conduct](https://www.contributor-covenant.org)
@@ -41,7 +41,7 @@ This template includes scripts and configuration used by [Next.js](https://nextj
 - [**humans.txt**](http://humanstxt.org/) **/** [**robots.txt**](http://www.robotstxt.org/): adds stubs of these files.
 - **health checks**: runs a client health check every 5 minutes to see if the client is still valid.
 - **i18n**: via [react-intl](https://github.com/yahoo/react-intl/wiki#getting-started) and extraction tools.
-- **imports**: [absolute imports](https://create-react-app.dev/docs/importing-a-component/#absolute-imports) are turned on.
+- **imports**: absolute imports are turned on.
 - **libraries**: adds [lodash](https://lodash.com) by default.
 - **local state**: adds [Apollo's Local State](https://www.apollographql.com/docs/react/data/local-state/).
 - **logger**: via [winston](https://github.com/winstonjs/winston).
@@ -53,15 +53,10 @@ This template includes scripts and configuration used by [Next.js](https://nextj
 - [**Prettier**](https://prettier.io): adds linting upon commit. also sorts imports via [prettier-plugin-import-sort](https://www.npmjs.com/package/prettier-plugin-import-sort).
 - [**React Spring**](https://www.react-spring.io/): for great animation using a React hook.
 - [**Sentry**](https://sentry.io/): exception collection and analysis.
-- **server**: i know, heresy!
-  - adds [Express](https://expressjs.com/).
-  - adds Server-side rendering (SSR).
-  - adds [GraphQL](https://graphql.org) and [Apollo](https://apollographql.com).
+- **GraphQL/Apollo**: adds [GraphQL](https://graphql.org) and [Apollo](https://apollographql.com).
   - for GraphQL adds [GraphQL code gen](https://www.graphql-code-generator.com/).
-  - stubs out an API server.
 - **structured data**: via [JSON-LD](https://developers.google.com/search/docs/guides/intro-structured-data).
 - **styleguide**: via [Storybook](https://storybook.js.org).
-- **xsrf/csrf protection**: via [csurf](https://github.com/expressjs/csurf).
 
 ## 💾 Install
 

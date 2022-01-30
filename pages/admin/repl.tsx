@@ -20,7 +20,6 @@ export default function REPL() {
       method: 'POST',
       body: JSON.stringify({
         source: source.current.value,
-        _csrf: configuration.csrf,
       }),
       headers: {
         'Content-Type': 'application/json',

@@ -16,7 +16,6 @@ async function removeLogin() {
     method: 'POST',
     body: JSON.stringify({
       next: window.location.href,
-      _csrf: configuration.csrf,
     }),
     headers: {
       'Content-Type': 'application/json',

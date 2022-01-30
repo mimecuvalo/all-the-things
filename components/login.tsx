@@ -2,7 +2,7 @@ import { createLock, setUser } from 'app/auth';
 
 import { Button } from '@mui/material';
 import { F } from 'i18n';
-import UserContext from 'app/User_Context';
+import UserContext from 'app/UserContext';
 import { useContext } from 'react';
 
 export default function LoginLogoutButton() {

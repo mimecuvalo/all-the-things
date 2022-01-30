@@ -8,7 +8,6 @@ function logEvent(eventName, data) {
     body: JSON.stringify({
       eventName,
       data,
-      _csrf: configuration.csrf,
     }),
     headers: {
       'Content-Type': 'application/json',

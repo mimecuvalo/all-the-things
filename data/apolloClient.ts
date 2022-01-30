@@ -1,5 +1,5 @@
 import { ApolloClient, ApolloLink, HttpLink } from '@apollo/client';
-import { resolvers, typeDefs } from 'data/local_state';
+import { resolvers, typeDefs } from 'data/localState';
 
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { dataIdFromObject } from 'data/apollo';

@@ -1,6 +1,7 @@
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 const { withSentryConfig } = require('@sentry/nextjs');
+const webpack = require('webpack');
 
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
@@ -23,7 +24,7 @@ const nextConfig = {
     defaultLocale: 'en',
   },
 
-  webpack: (config, { dev, ...other }) => {
+  webpack: (config, { dev, buildId, ...other }) => {
     config.plugins.push(
       new CircularDependencyPlugin({
         // exclude detection of files based on a RegExp
@@ -37,6 +38,14 @@ const nextConfig = {
         allowAsyncCycles: false,
         // set the current working directory for displaying module paths
         cwd: process.cwd(),
+      })
+    );
+
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env': {
+          BUILD_ID: JSON.stringify(buildId),
+        },
       })
     );
 

@@ -7,9 +7,7 @@ async function runCheck() {
   const url =
     '/api/client-health-check?' +
     new URLSearchParams({
-      appVersion: configuration.appVersion,
-      appTime: configuration.appTime,
-      _csrf: configuration.csrf,
+      appVersion: process.env.BUILD_ID,
     });
   const response = await fetch(url);
   const data = await response.text();

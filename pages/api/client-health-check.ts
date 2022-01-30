@@ -11,7 +11,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
  */
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.query.appVersion === 'somebadid' || req.query.appTime < 0 /* or before some time you specify as bad */) {
+  if (req.query.appVersion === 'somebadid') {
     res.send('bad');
     return;
   }
