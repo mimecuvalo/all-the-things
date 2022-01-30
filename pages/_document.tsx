@@ -5,6 +5,7 @@ import { StrictMode } from 'react';
 import createEmotionServer from '@emotion/server/create-instance';
 import crypto from 'crypto';
 import { v4 } from 'uuid';
+import { withRouter } from 'next/router';
 
 const HOSTNAME = 'www.example.com';
 const TITLE = 'Next.js Example';
@@ -43,7 +44,7 @@ const generateCsp = (): [csp: string, nonce: string] => {
   return [csp, nonce];
 };
 
-export default class MyDocument extends Document {
+class MyDocument extends Document {
   // Based off of: https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
@@ -81,7 +82,7 @@ export default class MyDocument extends Document {
   }
 
   render(): JSX.Element {
-    const locale = 'en';
+    const { locale, defaultLocale } = this.props;
     const [csp, nonce] = generateCsp();
 
     return (
@@ -142,6 +143,8 @@ export default class MyDocument extends Document {
     );
   }
 }
+
+export default withRouter(MyDocument);
 
 // This needs to be filled out by the developer to provide content for the site.
 // Learn more here: http://ogp.me/

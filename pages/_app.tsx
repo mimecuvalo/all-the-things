@@ -3,7 +3,7 @@ import 'styles/globals.css';
 import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
 
 import { Footer, Header } from 'components';
-import { IntlProvider, isInternalLocale, setLocales, setupCreateIntl } from 'i18n';
+import { IntlProvider, isInternalLocale, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
 import { reportWebVitals, trackWebVitals } from 'app/reportWebVitals';
 import { useEffect, useState } from 'react';
@@ -22,11 +22,7 @@ import configuration from 'app/configuration';
 import createApolloClient from 'app/apollo';
 import { setupAnalytics } from 'app/analytics';
 import { useFetchUser } from 'vendor/auth0/user';
-
-setLocales({
-  defaultLocale: configuration.defaultLocale,
-  locales: configuration.locales,
-});
+import { useRouter } from 'next/router';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -34,6 +30,7 @@ const clientSideEmotionCache = createEmotionCache();
 function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: AppProps) {
   const { user, loading } = useFetchUser();
   const [userContext, setUserContext] = useState({ user });
+  const { locale, defaultLocale } = useRouter();
 
   useEffect(() => {
     // Upon starting the app, kick off a client health check which runs periodically.
@@ -55,14 +52,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
 
   const client = createApolloClient();
 
-  let messages = {};
-  // This is to dynamically load language packs as needed. We don't need them all client-side.
-  const { locale, defaultLocale } = configuration;
-  // XXX re-enable later
-  // if (locale !== defaultLocale && !isInternalLocale(locale)) {
-  //   messages = (await import(`i18n/${locale}.json`)).default;
-  // }
-
+  const messages = pageProps.intlMessages || {};
   // createIntl is used in non-React locations.
   setupCreateIntl({ defaultLocale, locale, messages });
 

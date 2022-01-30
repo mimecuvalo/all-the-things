@@ -1,12 +1,13 @@
 import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
+import type { InferGetStaticPropsType, NextPage } from 'next';
 import { animated, useSpring } from 'react-spring';
 
 import Head from 'next/head';
 import Image from 'next/image';
-import type { NextPage } from 'next';
 import className from 'classnames';
 import gql from 'graphql-tag';
+import loadIntlMessages from 'i18n/messages';
 import styles from 'styles/Home.module.css';
 import { useQuery } from '@apollo/client';
 
@@ -28,7 +29,7 @@ const HELLO_AND_ECHO_QUERY = gql`
   }
 `;
 
-const Home: NextPage = () => {
+const Home: NextPage = (props: HomePageProps) => {
   const intl = useIntl();
 
   // This uses React Spring: https://www.react-spring.io/
@@ -160,3 +161,13 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps(ctx) {
+  return {
+    props: {
+      intlMessages: await loadIntlMessages(ctx),
+    },
+  };
+}
+
+type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>;

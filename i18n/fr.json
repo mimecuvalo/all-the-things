@@ -1,39 +1,103 @@
 {
-  "0323de4f66": "Connectez - Out",
-  "05bbb43b3d": "Composants",
-  "1a30804f0b": "le logo :)",
-  "212ce7020c": "Apprendre React",
-  "350f9d6822": "interdite",
-  "36fd540552": "non autorisé",
-  "378bc111b7": "Rendu avec React",
-  "3e1f651a10": "Expérience désactivée",
-  "3f40dc56bc": "Tester le snackbar",
-  "3f947b57fc": "personne faisant signe non",
-  "44f00c21a1": "essayer retourner au <a href=\"/\">début</a>.",
-  "4829262cec": "Expérience",
-  "5d45c0776e": "Snackbar test",
-  "5f02f05c74": "Chargement…",
-  "63d1e69756": "Modifier {code} et enregistrer pour recharger.",
-  "64af1b1f5f": "face à l'envers",
-  "690d8ebdfb": "je suis désolé, Dave. j'ai bien peur de ne pas pouvoir faire ça.",
-  "6a26f54883": "L'assistance",
-  "6b06791057": "Test de langue alternative",
-  "6cac132a3b": "essayez de <a>vous connecter </a>.",
-  "7f1efffd9b": "Veuillez sélectionner un sujet.",
-  "8cf04a9734": "Page d'accueil",
-  "9158981fad": "Apprendre {data}",
-  "96d6f2e7e1": "logo",
-  "98088e4b13": "Quelque chose s'est mal passé. 😦",
-  "99dea78007": "S'identifier",
-  "a1619a6b1d": "Expérience activée",
-  "ac40af9f13": "test du numéro de traduction: {itemCount, plural, =0 {pas d'articles} one {# article} other {# articles}}.",
-  "ae5901e838": "test html: visitez <a>notre site web</a> et <cta>voyez le monde</cta>",
-  "baf33637a2": "Vous devez activer JavaScript pour exécuter cette application.",
-  "c512eabeb3": "Test de variables GraphQL (chemin de l'url actuel): {url}",
-  "ccb3bdbd68": "Props vs. State",
-  "d0fb5e8106": "essayez de vous connecter.",
-  "d3d2e61733": "Fermer",
-  "d8f4a19935": "pas trouvé",
-  "e3afed0047": "Administration",
-  "ed1f0bfee1": "Votre Fonctionnalité"
+  "smartling": {
+    "string_format": "icu",
+    "translate_paths": [
+      {
+        "instruction": "*/description",
+        "key": "{*}/message",
+        "path": "*/message"
+      }
+    ],
+    "variants_enabled": true
+  },
+  "0323de4f66": {
+    "message": "Déconnexion"
+  },
+  "1a30804f0b": {
+    "message": "logo2"
+  },
+  "2019743e1f": {
+    "message": "Test de la fonctionnalité All The Things"
+  },
+  "378bc111b7": {
+    "message": "Rendu avec React"
+  },
+  "3d728e1b6e": {
+    "message": "nous avons enregistré cette erreur et nous la corrigerons bientôt."
+  },
+  "3e1f651a10": {
+    "message": "Test désactivé"
+  },
+  "3f40dc56bc": {
+    "message": "Tester le snack-bar"
+  },
+  "44f00c21a1": {
+    "message": "essayez de revenir au <a>début</a>."
+  },
+  "4829262cec": {
+    "message": "Expériences"
+  },
+  "5a2351b91b": {
+    "message": "erreur interne du serveur"
+  },
+  "5d45c0776e": {
+    "message": "Tester le snack-bar"
+  },
+  "5f02f05c74": {
+    "message": "Chargement…"
+  },
+  "64af1b1f5f": {
+    "message": "visage à l'envers"
+  },
+  "690d8ebdfb": {
+    "message": "je suis désolé, dave. j'ai bien peur de ne pas pouvoir faire ça."
+  },
+  "6a26f54883": {
+    "message": "Aide"
+  },
+  "6b06791057": {
+    "message": "Tester la langue alternative"
+  },
+  "835ca8f9cf": {
+    "message": "ce n'est pas vous, c'est nous. notre serveur fait le singe."
+  },
+  "8cf04a9734": {
+    "message": "Accueil"
+  },
+  "96d6f2e7e1": {
+    "message": "logo"
+  },
+  "98088e4b13": {
+    "message": "Une erreur s'est produite. 😦"
+  },
+  "99dea78007": {
+    "message": "Connexion"
+  },
+  "a1619a6b1d": {
+    "message": "Test activé."
+  },
+  "ac40af9f13": {
+    "message": "Test de pluralisation i18n: {itemCount, plural, =0 {no items} one {# item} other {# items}}."
+  },
+  "ae5901e838": {
+    "message": "Test i18n html: <a>visitez notre site Web</a> et <cta>découvrez le monde</cta>"
+  },
+  "baf33637a2": {
+    "message": "Vous devez activer JavaScript pour exécuter cette application."
+  },
+  "c512eabeb3": {
+    "message": "Test des variables GraphQL (chemin de l'url actuelle): {url}"
+  },
+  "d40cbcb573": {
+    "message": "ne vois pas le mal, n'entends pas le mal, ne parle pas le mal singes"
+  },
+  "d8f4a19935": {
+    "message": "not found"
+  },
+  "e3afed0047": {
+    "message": "Administrateur"
+  },
+  "ed1f0bfee1": {
+    "message": "Votre fonctionnalité"
+  }
 }

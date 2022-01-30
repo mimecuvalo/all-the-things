@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 
 import Cookies from 'js-cookie';
 import { Help as HelpIcon } from '@mui/icons-material';
+import Link from 'next/link';
 import gql from 'graphql-tag';
 import { styled } from '@mui/material/styles';
 import { useQuery } from '@apollo/client';
@@ -149,8 +150,12 @@ export default function Help() {
           <F defaultMessage="Experiments" />
         </MenuItem>
         {renderStyleguide()}
-        <MenuItem key="language" onClick={handleLanguage}>
-          <F defaultMessage="Test language alternative" />
+        <MenuItem key="language">
+          <Link href="/" passHref locale="fr">
+            <a style={{ textDecoration: 'none' }}>
+              <F defaultMessage="Test language alternative" />
+            </a>
+          </Link>
         </MenuItem>
         <MenuItem key="snack" onClick={handleSnackClick}>
           <F defaultMessage="Test snackbar" />

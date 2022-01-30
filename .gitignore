@@ -39,6 +39,9 @@ sessions/
 # vercel
 .vercel
 
+# i18n
+i18n-compiled-lang
+
 # typescript
 *.tsbuildinfo
 

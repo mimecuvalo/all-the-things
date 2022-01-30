@@ -18,7 +18,12 @@ const sentryWebpackPluginOptions = {
 const nextConfig = {
   reactStrictMode: true,
 
-  webpack: (config, options) => {
+  i18n: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'en',
+  },
+
+  webpack: (config, { dev, ...other }) => {
     config.plugins.push(
       new CircularDependencyPlugin({
         // exclude detection of files based on a RegExp
@@ -34,6 +39,11 @@ const nextConfig = {
         cwd: process.cwd(),
       })
     );
+
+    if (!dev) {
+      // https://formatjs.io/docs/guides/advanced-usage#react-intl-without-parser-40-smaller
+      config.resolve.alias['@formatjs/icu-messageformat-parser'] = '@formatjs/icu-messageformat-parser/no-parser';
+    }
 
     return config;
   },
