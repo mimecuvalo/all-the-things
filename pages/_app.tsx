@@ -3,7 +3,7 @@ import 'styles/globals.css';
 import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
 
 import { Footer, Header } from 'components';
-import { IntlProvider, isInternalLocale, setupCreateIntl } from 'i18n';
+import { IntlProvider, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
 import { reportWebVitals, trackWebVitals } from 'app/reportWebVitals';
 import { useEffect, useState } from 'react';
@@ -18,7 +18,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import UserContext from 'app/UserContext';
 import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
-import configuration from 'app/configuration';
 import createApolloClient from 'app/apollo';
 import getExperiments from 'app/experiments';
 import { setupAnalytics } from 'app/analytics';

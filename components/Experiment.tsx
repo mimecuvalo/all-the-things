@@ -12,14 +12,15 @@ const EXPERIMENTS_QUERY = gql`
 
 // Custom hook to check for experiment being enabled.
 export function useExperiment(name) {
-  const { data } = useQuery(EXPERIMENTS_QUERY);
-  const experiments = data?.experiments;
+  return false;
+  // const { data } = useQuery(EXPERIMENTS_QUERY);
+  // const experiments = data?.experiments;
 
-  if (!experiments) {
-    return false;
-  }
+  // if (!experiments) {
+  //   return false;
+  // }
 
-  return experiments.map((exp) => exp.name).includes(name);
+  // return experiments.map((exp) => exp.name).includes(name);
 }
 
 export function Experiment({ children, name }) {

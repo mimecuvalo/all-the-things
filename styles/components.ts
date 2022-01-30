@@ -2,7 +2,9 @@ const components = {
   // Example override
   MuiButton: {
     styleOverrides: {
-      root: {},
+      root: {
+        textTransform: 'none',
+      },
     },
   },
 };

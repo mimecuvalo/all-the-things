@@ -34,6 +34,8 @@
     "ts-script": "ts-node-script -r tsconfig-paths/register",
     "build-storybook": "build-storybook -s public",
     "storybook": "start-storybook -p 9001 -c .storybook --ci --quiet",
+    "test": "jest --watch",
+    "test:ci": "jest --ci",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -98,10 +100,14 @@
     "@types/react": "17.0.38",
     "alex": "10.0.0",
     "axe-core": "4.3.5",
+    "babel-jest": "27.4.5",
+    "cross-fetch": "3.1.5",
     "eslint": "8.7.0",
     "eslint-config-next": "12.0.9",
+    "eslint-plugin-testing-library": "5.0.1",
     "husky": "6.0.0",
     "import-sort-style-eslint": "6.0.0",
+    "jest": "27.4.5",
     "lint-staged": "10.5.4",
     "prettier": "2.5.1",
     "prettier-plugin-import-sort": "0.0.7",

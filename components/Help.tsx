@@ -59,7 +59,6 @@ export default function Help() {
     ...experiments[name],
   }));
   const cookieExperimentOverrides = JSON.parse(Cookies.get('experiments') || '{}');
-  console.log(cookieExperimentOverrides);
 
   const handleMenuOpenerClick = (event) => {
     setAnchorEl(event.currentTarget);
