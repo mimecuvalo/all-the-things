@@ -45,3 +45,6 @@ sessions/
 # development directories
 logs/*.log
 logs/*.log.gz
+
+# Sentry
+.sentryclirc

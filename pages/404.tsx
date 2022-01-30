@@ -1,4 +1,4 @@
-import { Emoji, Message } from './error.styles';
+import { Emoji, Message } from 'components/error/error.styles';
 import { F, defineMessages, useIntl } from 'i18n';
 
 const messages = defineMessages({
@@ -15,7 +15,7 @@ export default function NotFound() {
         🙃
       </Emoji>
       <h1>
-        404: <F defaultMessage="not found" />
+        <span className="notranslate">404:</span> <F defaultMessage="not found" />
       </h1>
       <div>
         <F defaultMessage="i'm sorry, dave. i'm afraid i can't do that." />
