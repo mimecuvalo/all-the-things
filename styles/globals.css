@@ -2,6 +2,10 @@
 @import '~sanitize.css/forms.css';
 @import '~sanitize.css/typography.css';
 
+html {
+  scroll-behavior: smooth;
+}
+
 body::backdrop {
   background-color: #fafafa;
 }

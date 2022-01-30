@@ -34,8 +34,8 @@ const Home: NextPage = () => {
   // Gives you some great animation easily for your app.
   const springProps = useSpring({
     opacity: 1,
-    top: 0,
-    from: { opacity: 0, top: 50 },
+    bottom: 0,
+    from: { opacity: 0, bottom: 100 },
   });
 
   const { loading, data } = useQuery(HELLO_AND_ECHO_QUERY, {

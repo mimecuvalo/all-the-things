@@ -1,28 +1,20 @@
 import { createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
 import createCache from '@emotion/cache';
-
-// Tweak to your own color scheme.
-export const Color = {
-  BLACK: '#000000',
-  WHITE: '#FFFFFF',
-  GRAY: '#BDBDBD',
-  GREEN: '#5ECD91',
-  PURPLE: '#5C29D4',
-};
+import palette from "./palette";
+import {muiTypography as typography} from "./typography";
+import components from "./components";
+import { breakpoints, shape } from "./constants";
 
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: Color.GREEN,
-    },
-    secondary: {
-      main: Color.PURPLE,
-    },
-    error: {
-      main: red.A400,
+  palette,
+  typography,
+  components,
+  breakpoints: {
+    values: {
+      ...breakpoints,
     },
   },
+  shape,
 });
 
 export default theme;
