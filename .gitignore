@@ -45,6 +45,10 @@ i18n-compiled-lang
 # typescript
 *.tsbuildinfo
 
+# storybook
+build-storybook.log
+storybook-static
+
 # development directories
 logs/*.log
 logs/*.log.gz
