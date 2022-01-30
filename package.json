@@ -24,7 +24,7 @@
     "build-storybook": "build-storybook -s public",
     "config": "node bin/config.js",
     "docker": "npm install && docker-compose up -d && npx sequelize db:migrate && npx sequelize db:seed:all",
-    "prepare": "if test \"$NODE_ENV\" = \"development\" ; then husky install; fi",
+    "prepare": "husky install",
     "styleguide": "start-storybook -p 9001 -c .storybook --ci --quiet"
   },
   "dependencies": {
