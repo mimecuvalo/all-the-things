@@ -40,11 +40,13 @@ const nextConfig = {
       'script-src': ["'self'", 'https://cdn.auth0.com', 'https://storage.googleapis.com'].concat(
         isDevelopment ? ["'unsafe-inline'", "'unsafe-eval'"] : []
       ),
-      'upgrade-insecure-requests': [],
 
       // XXX(mime): we have inline styles around - can we pass nonce around the app properly?
       'style-src': ["'self'", 'https:', "'unsafe-inline'"], //(req, res) => `'nonce-${res.locals.nonce}'`],
     };
+    if (!isDevelopment) {
+      cspDirectives['upgrade-insecure-requests'] = [];
+    }
     const cspValues = Object.keys(cspDirectives)
       .map((directive) => `${directive} ${cspDirectives[directive].join(' ')}`)
       .join('; ');

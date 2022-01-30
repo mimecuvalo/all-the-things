@@ -31,7 +31,7 @@ export function trackWebVitals({
   delta: number;
   id: string;
 }): void {
-  console.log(
+  console.debug(
     'web vitals',
     EventAction[name],
     // The `id` value will be unique to the current page load. When sending
