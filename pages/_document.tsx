@@ -114,18 +114,7 @@ class MyDocument extends Document {
             {this.props.emotionStyleTags}
           </Head>
           <body>
-            <Main />
-
-            {/* <ConfigurationScript
-              appTime={appTime}
-              appVersion={appVersion}
-              defaultLocale={defaultLocale}
-              experiments={experiments}
-              locale={locale}
-              locales={locales}
-              nonce={nonce}
-              user={user}
-            /> */}
+            <Main nonce={nonce} />
 
             <WindowErrorScript nonce={nonce} />
 
@@ -202,30 +191,6 @@ function StructuredMetaData({ nonce, title }) {
           },
           "description": "page description"
         }
-        `,
-      }}
-    />
-  );
-}
-
-// Passes key initial, bootstrap data to the client.
-function ConfigurationScript({ appTime, appVersion, defaultLocale, experiments, locale, locales, nonce, user }) {
-  return (
-    <script
-      nonce={nonce}
-      dangerouslySetInnerHTML={{
-        __html: `
-          window.configuration = {
-            appTime: ${appTime},
-            appVersion: '${appVersion}',
-            auth0_client_id: '${process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID}',
-            auth0_domain: '${process.env.NEXT_PUBLIC_AUTH0_DOMAIN}',
-            defaultLocale: '${defaultLocale}',
-            experiments: ${JSON.stringify(experiments)},
-            locale: '${locale}',
-            locales: '${locales}',
-            user: ${JSON.stringify(user)},
-          };
         `,
       }}
     />

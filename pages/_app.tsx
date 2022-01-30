@@ -20,6 +20,7 @@ import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
 import configuration from 'app/configuration';
 import createApolloClient from 'app/apollo';
+import getExperiments from 'app/experiments';
 import { setupAnalytics } from 'app/analytics';
 import { useFetchUser } from 'vendor/auth0/user';
 import { useRouter } from 'next/router';
@@ -27,7 +28,7 @@ import { useRouter } from 'next/router';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: AppProps) {
+function MyApp({ Component, emotionCache = clientSideEmotionCache, nonce, pageProps }: AppProps) {
   const { user, loading } = useFetchUser();
   const [userContext, setUserContext] = useState({ user });
   const { locale, defaultLocale } = useRouter();
@@ -56,6 +57,8 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
   // createIntl is used in non-React locations.
   setupCreateIntl({ defaultLocale, locale, messages });
 
+  const experiments = getExperiments(user);
+
   return (
     <IntlProvider defaultLocale={locale} locale={locale} messages={messages}>
       <ApolloProvider client={client}>
@@ -78,6 +81,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
               </ErrorBoundary>
             </UserContext.Provider>
 
+            <ConfigurationScript experiments={experiments} nonce={nonce} />
             <noscript>
               <F defaultMessage="You need to enable JavaScript to run this app." />
             </noscript>
@@ -89,3 +93,19 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
 }
 
 export default MyApp;
+
+// Passes key initial, bootstrap data to the client.
+function ConfigurationScript({ experiments, nonce }) {
+  return (
+    <script
+      nonce={nonce}
+      dangerouslySetInnerHTML={{
+        __html: `
+          window.configuration = {
+            experiments: ${JSON.stringify(experiments)},
+          };
+        `,
+      }}
+    />
+  );
+}

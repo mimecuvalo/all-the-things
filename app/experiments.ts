@@ -18,18 +18,17 @@ export const REGISTERED_EXPERIMENTS = {
 //   'some-old-experiment',
 // ];
 
-export default function getExperiments(req) {
-  const session = req.session;
-  const user = req.session.user;
-  const cookieExperimentOverrides = authorization.isAdmin(user) ? JSON.parse(req.cookies.experiments || '{}') : [];
+export default function getExperiments(user) {
+  //const cookieExperimentOverrides = authorization.isAdmin(user) ? JSON.parse(req.cookies.experiments || '{}') : [];
+
   const allExperiments = Object.keys(REGISTERED_EXPERIMENTS).map((name) => ({
     name,
     ...REGISTERED_EXPERIMENTS[name],
   }));
   const enabledExperiments = allExperiments.filter((exp) => {
-    if (cookieExperimentOverrides[exp.name] !== undefined) {
-      return cookieExperimentOverrides[exp.name];
-    }
+    // if (cookieExperimentOverrides[exp.name] !== undefined) {
+    //   return cookieExperimentOverrides[exp.name];
+    // }
 
     if (doesUserMatch(exp.enabledFor, user)) {
       return true;
@@ -47,7 +46,10 @@ export default function getExperiments(req) {
     // - remove '-' and '_'
     // - get first 5 letters
     // - compare that with the last number in base 36 which is ZZZZZ
-    const userPercent = parseInt(session.id.replace(/[-_]/g, '').slice(0, 5), 36) / parseInt('ZZZZZ', 36);
+    if (!user) {
+      return false;
+    }
+    const userPercent = parseInt(user.id.replace(/[-_]/g, '').slice(0, 5), 36) / parseInt('ZZZZZ', 36);
     if (userPercent <= exp.enabledPercent) {
       return true;
     }

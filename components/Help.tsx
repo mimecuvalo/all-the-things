@@ -58,7 +58,8 @@ export default function Help() {
     name,
     ...experiments[name],
   }));
-  const cookieExperimentOverrides = Cookies.get('experiments') || {};
+  const cookieExperimentOverrides = JSON.parse(Cookies.get('experiments') || '{}');
+  console.log(cookieExperimentOverrides);
 
   const handleMenuOpenerClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -99,7 +100,7 @@ export default function Help() {
 
   const handleExperimentChange = (name) => {
     cookieExperimentOverrides[name] = !enabledExperiments[name];
-    Cookies.set('experiments', cookieExperimentOverrides);
+    Cookies.set('experiments', JSON.stringify(cookieExperimentOverrides));
     window.location.reload();
   };
 

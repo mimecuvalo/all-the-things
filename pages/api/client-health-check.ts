@@ -11,7 +11,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
  */
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.query.appVersion === 'somebadid') {
+  if (req.query.buildId === 'somebadid' || req.query.commitSHA === 'somebadid') {
     res.send('bad');
     return;
   }

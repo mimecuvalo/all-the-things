@@ -7,7 +7,8 @@ async function runCheck() {
   const url =
     '/api/client-health-check?' +
     new URLSearchParams({
-      appVersion: process.env.BUILD_ID,
+      buildId: process.env.BUILD_ID,
+      commitSHA: process.env.VERCEL_GITHUB_COMMIT_SHA,
     });
   const response = await fetch(url);
   const data = await response.text();
