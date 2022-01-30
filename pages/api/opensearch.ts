@@ -1,11 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 // OpenSearch is a way to tell your browser to let a user hit <tab> and search your site.
 // See http://www.opensearch.org/Home
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const appName = 'Next.js: All The Things';
   const url = `https://${req.headers.host}`;
 
@@ -16,5 +13,5 @@ export default function handler(
       <Url type="text/html" method="get" template="${url}?q={searchTerms}"/>
       <Image height="16" width="16" type="image/x-icon">${url}/favicon.ico</Image>
     </OpenSearchDescription>
-  `)
+  `);
 }

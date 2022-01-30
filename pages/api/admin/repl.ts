@@ -1,10 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   // Also, this is disabled by default because it's so powerful (a powerful footgun, that is).
   // Enabling this means you need to make damn sure the API you're calling is internally accessible only.
   return res.json({

@@ -1,5 +1,5 @@
+import { Container } from '@mui/material';
 import { F } from 'i18n';
-import {Container} from '@mui/material';
 
 /**
  * Provides a simple React component as an example React component to manipulate out-of-the-box.

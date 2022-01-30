@@ -1,10 +1,10 @@
 import { Container, List, ListItem } from '@mui/material';
 
 import Forbidden from 'components/error/403';
+import Link from 'next/link';
 import Unauthorized from 'components/error/401';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
-import Link from 'next/link';
 
 const drawerWidth = 240;
 

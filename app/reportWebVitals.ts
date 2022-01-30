@@ -22,7 +22,7 @@ enum EventAction {
 /**
  * Callback passed to web-vitals to report important performance events
  */
- export function trackWebVitals({
+export function trackWebVitals({
   name,
   delta,
   id,
@@ -46,6 +46,6 @@ enum EventAction {
     // Use a non-interaction event to avoid affecting bounce rate.
     true,
     // Use `sendBeacon()` if the browser supports it.
-    'beacon',
+    'beacon'
   );
 }

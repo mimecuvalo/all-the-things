@@ -1,9 +1,10 @@
-import { createTheme } from '@mui/material/styles';
+import { breakpoints, shape } from './constants';
+
+import components from './components';
 import createCache from '@emotion/cache';
-import palette from "./palette";
-import {muiTypography as typography} from "./typography";
-import components from "./components";
-import { breakpoints, shape } from "./constants";
+import { createTheme } from '@mui/material/styles';
+import palette from './palette';
+import { muiTypography as typography } from './typography';
 
 const theme = createTheme({
   palette,

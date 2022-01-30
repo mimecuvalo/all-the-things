@@ -1,4 +1,4 @@
-import {styled} from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 export const Message = styled('div')`
   min-height: 100vh;
@@ -7,11 +7,11 @@ export const Message = styled('div')`
   align-items: center;
   justify-content: center;
   text-align: center;
-`
+`;
 
 export const Emoji = styled('span')`
   font-size: 128px;
   height: 128px;
   width: 128px;
   line-height: 1;
-`
+`;

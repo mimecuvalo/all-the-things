@@ -85,4 +85,3 @@ export function dataIdFromObject(obj) {
       return defaultDataIdFromObject(obj); // fall back to default handling
   }
 }
-

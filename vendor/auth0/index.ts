@@ -1,4 +1,4 @@
-import { initAuth0 } from '@auth0/nextjs-auth0'
+import { initAuth0 } from '@auth0/nextjs-auth0';
 
 export default initAuth0({
   secret: process.env.SESSION_COOKIE_SECRET,
@@ -7,12 +7,8 @@ export default initAuth0({
   clientID: process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID,
   clientSecret: process.env.AUTH0_CLIENT_SECRET,
   routes: {
-    callback:
-      process.env.NEXT_PUBLIC_REDIRECT_URI ||
-      '/api/auth/callback',
-    postLogoutRedirect:
-      process.env.NEXT_PUBLIC_POST_LOGOUT_REDIRECT_URI ||
-      '/',
+    callback: process.env.NEXT_PUBLIC_REDIRECT_URI || '/api/auth/callback',
+    postLogoutRedirect: process.env.NEXT_PUBLIC_POST_LOGOUT_REDIRECT_URI || '/',
   },
   authorizationParams: {
     response_type: 'code',
@@ -21,4 +17,4 @@ export default initAuth0({
   session: {
     absoluteDuration: process.env.SESSION_COOKIE_LIFETIME,
   },
-})
+});

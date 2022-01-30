@@ -1,23 +1,23 @@
+import { Button, Popover } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-import { Button, Popover } from '@mui/material';
 import classNames from 'classnames';
-import {styled} from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 const Table = styled('div')`
   white-space: nowrap;
   display: inline-block;
-`
+`;
 
 const EntryType = styled('td')`
   font-weight: bold;
   padding: 5px 20px 5px 5px;
-`
+`;
 
 const EntryValue = styled('td')`
   text-align: right;
   padding: 5px;
-`
+`;
 
 const WEB_VITALS_NAME_TO_READABLE = {
   CLS: 'cumulative-layout-shift (Web Vital)',

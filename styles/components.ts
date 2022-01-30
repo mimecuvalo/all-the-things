@@ -2,11 +2,9 @@ const components = {
   // Example override
   MuiButton: {
     styleOverrides: {
-      root: {
-
-      }
-    }
-  }
-}
+      root: {},
+    },
+  },
+};
 
 export default components;

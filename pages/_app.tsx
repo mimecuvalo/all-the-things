@@ -1,24 +1,27 @@
-import 'styles/globals.css'
-import type { AppProps } from 'next/app'
-import { CssBaseline } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import { CacheProvider } from '@emotion/react';
+import 'styles/globals.css';
+
+import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
+
+import { Footer, Header } from 'components';
+import { IntlProvider, isInternalLocale, setLocales, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
 import { reportWebVitals, trackWebVitals } from 'app/reportWebVitals';
 import { useEffect, useState } from 'react';
-import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
-import { IntlProvider, isInternalLocale, setLocales, setupCreateIntl } from 'i18n';
+
 import { ApolloProvider } from '@apollo/client';
+import type { AppProps } from 'next/app';
+import { CacheProvider } from '@emotion/react';
+import { CssBaseline } from '@mui/material';
+import ErrorBoundary from 'components/error/ErrorBoundary';
+import { F } from 'i18n';
+import { ThemeProvider } from '@mui/material/styles';
+import UserContext from 'app/User_Context';
+import classNames from 'classnames';
+import clientHealthCheck from 'app/client_health_check';
 import configuration from 'app/configuration';
 import createApolloClient from 'app/apollo';
-import { F } from 'i18n';
-import UserContext from 'app/User_Context';
-import clientHealthCheck from 'app/client_health_check';
-import ErrorBoundary from 'components/error/ErrorBoundary';
-import {setupAnalytics} from 'app/analytics';
-import classNames from 'classnames';
-import { Header, Footer } from 'components';
-import {useFetchUser} from 'vendor/auth0/user'
+import { setupAnalytics } from 'app/analytics';
+import { useFetchUser } from 'vendor/auth0/user';
 
 setLocales({
   defaultLocale: configuration.defaultLocale,
@@ -47,8 +50,8 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
   });
 
   useEffect(() => {
-    setUserContext({user})
-  }, [user])
+    setUserContext({ user });
+  }, [user]);
 
   const client = createApolloClient();
 
@@ -92,7 +95,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
         </CacheProvider>
       </ApolloProvider>
     </IntlProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

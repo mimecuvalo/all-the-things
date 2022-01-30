@@ -1,6 +1,5 @@
+import { Emoji, Message } from './error.styles';
 import { F, defineMessages, useIntl } from 'i18n';
-
-import {Message, Emoji} from './error.styles';
 
 const messages = defineMessages({
   upsideDownFace: { defaultMessage: 'upside down face' },

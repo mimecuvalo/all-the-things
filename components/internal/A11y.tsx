@@ -1,9 +1,9 @@
+import { Button, Popover } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-import { Button, Popover } from '@mui/material';
 import axe from 'axe-core';
 import classNames from 'classnames';
-import {styled} from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 const Container = styled('div')`
   padding: 10px;
@@ -19,7 +19,7 @@ const AuditButton = styled(Button)`
   position: absolute;
   top: 10px;
   right: 10px;
-`
+`;
 
 // Provides information about the app's shortcomings when it comes to accessibility.
 // This uses the `axe-core` package underneath to provide the info.

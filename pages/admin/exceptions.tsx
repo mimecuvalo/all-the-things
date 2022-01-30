@@ -1,17 +1,17 @@
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material';
-import { Accordion, AccordionDetails, AccordionSummary, Typography}  from '@mui/material';
-import {styled} from '@mui/material/styles';
+import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 
 const Container = styled('div')`
   max-width: 75vw;
   white-space: pre-wrap;
-`
+`;
 
 const Results = styled('pre')`
   white-space: pre-wrap;
-`
+`;
 
 export default function Exceptions() {
   const [clientExceptions, setClientExceptions] = useState({});

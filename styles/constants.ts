@@ -3,7 +3,7 @@ export const spacing = (factor: number): string => `${factor * 8}px`;
 
 export const shape = {
   borderRadius: 4,
-}
+};
 
 export const breakpoints = {
   // These match Material-UI but if we ever wanted to switch, we can change it here.
@@ -44,4 +44,4 @@ Object.keys(zIndices).forEach((item, index) => {
   }
 });
 
-export const zindex = zIndices
+export const zindex = zIndices;

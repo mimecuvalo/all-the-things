@@ -1,13 +1,14 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from 'styles/Home.module.css'
-import { animated, useSpring } from 'react-spring';
 import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/client';
+import { animated, useSpring } from 'react-spring';
+
+import Head from 'next/head';
+import Image from 'next/image';
+import type { NextPage } from 'next';
 import className from 'classnames';
+import gql from 'graphql-tag';
+import styles from 'styles/Home.module.css';
+import { useQuery } from '@apollo/client';
 
 // For things like "alt" text and other strings not in JSX.
 const messages = defineMessages({
@@ -69,8 +70,7 @@ const Home: NextPage = () => {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+          Get started by editing <code className={styles.code}>pages/index.tsx</code>
         </p>
 
         <div className={styles.grid}>
@@ -84,10 +84,7 @@ const Home: NextPage = () => {
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
+          <a href="https://github.com/vercel/next.js/tree/canary/examples" className={styles.card}>
             <h2>Examples &rarr;</h2>
             <p>Discover and deploy boilerplate example Next.js projects.</p>
           </a>
@@ -97,13 +94,13 @@ const Home: NextPage = () => {
             className={styles.card}
           >
             <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+            <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
           </a>
         </div>
 
-        <h1><F defaultMessage="All The Things Feature test" /></h1>
+        <h1>
+          <F defaultMessage="All The Things Feature test" />
+        </h1>
         <p className={styles.p}>
           <F
             defaultMessage="GraphQL variables test (current url path): {url}"
@@ -159,7 +156,7 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

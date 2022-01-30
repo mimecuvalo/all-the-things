@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 /**
  * The app will periodically send up a signal to see if it's a valid client.
@@ -9,11 +9,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  * Meant to be a path of last resort! It's jarring for a client to reset so only do this if as a stop-the-presses
  * option.
  */
- 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.query.appVersion === 'somebadid' || req.query.appTime < 0 /* or before some time you specify as bad */) {
     res.send('bad');
     return;

@@ -2,7 +2,7 @@ import { Suspense, lazy, memo, useEffect, useState } from 'react';
 
 import { F } from 'i18n';
 import Help from './Help';
-import {styled} from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 const StyledFooter = styled('footer')`
   position: fixed;
@@ -12,7 +12,7 @@ const StyledFooter = styled('footer')`
   & button {
     margin-left: 10px;
   }
-`
+`;
 
 // NB: we memoize here because it has the a11y script included on dev which is expensive.
 const Footer = memo(function Footer() {

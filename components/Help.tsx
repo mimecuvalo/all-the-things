@@ -1,16 +1,27 @@
+import {
+  Alert,
+  Checkbox,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Snackbar,
+  SwipeableDrawer,
+} from '@mui/material';
 import { F, defineMessages, useIntl } from 'i18n';
-import { Alert, Checkbox, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Snackbar, SwipeableDrawer } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import Cookies from 'js-cookie';
 import { Help as HelpIcon } from '@mui/icons-material';
-import {styled} from '@mui/material/styles';
 import gql from 'graphql-tag';
+import { styled } from '@mui/material/styles';
 import { useQuery } from '@apollo/client';
 
 const HelpContainer = styled('div')`
   display: inline-block;
-`
+`;
 
 const messages = defineMessages({
   help: { defaultMessage: 'Help' },

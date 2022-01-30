@@ -1,14 +1,8 @@
-import Document, {
-  DocumentContext,
-  DocumentInitialProps,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document';
-import createEmotionServer from '@emotion/server/create-instance';
-import { muiTheme, createEmotionCache } from 'styles';
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
+import { createEmotionCache, muiTheme } from 'styles';
+
 import { StrictMode } from 'react';
+import createEmotionServer from '@emotion/server/create-instance';
 
 const HOSTNAME = 'www.example.com';
 const TITLE = 'Next.js Example';
@@ -22,7 +16,7 @@ export default class MyDocument extends Document {
     // However, be aware that it can have global side effects.
     const cache = createEmotionCache();
     const { extractCriticalToChunks } = createEmotionServer(cache);
-  
+
     ctx.renderPage = () =>
       originalRenderPage({
         enhanceApp: (App) =>
@@ -30,7 +24,7 @@ export default class MyDocument extends Document {
             return <App emotionCache={cache} {...props} />;
           },
       });
-  
+
     const initialProps = await Document.getInitialProps(ctx);
     // This is important. It prevents emotion to render invalid HTML.
     // See https://github.com/mui-org/material-ui/issues/26561#issuecomment-855286153
@@ -43,7 +37,7 @@ export default class MyDocument extends Document {
         dangerouslySetInnerHTML={{ __html: style.css }}
       />
     ));
-  
+
     return {
       ...initialProps,
       emotionStyleTags,
@@ -61,10 +55,7 @@ export default class MyDocument extends Document {
             <meta name="theme-color" content={muiTheme.palette.primary.main} />
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link rel="shortcut icon" href="/images/favicon.ico" />
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
             <link rel="author" href={`/humans.txt`} />
             <link rel="icon" href={`/favicon.ico`} />

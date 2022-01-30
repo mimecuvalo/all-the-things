@@ -1,9 +1,9 @@
 import { ApolloServer } from 'apollo-server-express';
 import createLoaders from './graphql/loaders';
+import { defaultDataIdFromObject } from 'apollo-cache-inmemory';
 import models from './models';
 import resolvers from './graphql/resolvers';
 import typeDefs from './graphql/schema';
-import { defaultDataIdFromObject } from 'apollo-cache-inmemory';
 
 /**
  * The main entry point for our Apollo/GraphQL server.

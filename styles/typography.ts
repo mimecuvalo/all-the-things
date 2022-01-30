@@ -100,7 +100,7 @@ export const muiTypography = {
     fontSize: typography.fontSizeXS,
     lineHeight: typography.lineHeightXS,
   },
-}
+};
 
 export const storybook = {
   constants,

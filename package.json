@@ -25,7 +25,12 @@
     "config": "node bin/config.js",
     "docker": "npm install && docker-compose up -d && npx sequelize db:migrate && npx sequelize db:seed:all",
     "prepare": "husky install",
-    "styleguide": "start-storybook -p 9001 -c .storybook --ci --quiet"
+    "prettier:all": "prettier --check .",
+    "prettier:fix": "prettier --write",
+    "prettier:fix:all": "prettier --write .",
+    "ts-script": "ts-node-script -r tsconfig-paths/register",
+    "styleguide": "start-storybook -p 9001 -c .storybook --ci --quiet",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@apollo/client": "3.5.8",
