@@ -30,10 +30,10 @@ export default function Exceptions() {
   // TODO(mime): Either have a Sentry embed or a way to look at server exceptions locally.
   return (
     <Container>
-      <h1>Client Exceptions (today's)</h1>
+      <h1>Client Exceptions (today’s)</h1>
       <ExceptionsDisplay exceptions={clientExceptions} />
 
-      <h1>Server Exceptions (today's)</h1>
+      <h1>Server Exceptions (today’s)</h1>
       <ExceptionsDisplay exceptions={serverExceptions} />
 
       <h1>Server Exceptions (on Sentry)</h1>
@@ -48,23 +48,29 @@ export default function Exceptions() {
   );
 }
 
-function ExceptionsDisplay({ exceptions }) {
+type Exception = {
+  [key: string]: string;
+};
+
+function ExceptionsDisplay({ exceptions }: { exceptions: Exception }) {
   const messages = Object.keys(exceptions);
   const sortedMessages = messages.sort((a, b) => exceptions[b].length - exceptions[a].length);
 
   return sortedMessages.length ? (
-    sortedMessages.map((msg, idx) => (
-      <Accordion key={idx}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`${idx}-content`} id={`${idx}-header`}>
-          <Typography>
-            <strong>{exceptions[msg].length}</strong>: {msg}
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Results>{JSON.stringify(exceptions[msg], undefined, 2).replace(/\\n/g, '\n')}</Results>
-        </AccordionDetails>
-      </Accordion>
-    ))
+    <>
+      {sortedMessages.map((msg, idx) => (
+        <Accordion key={idx}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`${idx}-content`} id={`${idx}-header`}>
+            <Typography>
+              <strong>{exceptions[msg].length}</strong>: {msg}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Results>{JSON.stringify(exceptions[msg], undefined, 2).replace(/\\n/g, '\n')}</Results>
+          </AccordionDetails>
+        </Accordion>
+      ))}
+    </>
   ) : (
     <div>No exceptions today (yet).</div>
   );

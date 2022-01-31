@@ -15,7 +15,7 @@ const H1 = styled('h1')`
 `;
 
 // See React's documentation: https://reactjs.org/docs/error-boundaries.html
-export default function ErrorBoundary({ children }) {
+export default function ErrorBoundary({ children }: { children: React.ReactNode }) {
   return (
     <Sentry.ErrorBoundary
       fallback={

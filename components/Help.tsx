@@ -11,8 +11,9 @@ import {
   SwipeableDrawer,
 } from '@mui/material';
 import { F, defineMessages, useIntl } from 'i18n';
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 
+import { $Experiment } from 'app/experiments';
 import Cookies from 'js-cookie';
 import { Help as HelpIcon } from '@mui/icons-material';
 import Link from 'next/link';
@@ -37,13 +38,13 @@ const EXPERIMENTS_QUERY = gql`
 `;
 
 export default function Help() {
-  const [anchorEl, setAnchorEl] = useState();
-  const [experiments, setExperiments] = useState({});
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>();
+  const [experiments, setExperiments] = useState<$Experiment[]>([]);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
   const [isExperimentsOpen, setIsExperimentsOpen] = useState(false);
   const intl = useIntl();
   const { data } = useQuery(EXPERIMENTS_QUERY);
-  const enabledExperiments = data?.experiments?.map((exp) => exp.name) || [];
+  const enabledExperiments = data?.experiments?.map((exp: EnabledExperiment) => exp.name) || [];
 
   useEffect(() => {
     async function fetchData() {
@@ -54,13 +55,14 @@ export default function Help() {
     fetchData();
   }, [setExperiments]);
 
-  const allExperiments = Object.keys(experiments).map((name) => ({
+  const allExperiments = Object.keys(experiments).map((name: string) => ({
     name,
+    // @ts-ignore fix up later
     ...experiments[name],
   }));
   const cookieExperimentOverrides = JSON.parse(Cookies.get('experiments') || '{}');
 
-  const handleMenuOpenerClick = (event) => {
+  const handleMenuOpenerClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -97,7 +99,7 @@ export default function Help() {
     setIsSnackbarOpen(false);
   };
 
-  const handleExperimentChange = (name) => {
+  const handleExperimentChange = (name: string) => {
     cookieExperimentOverrides[name] = !cookieExperimentOverrides[name];
     Cookies.set('experiments', JSON.stringify(cookieExperimentOverrides));
     window.location.reload();

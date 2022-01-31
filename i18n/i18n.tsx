@@ -1,5 +1,9 @@
+import { ComponentType, ReactNode } from 'react';
 import {
   FormattedMessage,
+  IntlConfig,
+  IntlShape,
+  MessageDescriptor,
   createIntlCache,
   createIntl as originalCreateIntl,
   defineMessages as originalDefineMessages,
@@ -14,7 +18,7 @@ const INTERNAL_LOCALES = ['xx-AE', 'xx-LS'];
 
 // This matches the extraction tool pattern:
 //   --id-interpolation-pattern '[md5:contenthash:hex:10]'
-function generateId({ id, description, defaultMessage }) {
+function generateId({ id, description, defaultMessage }: MessageDescriptor) {
   if (id) {
     return id;
   }
@@ -25,7 +29,11 @@ function generateId({ id, description, defaultMessage }) {
     .slice(0, 10);
 }
 
-export function F(props) {
+interface FType extends MessageDescriptor {
+  values?: { [key: string]: (msg: string) => ReactNode };
+}
+
+export function F(props: FType) {
   const id = generateId(props);
   return (
     <span className="i18n-msg">
@@ -35,7 +43,7 @@ export function F(props) {
 }
 
 // We programmatically define ID's for messages to make things easier for devs.
-export function defineMessages(values) {
+export function defineMessages(values: Record<string | number | symbol, MessageDescriptor>) {
   for (const key in values) {
     if (!values[key].id) {
       values[key].id = generateId(values[key]);
@@ -44,29 +52,16 @@ export function defineMessages(values) {
   return originalDefineMessages(values);
 }
 
-// Find the exact match locale, if supported, or the next best locale if possible.
-// e.g. if `fr-FR` isn't found then `fr` will be used.
-function findRelevantLocale(locale) {
-  if (isValidLocale(locale)) {
-    return locale;
-  }
-
-  const baseLocale = locale.split('-')[0];
-  if (isValidLocale(baseLocale)) {
-    return baseLocale;
-  }
-}
-
-export function isInternalLocale(locale) {
+export function isInternalLocale(locale: string) {
   return process.env.NODE_ENV === 'development' && INTERNAL_LOCALES.indexOf(locale) !== -1;
 }
 
 // This is optional but highly recommended since it prevents memory leaks.
 // See: https://formatjs.io/docs/intl/#createintl
 const cache = createIntlCache();
-let presetIntl = null;
+let presetIntl: IntlShape | null = null;
 let didSetupCreateIntl = false;
-export function setupCreateIntl({ defaultLocale, locale, messages }) {
+export function setupCreateIntl({ defaultLocale, locale, messages }: IntlConfig) {
   presetIntl = originalCreateIntl(
     {
       defaultLocale,
@@ -79,7 +74,7 @@ export function setupCreateIntl({ defaultLocale, locale, messages }) {
   didSetupCreateIntl = true;
 }
 
-export function createIntl(options) {
+export function createIntl(options: IntlShape) {
   if (options) {
     return originalCreateIntl(options);
   } else {

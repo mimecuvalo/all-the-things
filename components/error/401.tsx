@@ -1,6 +1,8 @@
 import { Emoji, Message } from './error.styles';
 import { F, defineMessages, useIntl } from 'i18n';
 
+import Link from 'next/link';
+
 const messages = defineMessages({
   personGesturingNo: { defaultMessage: 'person gesturing no' },
 });
@@ -23,7 +25,11 @@ export default function Unauthorized() {
         <F
           defaultMessage="try <a>logging in</a>."
           values={{
-            a: (msg) => <a href="/api/auth/login">{msg}</a>,
+            a: (msg: string) => (
+              <Link href="/api/auth/login" passHref>
+                <a>{msg}</a>
+              </Link>
+            ),
           }}
         />
       </div>

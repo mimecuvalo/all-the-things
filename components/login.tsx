@@ -1,5 +1,3 @@
-import { createLock, setUser } from 'app/auth';
-
 import { Button } from '@mui/material';
 import { F } from 'i18n';
 import UserContext from 'app/UserContext';

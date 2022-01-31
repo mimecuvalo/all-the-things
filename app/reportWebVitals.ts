@@ -1,4 +1,8 @@
-export const reportWebVitals = (onPerfEntry) => {
+import { ReportHandler } from 'web-vitals';
+
+type WebVitals = 'CLS' | 'FID' | 'LCP' | 'FCP' | 'TTFB';
+
+export const reportWebVitals = (onPerfEntry: ReportHandler) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
       getCLS(onPerfEntry);
@@ -22,15 +26,7 @@ enum EventAction {
 /**
  * Callback passed to web-vitals to report important performance events
  */
-export function trackWebVitals({
-  name,
-  delta,
-  id,
-}: {
-  name: 'CLS' | 'FID' | 'LCP' | 'FCP' | 'TTFB';
-  delta: number;
-  id: string;
-}): void {
+export function trackWebVitals({ name, delta, id }: { name: WebVitals; delta: number; id: string }): void {
   console.debug(
     'web vitals',
     EventAction[name],

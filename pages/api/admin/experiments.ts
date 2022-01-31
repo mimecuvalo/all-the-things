@@ -3,6 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { REGISTERED_EXPERIMENTS } from 'app/experiments';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.json({ experiments: REGISTERED_EXPERIMENTS });
 }

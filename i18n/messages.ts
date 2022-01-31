@@ -1,17 +1,13 @@
+import { GetStaticPropsContext } from 'next';
 import fs from 'fs/promises';
 import path from 'path';
-
-type LoadIntlMessagesProps = {
-  locale: string;
-  defaultLocale: string;
-};
 
 type MessageConfig = { [key: string]: string };
 
 export default async function loadIntlMessages({
   locale,
   defaultLocale,
-}: LoadIntlMessagesProps): Promise<MessageConfig> {
+}: GetStaticPropsContext): Promise<MessageConfig> {
   // If the default locale is being used we can skip it
   if (locale === defaultLocale) {
     return {};
@@ -27,4 +23,6 @@ export default async function loadIntlMessages({
       console.error(error);
     }
   }
+
+  return {};
 }

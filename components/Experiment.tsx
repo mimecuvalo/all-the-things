@@ -1,13 +1,15 @@
 import { Children } from 'react';
 import useExperiment from 'hooks/useExperiment';
 
-export function Experiment({ children, name }) {
+export function Experiment({ children, name }: { children: React.ReactNode; name: string }) {
   const isExperimentOn = useExperiment(name);
 
-  const filteredChildren = [];
+  const filteredChildren: any = [];
   Children.map(children, (child) => {
     if (
+      // @ts-ignore fix up later
       (isExperimentOn && (child.type.name !== 'Variant' || child.props.name.toLowerCase() !== 'off')) ||
+      // @ts-ignore fix up later
       (!isExperimentOn && child.type.name === 'Variant' && child.props.name.toLowerCase() === 'off')
     ) {
       filteredChildren.push(child);
@@ -17,6 +19,6 @@ export function Experiment({ children, name }) {
   return <>{filteredChildren}</>;
 }
 
-export function Variant({ children }) {
+export function Variant({ children, name }: { children: React.ReactNode; name: string }) {
   return <>{children}</>;
 }

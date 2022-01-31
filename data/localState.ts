@@ -1,11 +1,12 @@
-import { InMemoryCache, Reference, defaultDataIdFromObject, makeVar } from '@apollo/client';
+import { InMemoryCache, Reference, StoreObject, defaultDataIdFromObject, makeVar } from '@apollo/client';
 
+import { $Experiment } from 'app/experiments';
 import gql from 'graphql-tag';
 
 // This is your app's local state. Which can be queried and modified via Apollo.
 // Learn more here: https://www.apollographql.com/docs/react/data/local-state/
 
-export const user = makeVar({});
+export const user = makeVar<User | null>(null);
 export const experiments = makeVar({});
 
 export const typeDefs = gql`
@@ -58,13 +59,13 @@ export const cache: InMemoryCache = new InMemoryCache({
   },
 });
 
-export function initializeLocalState(initialUser, initialExperiments) {
+export function initializeLocalState(initialUser: User | null, initialExperiments: EnabledExperiment[]) {
   user(initialUser);
   experiments(initialExperiments);
 }
 
 // You can add custom caching controls based on your data model.
-export function dataIdFromObject(obj) {
+export function dataIdFromObject(obj: StoreObject) {
   switch (obj.__typename) {
     default:
       return defaultDataIdFromObject(obj); // fall back to default handling

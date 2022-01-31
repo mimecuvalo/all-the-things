@@ -1,7 +1,7 @@
 // This file tries to create a centralized place for authorization so that it can be used
 // in the app, API, and Apollo servers.
-export const isAuthenticated = (currentUser) => !!currentUser;
-export const isAdmin = (currentUser) => !!currentUser?.model?.superuser;
+export const isAuthenticated = (currentUser: User | null) => !!currentUser;
+export const isAdmin = (currentUser: User | null) => !!currentUser?.model?.superuser;
 
 const authorization = {
   isAuthenticated,

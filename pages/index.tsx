@@ -1,6 +1,6 @@
 import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
-import type { InferGetStaticPropsType, NextPage } from 'next';
+import type { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { addApolloState, initializeApollo } from 'app/apollo';
 import { animated, useSpring } from 'react-spring';
 
@@ -15,7 +15,6 @@ import { useQuery } from '@apollo/client';
 // For things like "alt" text and other strings not in JSX.
 const messages = defineMessages({
   greeting: { id: 'logo-id', defaultMessage: 'logo' },
-  fallback: { id: 'logo-id-2', defaultMessage: 'logo2' },
 });
 
 // This is an GraphQL query for the Home component which passes the query result to the props.
@@ -49,7 +48,7 @@ const Home: NextPage = (props: HomePageProps) => {
     return <div>Running offline with service worker.</div>;
   }
 
-  const logoAltText = intl.formatMessage(messages.greeting, undefined /* values */, messages.fallback);
+  const logoAltText = intl.formatMessage(messages.greeting);
 
   return (
     <div className={styles.container}>
@@ -121,6 +120,7 @@ const Home: NextPage = (props: HomePageProps) => {
           <F
             defaultMessage="i18n pluralization test: {itemCount, plural, =0 {no items} one {# item} other {# items}}."
             values={{
+              // @ts-ignore not sure why this isn't typed right...
               itemCount: 5000,
             }}
           />
@@ -159,7 +159,7 @@ const Home: NextPage = (props: HomePageProps) => {
 
 export default Home;
 
-export async function getStaticProps(ctx) {
+export async function getStaticProps(ctx: GetStaticPropsContext) {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({

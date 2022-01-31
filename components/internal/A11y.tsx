@@ -1,5 +1,5 @@
 import { Button, Popover } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 
 import axe from 'axe-core';
 import classNames from 'classnames';
@@ -25,12 +25,12 @@ const AuditButton = styled(Button)`
 // This uses the `axe-core` package underneath to provide the info.
 // Should only be used and run in development.
 export default function A11y() {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [errorCount, setErrorCount] = useState(0);
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<axe.AxeResults | null>(null);
   const [loaded, setLoaded] = useState(false);
 
-  const handleClick = (event) => {
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -38,7 +38,7 @@ export default function A11y() {
     setAnchorEl(null);
   };
 
-  const handleRerun = (event) => {
+  const handleRerun = (event: MouseEvent<HTMLElement>) => {
     setErrorCount(0);
     setResults(null);
     setLoaded(false);
@@ -56,29 +56,17 @@ export default function A11y() {
 
   function runAudit() {
     console.log('[a11y]: running accessibility audit...');
-    axe.run(
-      document,
-      {
-        rules: {
-          // This is a very annoying property of color-contrast that causes the page to scroll on page load.
-          // We disable it here. This 'options' structure is insane btw. wtf.
-          'color-contrast': {
-            checks: { 'color-contrast': { options: { noScroll: true } } },
-          },
-        },
-      },
-      (err, results) => {
-        if (err) throw err;
-        console.log('[a11y]:', results);
-        setErrorCount(results.violations.length);
-        setResults(results);
-      }
-    );
+    axe.run(document, {}, (err, results) => {
+      if (err) throw err;
+      console.log('[a11y]:', results);
+      setErrorCount(results.violations.length);
+      setResults(results);
+    });
   }
 
-  function renderViolationByType(typeFilter) {
-    const violationsByType = results.violations.filter((violation) => violation.impact === typeFilter);
-    if (!violationsByType.length) {
+  function renderViolationByType(typeFilter: string) {
+    const violationsByType = results?.violations.filter((violation) => violation.impact === typeFilter);
+    if (!violationsByType?.length) {
       return null;
     }
 

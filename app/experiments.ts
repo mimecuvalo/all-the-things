@@ -1,11 +1,21 @@
 import Cookies from 'js-cookie';
 import authorization from 'app/authorization';
 
-function isInternalUser(user) {
-  return user?.model?.superuser;
+function isInternalUser(user: User | null): boolean {
+  return !!user?.model?.superuser;
 }
 
-export const REGISTERED_EXPERIMENTS = {
+type EnabledOption = string | ((user: User | null) => boolean);
+
+export type $Experiment = {
+  startDate: string;
+  enabledPercent: number;
+  allowedUsers: string[];
+  disallowedUsers: string[];
+  enabledFor: EnabledOption[];
+};
+
+export const REGISTERED_EXPERIMENTS: { [key: string]: $Experiment } = {
   'my-experiment': {
     startDate: '2019-11-11',
     enabledPercent: 0.1, // 10% enabled
@@ -19,7 +29,7 @@ export const REGISTERED_EXPERIMENTS = {
 //   'some-old-experiment',
 // ];
 
-export default function getExperiments(user) {
+export default function getExperiments(user: User | null): EnabledExperiment[] {
   const cookieExperimentOverrides =
     authorization.isAdmin(user) || process.env.NODE_ENV === 'development'
       ? JSON.parse(decodeURIComponent(Cookies.get('experiments') || '{}'))
@@ -59,12 +69,14 @@ export default function getExperiments(user) {
     return false;
   });
 
-  const enabledExperimentNames = enabledExperiments.map((exp) => exp.name);
+  const enabledExperimentNames = enabledExperiments.map((exp) => exp.name) as unknown as EnabledExperiment[];
   return enabledExperimentNames;
 }
 
-function doesUserMatch(cohort, user) {
+function doesUserMatch(cohort: EnabledOption[], user: User | null) {
   cohort = cohort || [];
   const email = user?.email;
-  return cohort.some((funcOrEmail) => (typeof funcOrEmail === 'string' ? funcOrEmail === email : funcOrEmail(user)));
+  return cohort.some((funcOrEmail: EnabledOption) =>
+    typeof funcOrEmail === 'string' ? funcOrEmail === email : funcOrEmail(user)
+  );
 }

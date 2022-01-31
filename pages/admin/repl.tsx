@@ -12,14 +12,14 @@ import configuration from 'app/configuration';
 export default function REPL() {
   const [disabled, setDisabled] = useState(false);
   const [result, setResult] = useState('');
-  const source = useRef(null);
+  const source = useRef<HTMLTextAreaElement | null>(null);
 
   async function handleClick() {
     setDisabled(true);
     const response = await fetch('DISABLED_FOR_SECURITY_DONT_ENABLE_UNLESS_YOU_KNOW_WHAT_YOURE_DOING', {
       method: 'POST',
       body: JSON.stringify({
-        source: source.current.value,
+        source: source.current?.value,
       }),
       headers: {
         'Content-Type': 'application/json',

@@ -1,5 +1,5 @@
-import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, split } from '@apollo/client';
-import { cache, dataIdFromObject, typeDefs } from 'data/localState';
+import { ApolloClient, ApolloLink, HttpLink, NormalizedCacheObject, split } from '@apollo/client';
+import { cache, typeDefs } from 'data/localState';
 
 import { BatchHttpLink } from '@apollo/client/link/batch-http';
 import isEqual from 'lodash/isEqual';
@@ -9,7 +9,7 @@ import { useMemo } from 'react';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
-let apolloClient;
+let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 function createApolloClient() {
   // link to use if batching
@@ -75,7 +75,7 @@ export function initializeApollo(initialState = null) {
   return _apolloClient;
 }
 
-export function addApolloState(client, pageProps) {
+export function addApolloState(client: ApolloClient<NormalizedCacheObject>, pageProps: any) {
   if (pageProps?.props) {
     pageProps.props[APOLLO_STATE_PROP_NAME] = client.cache.extract();
   }
@@ -83,7 +83,7 @@ export function addApolloState(client, pageProps) {
   return pageProps;
 }
 
-export function useApollo(pageProps) {
+export function useApollo(pageProps: any) {
   const state = pageProps[APOLLO_STATE_PROP_NAME];
   const store = useMemo(() => initializeApollo(state), [state]);
   return store;

@@ -1,16 +1,18 @@
+import { DataTypes, Sequelize } from 'sequelize';
+
 // Keep in sync with both graphql/schema/user.js and migrations/[date]-create-user.js
-export default function User(sequelize, Sequelize) {
+export default function User(sequelize: Sequelize) {
   const User = sequelize.define(
     'User',
     {
       id: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
       username: {
-        type: Sequelize.STRING(191),
+        type: DataTypes.STRING(191),
         unique: true,
         allowNull: false,
         validate: {
@@ -19,7 +21,7 @@ export default function User(sequelize, Sequelize) {
         },
       },
       email: {
-        type: Sequelize.STRING(191),
+        type: DataTypes.STRING(191),
         unique: true,
         allowNull: false,
         validate: {
@@ -34,6 +36,7 @@ export default function User(sequelize, Sequelize) {
     }
   );
 
+  // @ts-ignore fix later.
   User.associate = function (models) {
     // associations can be defined here
   };

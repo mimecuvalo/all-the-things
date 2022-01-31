@@ -10,7 +10,7 @@ const EXPERIMENTS_QUERY = gql`
 `;
 
 // Custom hook to check for experiment being enabled.
-export default function useExperiment(name) {
+export default function useExperiment(name: string) {
   const { data } = useQuery(EXPERIMENTS_QUERY);
   const experiments = data?.experiments;
 
@@ -18,5 +18,5 @@ export default function useExperiment(name) {
     return false;
   }
 
-  return experiments.map((exp) => exp.name).includes(name);
+  return experiments.map((exp: EnabledExperiment) => exp.name).includes(name);
 }

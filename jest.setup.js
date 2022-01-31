@@ -5,7 +5,7 @@
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
 
-import * as useExperiment from 'data/useExperiment';
+import * as useExperiment from 'hooks/useExperiment';
 
 import fetch from 'cross-fetch';
 

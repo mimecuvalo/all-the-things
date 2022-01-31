@@ -1,41 +1,49 @@
-// Primary
+import { PaletteOptions } from '@mui/material';
+
 const primary = {
-  primary100: '#eae9ff',
-  primary200: '#4642ff',
-  primary300: '#16147f',
+  light: '#eae9ff',
+  main: '#4642ff',
+  dark: '#16147f',
 };
 
-// Default/Neutrals
-const neutral = {
-  neutral100: '#f9f9f9',
-  neutral200: '#f2f2f2',
-  neutral300: '#ccc',
-  neutral400: '#666',
-  neutral500: '#323232',
+const secondary = {
+  light: '#fff8e0',
+  main: '#f9d65b',
+  dark: '#f2c72e',
 };
 
-// Destroy/Error
+const grey = {
+  100: '#f9f9f9',
+  300: '#f2f2f2',
+  500: '#ccc',
+  700: '#666',
+  800: '#323232',
+};
+
 const error = {
-  error100: '#fde7e5',
-  error200: '#ec1000',
-  error300: '#ed0900',
+  light: '#fde7e5',
+  main: '#ec1000',
+  dark: '#ed0900',
 };
 
-// Caution/Alert
-const caution = {
-  caution100: '#fff0dc',
-  caution200: '#ffb450',
-  caution300: '#ff7830',
+const warning = {
+  light: '#fff0dc',
+  main: '#ffb450',
+  dark: '#ff7830',
 };
 
-// Success
 const success = {
-  success100: '#e5f6f0',
-  success200: '#00aa70',
-  success300: '#00774e',
+  light: '#e5f6f0',
+  main: '#00aa70',
+  dark: '#00774e',
 };
 
-// Basics
+const info = {
+  light: '#7798fc',
+  main: '#3567fd',
+  dark: '#002cb4',
+};
+
 const basics = {
   white: '#ffffff',
   faintTransparentGrey: 'rgba(0, 0, 0, 0.04)',
@@ -51,23 +59,40 @@ const thirdParty = {
   googleBlue: '#4285f4',
 };
 
-const palette = {
+const palette: PaletteOptions = {
+  primary,
+  secondary,
+  error,
+  warning,
+  info,
+  success,
+  grey,
+  text: {
+    primary: basics.black,
+    secondary: grey['700'],
+    disabled: grey['500'],
+  },
+};
+export default palette;
+
+export const fullPalette = {
   ...primary,
-  ...neutral,
+  ...grey,
   ...error,
-  ...caution,
+  ...warning,
+  ...info,
   ...success,
   ...basics,
   ...accents,
   ...thirdParty,
 };
-export default palette;
 
 export const storybook = {
   primary,
-  neutral,
+  grey,
   error,
-  caution,
+  warning,
+  info,
   success,
   basics,
   accents,

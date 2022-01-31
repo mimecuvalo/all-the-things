@@ -2,7 +2,8 @@ import 'styles/globals.css';
 
 import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
 
-import { ApolloProvider, gql } from '@apollo/client';
+import { ApolloProvider, NormalizedCacheObject, gql } from '@apollo/client';
+import { CacheProvider, EmotionCache } from '@emotion/react';
 import { Footer, Header } from 'components';
 import { IntlProvider, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
@@ -10,7 +11,6 @@ import { reportWebVitals, trackWebVitals } from 'app/reportWebVitals';
 import { useEffect, useState } from 'react';
 
 import type { AppProps } from 'next/app';
-import { CacheProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
@@ -36,10 +36,15 @@ const UPDATE_USER = gql`
   }
 `;
 
-function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: AppProps) {
-  const { user, loading } = useFetchUser();
+export interface CustomAppProps extends AppProps {
+  __APOLLO_STATE__: NormalizedCacheObject;
+  emotionCache: EmotionCache;
+}
+
+function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: CustomAppProps) {
+  const { user } = useFetchUser();
   const [userContext, setUserContext] = useState({ user });
-  const { locale, defaultLocale } = useRouter();
+  const { locale = 'en', defaultLocale = 'en' } = useRouter();
   const apolloClient = useApollo(pageProps);
 
   useEffect(() => {
@@ -59,7 +64,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
       user,
       experiments: getExperiments(user),
     };
-    initializeLocalState(user, configuration.experiments);
+    initializeLocalState(user, window.configuration.experiments);
   });
 
   useEffect(() => {

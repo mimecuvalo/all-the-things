@@ -1,7 +1,7 @@
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
+import { ReactNode, StrictMode } from 'react';
 import { createEmotionCache, muiTheme } from 'styles';
 
-import { StrictMode } from 'react';
 import createEmotionServer from '@emotion/server/create-instance';
 import crypto from 'crypto';
 import { v4 } from 'uuid';
@@ -16,7 +16,7 @@ const generateCsp = (): [csp: string, nonce: string] => {
   const nonce = hash.digest('base64');
 
   const isDevelopment = process.env.NODE_ENV === 'development';
-  const cspDirectives = {
+  const cspDirectives: { [key: string]: string[] } = {
     'connect-src': [isDevelopment ? '*' : "'self'"],
     'default-src': ["'none'"],
     'font-src': ["'self'", 'https:'],
@@ -44,9 +44,13 @@ const generateCsp = (): [csp: string, nonce: string] => {
   return [csp, nonce];
 };
 
+export interface CustomDocumentInitialProps extends DocumentInitialProps {
+  emotionStyleTags: ReactNode[];
+}
+
 class MyDocument extends Document {
   // Based off of: https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
-  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
+  static async getInitialProps(ctx: DocumentContext): Promise<CustomDocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
 
     // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
@@ -58,6 +62,7 @@ class MyDocument extends Document {
       originalRenderPage({
         enhanceApp: (App) =>
           function EnhanceApp(props) {
+            // @ts-ignore not sure how to fix this yet
             return <App emotionCache={cache} {...props} />;
           },
       });
@@ -95,6 +100,8 @@ class MyDocument extends Document {
             <meta httpEquiv="Content-Security-Policy" content={csp} />
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link rel="shortcut icon" href="/images/favicon.ico" />
+            {/* This is because of the withRouter */}
+            {/* eslint-disable-next-line @next/next/no-page-custom-font */}
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
             <link rel="author" href={`/humans.txt`} />
@@ -111,6 +118,7 @@ class MyDocument extends Document {
             */}
             <link rel="manifest" href={`/manifest.json`} />
             {/* Inject MUI styles first to match with the prepend: true configuration. */}
+            {/* @ts-ignore not sure how to fix this yet */}
             {this.props.emotionStyleTags}
           </Head>
           <body>
@@ -126,11 +134,12 @@ class MyDocument extends Document {
   }
 }
 
+// @ts-ignore not sure how to fix this yet
 export default withRouter(MyDocument);
 
 // This needs to be filled out by the developer to provide content for the site.
 // Learn more here: http://ogp.me/
-function OpenGraphMetadata({ title }) {
+function OpenGraphMetadata({ title }: { title: string }) {
   // TODO(mime): combine with url_factory code.
   const url = `https://${HOSTNAME}`;
 
@@ -148,7 +157,7 @@ function OpenGraphMetadata({ title }) {
 
 // This needs to be filled out by the developer to provide content for the site.
 // Learn more here: https://developers.google.com/search/docs/guides/intro-structured-data
-function StructuredMetaData({ nonce, title }) {
+function StructuredMetaData({ nonce, title }: { nonce: string; title: string }) {
   // TODO(mime): combine with url_factory code.
   const url = `https://${HOSTNAME}`;
 
@@ -194,7 +203,7 @@ function StructuredMetaData({ nonce, title }) {
 // If there is an error that occurs upon page load, i.e. when executing the initial app code,
 // then we send the error up to the server via this mechanism.
 // Once the app is loaded, then the rest of error reporting goes through error.js -> logError.
-function WindowErrorScript({ nonce }) {
+function WindowErrorScript({ nonce }: { nonce: string }) {
   return (
     <script
       nonce={nonce}

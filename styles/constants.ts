@@ -17,7 +17,7 @@ export const breakpoints = {
 // The order of these defines which one 'wins' to be on top of the other.
 // This simplifies guessing a number and just assigns number in sequential order.
 // (excepting belowPage, page, abovePage, and important which are special z-indices)
-const zIndices = {
+const zIndices: { [key: string]: string } = {
   // Special cases
   belowPage: '-1',
   page: '0',
@@ -39,7 +39,7 @@ const zIndices = {
   important: '2147483647',
 };
 Object.keys(zIndices).forEach((item, index) => {
-  if (zIndices[item] === 0 && item !== 'page') {
+  if (zIndices[item] === '0' && item !== 'page') {
     zIndices[item] = (index - parseInt(zIndices['abovePage'])).toString();
   }
 });

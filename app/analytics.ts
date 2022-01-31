@@ -1,6 +1,12 @@
 const INTERESTING_ELEMENTS = ['a', 'button', 'img', 'input'];
 
-function logEvent(eventName, data) {
+type LogData = {
+  localName: string;
+  name: string;
+  pageName: string;
+};
+
+function logEvent(eventName: string, data: LogData) {
   fetch('/api/analytics', {
     method: 'POST',
     body: JSON.stringify({
@@ -13,15 +19,18 @@ function logEvent(eventName, data) {
   });
 }
 
-function handleMouseDown(evt) {
-  let target = evt.target;
+function handleMouseDown(evt: MouseEvent) {
+  let target = evt.target as HTMLElement;
+  if (!target) {
+    return;
+  }
   let localName = target.localName;
 
   while (
     !INTERESTING_ELEMENTS.includes(localName) &&
-    !(target.getAttribute && ['listbox', 'option', 'button'].includes(target.getAttribute('role')))
+    !(target.getAttribute && ['listbox', 'option', 'button'].includes(target.getAttribute('role') || ''))
   ) {
-    target = target.parentNode;
+    target = target.parentNode as HTMLElement;
     if (!target) {
       return;
     }
@@ -29,7 +38,7 @@ function handleMouseDown(evt) {
   }
 
   const aria = target.getAttribute('aria-describedby');
-  const tooltip = aria && document.getElementById(aria).innerText;
+  const tooltip = aria && document.getElementById(aria)?.innerText;
   const name =
     tooltip ||
     target.getAttribute('data-track') ||
@@ -41,8 +50,8 @@ function handleMouseDown(evt) {
     target.getAttribute('name') ||
     target.getAttribute('alt') ||
     target.className ||
-    target.src ||
-    target.srcset;
+    (target as HTMLImageElement).src ||
+    (target as HTMLImageElement).srcset;
   const pageName = window.location.pathname.split('/')[1] || '/';
 
   // Conditionally compile this code. Should not appear in production.

@@ -1,5 +1,5 @@
 import { Button, Popover } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 import { styled } from '@mui/material/styles';
@@ -19,7 +19,7 @@ const EntryValue = styled('td')`
   padding: 5px;
 `;
 
-const WEB_VITALS_NAME_TO_READABLE = {
+const WEB_VITALS_NAME_TO_READABLE: { [key: string]: string } = {
   CLS: 'cumulative-layout-shift (Web Vital)',
   FID: 'first-input-delay (Web Vital)',
   FCP: 'first-contentful-paint (Web Vital)',
@@ -32,12 +32,12 @@ const WEB_VITALS_NAME_TO_READABLE = {
 // Could be improved with some more server-side stats and with some metrics on
 // ajax navigations.
 export default function Performance() {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [duration, setDuration] = useState(0);
-  const [navigationEntry, setNavigationEntry] = useState(null);
-  const [paintEntries, setPaintEntries] = useState(null);
+  const [navigationEntry, setNavigationEntry] = useState<PerformanceEntry | null>(null);
+  const [paintEntries, setPaintEntries] = useState<PerformanceEntryList | null>(null);
 
-  const handleClick = (event) => {
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
