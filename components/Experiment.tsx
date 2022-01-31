@@ -1,5 +1,5 @@
 import { Children } from 'react';
-import useExperiment from 'data/useExperiment';
+import useExperiment from 'hooks/useExperiment';
 
 export function Experiment({ children, name }) {
   const isExperimentOn = useExperiment(name);

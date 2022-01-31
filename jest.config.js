@@ -15,6 +15,7 @@ const customJestConfig = {
     '^app/(.*)$': '<rootDir>/app/$1',
     '^components/(.*)$': '<rootDir>/components/$1',
     '^data/(.*)$': '<rootDir>/data/$1',
+    '^hooks/(.*)$': '<rootDir>/hooks/$1',
     '^i18n$': '<rootDir>/i18n',
     '^i18n/(.*)$': '<rootDir>/i18n/$1',
     '^styles$': '<rootDir>/styles',

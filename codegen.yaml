@@ -1,0 +1,9 @@
+schema: http://localhost:3000/api/graphql
+documents: ['./data/**/*.ts*', './pages/index.tsx']
+generates:
+  data/graphql-generated.ts:
+    plugins:
+      - add:
+          content: '// NOTE: This file is auto-generated via `yarn codegen` - DO NOT EDIT DIRECTLY!'
+      - typescript
+      - typescript-operations
