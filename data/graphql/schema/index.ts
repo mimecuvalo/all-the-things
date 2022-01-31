@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express';
+import { gql } from '@apollo/client';
 import userSchema from './user';
 
 // The `_` (underscores) here signify that the queries, mutations, subscriptions will be extended

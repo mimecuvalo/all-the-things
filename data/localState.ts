@@ -1,3 +1,4 @@
+import { defaultDataIdFromObject } from '@apollo/client';
 import gql from 'graphql-tag';
 
 // This is your app's local state. Which can be queried and modified via Apollo.

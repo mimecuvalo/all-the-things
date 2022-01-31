@@ -1,27 +1,5 @@
 import { Children } from 'react';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/client';
-
-const EXPERIMENTS_QUERY = gql`
-  {
-    experiments @client {
-      name
-    }
-  }
-`;
-
-// Custom hook to check for experiment being enabled.
-export function useExperiment(name) {
-  return false;
-  // const { data } = useQuery(EXPERIMENTS_QUERY);
-  // const experiments = data?.experiments;
-
-  // if (!experiments) {
-  //   return false;
-  // }
-
-  // return experiments.map((exp) => exp.name).includes(name);
-}
+import useExperiment from 'data/useExperiment';
 
 export function Experiment({ children, name }) {
   const isExperimentOn = useExperiment(name);

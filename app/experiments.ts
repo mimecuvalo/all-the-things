@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import authorization from 'app/authorization';
 
 function isInternalUser(user) {
@@ -19,16 +20,19 @@ export const REGISTERED_EXPERIMENTS = {
 // ];
 
 export default function getExperiments(user) {
-  //const cookieExperimentOverrides = authorization.isAdmin(user) ? JSON.parse(req.cookies.experiments || '{}') : [];
+  const cookieExperimentOverrides =
+    authorization.isAdmin(user) || process.env.NODE_ENV === 'development'
+      ? JSON.parse(decodeURIComponent(Cookies.get('experiments') || '{}'))
+      : [];
 
   const allExperiments = Object.keys(REGISTERED_EXPERIMENTS).map((name) => ({
     name,
     ...REGISTERED_EXPERIMENTS[name],
   }));
   const enabledExperiments = allExperiments.filter((exp) => {
-    // if (cookieExperimentOverrides[exp.name] !== undefined) {
-    //   return cookieExperimentOverrides[exp.name];
-    // }
+    if (cookieExperimentOverrides[exp.name]) {
+      return true;
+    }
 
     if (doesUserMatch(exp.enabledFor, user)) {
       return true;
@@ -46,10 +50,7 @@ export default function getExperiments(user) {
     // - remove '-' and '_'
     // - get first 5 letters
     // - compare that with the last number in base 36 which is ZZZZZ
-    if (!user) {
-      return false;
-    }
-    const userPercent = parseInt(user.id.replace(/[-_]/g, '').slice(0, 5), 36) / parseInt('ZZZZZ', 36);
+    const userPercent = parseInt(user?.id.replace(/[-_]/g, '').slice(0, 5), 36) / parseInt('ZZZZZ', 36);
     if (userPercent <= exp.enabledPercent) {
       return true;
     }

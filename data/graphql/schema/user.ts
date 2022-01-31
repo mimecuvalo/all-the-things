@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express';
+import { gql } from '@apollo/client';
 
 // Keep in sync with both models/user.js and migrations/[date]-create-user.js
 export default gql`

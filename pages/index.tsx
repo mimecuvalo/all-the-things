@@ -1,6 +1,7 @@
 import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
 import type { InferGetStaticPropsType, NextPage } from 'next';
+import { addApolloState, initializeApollo } from 'app/apollo';
 import { animated, useSpring } from 'react-spring';
 
 import Head from 'next/head';
@@ -43,11 +44,6 @@ const Home: NextPage = (props: HomePageProps) => {
   const { loading, data } = useQuery(HELLO_AND_ECHO_QUERY, {
     variables: { str: '/' },
   });
-
-  // XXX fix after apollo work
-  if (loading && process.env.NODE_ENV !== 'test') {
-    return null;
-  }
 
   if (typeof navigator !== 'undefined' && !navigator.onLine) {
     return <div>Running offline with service worker.</div>;
@@ -164,11 +160,19 @@ const Home: NextPage = (props: HomePageProps) => {
 export default Home;
 
 export async function getStaticProps(ctx) {
-  return {
+  const apolloClient = initializeApollo();
+
+  await apolloClient.query({
+    query: HELLO_AND_ECHO_QUERY,
+    variables: { str: '/' },
+  });
+
+  return addApolloState(apolloClient, {
     props: {
       intlMessages: await loadIntlMessages(ctx),
     },
-  };
+    revalidate: 1,
+  });
 }
 
 type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>;

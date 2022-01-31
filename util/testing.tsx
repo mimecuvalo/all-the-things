@@ -1,22 +1,43 @@
+import { InMemoryCache, gql } from '@apollo/client';
 import React, { FC, ReactElement } from 'react';
 import { RenderOptions, render } from '@testing-library/react';
 
-import { ApolloProvider } from '@apollo/client';
 import { IntlProvider } from 'i18n';
+import { MockedProvider } from '@apollo/client/testing';
 import { ThemeProvider } from '@mui/material/styles';
-import createApolloClient from 'app/apollo';
 import { muiTheme } from 'styles';
+import { useApollo } from 'app/apollo';
 
-const AllTheProviders: FC = ({ children }) => {
-  const client = createApolloClient();
+const cache = new InMemoryCache();
+cache.writeQuery({
+  query: gql`
+    query helloAndEchoQueries($str: String!) {
+      echoExample(str: $str) {
+        exampleField
+      }
+
+      hello
+    }
+  `,
+  data: {
+    echoExample: {
+      __typename: 'Echo',
+      exampleField: '/',
+    },
+    hello: 'GraphQL',
+  },
+});
+
+const AllTheProviders: FC = ({ children, ...pageProps }) => {
+  const apolloClient = useApollo(pageProps);
 
   return (
     <ThemeProvider theme={muiTheme}>
-      <ApolloProvider client={client}>
+      <MockedProvider cache={cache}>
         <IntlProvider defaultLocale="en" locale="en" messages={{}}>
           {children}
         </IntlProvider>
-      </ApolloProvider>
+      </MockedProvider>
     </ThemeProvider>
   );
 };

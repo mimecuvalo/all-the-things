@@ -70,7 +70,7 @@ Then, to run your newly created server locally:
 yarn dev
 ```
 
-## 👉 See main [readme.md](https://github.com/mimecuvalo/all-the-things/docs/readme.md) for more details on running! 👈
+## 👉 See main [readme.md](https://github.com/mimecuvalo/all-the-things/blob/main/docs/readme.md) for more details on running! 👈
 
 ## 📜 License
 

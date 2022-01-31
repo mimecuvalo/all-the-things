@@ -82,7 +82,7 @@ class MyDocument extends Document {
   }
 
   render(): JSX.Element {
-    const { locale, defaultLocale } = this.props;
+    const { locale } = this.props;
     const [csp, nonce] = generateCsp();
 
     return (
@@ -114,15 +114,9 @@ class MyDocument extends Document {
             {this.props.emotionStyleTags}
           </Head>
           <body>
-            <Main nonce={nonce} />
+            <Main />
 
             <WindowErrorScript nonce={nonce} />
-
-            {/* <script
-              dangerouslySetInnerHTML={{
-                __html: `window.__APOLLO_STATE__ = ${JSON.stringify(apolloStateFn()).replace(/</g, '\\u003c')};`,
-              }}
-            /> */}
 
             <NextScript nonce={nonce} />
           </body>

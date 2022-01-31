@@ -98,7 +98,7 @@ export default function Help() {
   };
 
   const handleExperimentChange = (name) => {
-    cookieExperimentOverrides[name] = !enabledExperiments[name];
+    cookieExperimentOverrides[name] = !cookieExperimentOverrides[name];
     Cookies.set('experiments', JSON.stringify(cookieExperimentOverrides));
     window.location.reload();
   };

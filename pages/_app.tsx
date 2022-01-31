@@ -18,19 +18,21 @@ import { ThemeProvider } from '@mui/material/styles';
 import UserContext from 'app/UserContext';
 import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
-import createApolloClient from 'app/apollo';
 import getExperiments from 'app/experiments';
+import { initializeLocalState } from 'data/localState';
 import { setupAnalytics } from 'app/analytics';
+import { useApollo } from 'app/apollo';
 import { useFetchUser } from 'vendor/auth0/user';
 import { useRouter } from 'next/router';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-function MyApp({ Component, emotionCache = clientSideEmotionCache, nonce, pageProps }: AppProps) {
+function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: AppProps) {
   const { user, loading } = useFetchUser();
   const [userContext, setUserContext] = useState({ user });
   const { locale, defaultLocale } = useRouter();
+  const apolloClient = useApollo(pageProps);
 
   useEffect(() => {
     // Upon starting the app, kick off a client health check which runs periodically.
@@ -44,23 +46,25 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, nonce, pagePr
     // unregister() to register() below. Note this comes with some pitfalls.
     // Learn more about service workers: https://cra.link/PWA
     serviceWorkerRegistration.unregister();
+
+    window.configuration = {
+      user,
+      experiments: getExperiments(user),
+    };
+    initializeLocalState(user, configuration.experiments);
   });
 
   useEffect(() => {
     setUserContext({ user });
   }, [user]);
 
-  const client = createApolloClient();
-
   const messages = pageProps.intlMessages || {};
   // createIntl is used in non-React locations.
   setupCreateIntl({ defaultLocale, locale, messages });
 
-  const experiments = getExperiments(user);
-
   return (
     <IntlProvider defaultLocale={locale} locale={locale} messages={messages}>
-      <ApolloProvider client={client}>
+      <ApolloProvider client={apolloClient}>
         <CacheProvider value={emotionCache}>
           <ThemeProvider theme={muiTheme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -80,7 +84,6 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, nonce, pagePr
               </ErrorBoundary>
             </UserContext.Provider>
 
-            <ConfigurationScript experiments={experiments} nonce={nonce} />
             <noscript>
               <F defaultMessage="You need to enable JavaScript to run this app." />
             </noscript>
@@ -92,19 +95,3 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, nonce, pagePr
 }
 
 export default MyApp;
-
-// Passes key initial, bootstrap data to the client.
-function ConfigurationScript({ experiments, nonce }) {
-  return (
-    <script
-      nonce={nonce}
-      dangerouslySetInnerHTML={{
-        __html: `
-          window.configuration = {
-            experiments: ${JSON.stringify(experiments)},
-          };
-        `,
-      }}
-    />
-  );
-}
