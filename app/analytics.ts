@@ -1,5 +1,3 @@
-import configuration from './configuration';
-
 const INTERESTING_ELEMENTS = ['a', 'button', 'img', 'input'];
 
 function logEvent(eventName, data) {

@@ -2,13 +2,13 @@ import 'styles/globals.css';
 
 import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
 
+import { ApolloProvider, gql } from '@apollo/client';
 import { Footer, Header } from 'components';
 import { IntlProvider, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
 import { reportWebVitals, trackWebVitals } from 'app/reportWebVitals';
 import { useEffect, useState } from 'react';
 
-import { ApolloProvider } from '@apollo/client';
 import type { AppProps } from 'next/app';
 import { CacheProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
@@ -27,6 +27,14 @@ import { useRouter } from 'next/router';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
+
+const UPDATE_USER = gql`
+  mutation UpdateUser($user: User!) {
+    updateUser(user: $user) {
+      email
+    }
+  }
+`;
 
 function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: AppProps) {
   const { user, loading } = useFetchUser();

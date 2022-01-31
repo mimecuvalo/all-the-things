@@ -1,8 +1,7 @@
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, split } from '@apollo/client';
-import { resolvers, typeDefs } from 'data/localState';
+import { cache, dataIdFromObject, typeDefs } from 'data/localState';
 
 import { BatchHttpLink } from '@apollo/client/link/batch-http';
-import { dataIdFromObject } from 'data/localState';
 import isEqual from 'lodash/isEqual';
 import merge from 'deepmerge';
 import { onError } from '@apollo/client/link/error';
@@ -39,17 +38,11 @@ function createApolloClient() {
   );
   const link = ApolloLink.from([errorLink, splitLink]);
 
-  // We add the Apollo/GraphQL capabilities here (also notice ApolloProvider below).
-  const cache = new InMemoryCache({
-    dataIdFromObject,
-  });
-
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link,
     cache,
     typeDefs,
-    resolvers,
   });
 }
 

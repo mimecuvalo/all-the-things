@@ -1,5 +1,3 @@
-import configuration from '../app/configuration';
-
 export function logError(data) {
   fetch('/api/report-error', {
     method: 'POST',

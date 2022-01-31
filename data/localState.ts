@@ -1,13 +1,12 @@
-import { defaultDataIdFromObject } from '@apollo/client';
+import { InMemoryCache, Reference, defaultDataIdFromObject, makeVar } from '@apollo/client';
+
 import gql from 'graphql-tag';
 
 // This is your app's local state. Which can be queried and modified via Apollo.
 // Learn more here: https://www.apollographql.com/docs/react/data/local-state/
 
-const LOCAL_STATE = {
-  user: undefined,
-  experiments: undefined,
-};
+export const user = makeVar({});
+export const experiments = makeVar({});
 
 export const typeDefs = gql`
   type Experiment {
@@ -18,14 +17,10 @@ export const typeDefs = gql`
     username: String!
   }
 
-  type UserOAuth {
+  type User {
+    model: UserModel
     email: String!
     picture: String
-  }
-
-  type User {
-    model: UserModel!
-    oauth: UserOAuth!
   }
 
   type App {
@@ -44,39 +39,28 @@ export const typeDefs = gql`
   }
 `;
 
-export const resolvers = {
-  Query: {
-    experiments: () => LOCAL_STATE.experiments,
-    user: () => LOCAL_STATE.user,
-  },
-  Mutation: {
-    updateExperiments: (_, { experiments }) => {
-      LOCAL_STATE.experiments = experiments.map((name) => ({
-        __typename: 'Experiment',
-        name,
-      }));
-      return experiments;
+export const cache: InMemoryCache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        user: {
+          read() {
+            return user();
+          },
+        },
+        experiments: {
+          read() {
+            return experiments();
+          },
+        },
+      },
     },
-    updateUser: (_, { user }) => {
-      LOCAL_STATE.user = user;
-      return user;
-    },
   },
-};
+});
 
-export function initializeLocalState(user, experiments) {
-  LOCAL_STATE.user = user && {
-    __typename: 'User',
-    model: Object.assign({ __typename: 'UserModel' }, user.model),
-    oauth: Object.assign({ __typename: 'UserOAuth' }, user.oauth),
-  };
-
-  LOCAL_STATE.experiments =
-    experiments &&
-    experiments.map((name) => ({
-      __typename: 'Experiment',
-      name,
-    }));
+export function initializeLocalState(initialUser, initialExperiments) {
+  user(initialUser);
+  experiments(initialExperiments);
 }
 
 // You can add custom caching controls based on your data model.

@@ -8,36 +8,25 @@ import { useQuery } from '@apollo/client';
 
 const drawerWidth = 240;
 
-const isAuthenticated = (req, res, next) =>
-  authorization.isAuthenticated(req.session.user) ? next() : res.sendStatus(401);
-
-const isAdmin = (req, res, next) =>
-  authorization.isAdmin(req.session.user) || process.env.NODE_ENV === 'development'
-    ? next()
-    : res.status(403).send('I call shenanigans.');
-
 const USER_QUERY = gql`
   {
     user @client {
-      oauth {
-        email
-      }
+      email
     }
   }
 `;
 
 export default function Admin() {
-  // XXX re-enable
-  // const { data } = useQuery(USER_QUERY);
-  // const user = data?.user;
+  const { data } = useQuery(USER_QUERY);
+  const user = data?.user;
 
-  // if (!user) {
-  //   return <Unauthorized />;
-  // }
+  if (!user) {
+    return <Unauthorized />;
+  }
 
-  // if (!user?.model?.superuser && process.env.NODE_ENV !== 'development') {
-  //   return <Forbidden />;
-  // }
+  if (!user?.model?.superuser && process.env.NODE_ENV !== 'development') {
+    return <Forbidden />;
+  }
 
   return <AdminApp />;
 }

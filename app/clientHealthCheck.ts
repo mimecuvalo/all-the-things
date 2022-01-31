@@ -1,5 +1,3 @@
-import configuration from './configuration';
-
 // This lets us make sure that if there are bad / incompatible clients in the wild later on, we can
 // disable certain clients using their version number and timestamp and making sure they're upgraded to the
 // latest, working version.

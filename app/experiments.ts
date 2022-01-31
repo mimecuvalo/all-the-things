@@ -50,7 +50,8 @@ export default function getExperiments(user) {
     // - remove '-' and '_'
     // - get first 5 letters
     // - compare that with the last number in base 36 which is ZZZZZ
-    const userPercent = parseInt(user?.id.replace(/[-_]/g, '').slice(0, 5), 36) / parseInt('ZZZZZ', 36);
+    const userIdPartial = user?.id?.replace(/[-_]/g, '').slice(0, 5) || '';
+    const userPercent = parseInt(userIdPartial, 36) / parseInt('ZZZZZ', 36);
     if (userPercent <= exp.enabledPercent) {
       return true;
     }
@@ -64,6 +65,6 @@ export default function getExperiments(user) {
 
 function doesUserMatch(cohort, user) {
   cohort = cohort || [];
-  const email = user?.oauth?.email;
+  const email = user?.email;
   return cohort.some((funcOrEmail) => (typeof funcOrEmail === 'string' ? funcOrEmail === email : funcOrEmail(user)));
 }
