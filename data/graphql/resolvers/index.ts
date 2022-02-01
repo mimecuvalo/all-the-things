@@ -23,7 +23,7 @@ const exampleResolvers = {
   Query: {
     // Just spits out what it's given as a test example.
     // @ts-ignore figure out later
-    async echoExample(parent, { str }, { currentUser, models }) {
+    async echoExample(parent, { str }) {
       return { exampleField: str };
     },
 
