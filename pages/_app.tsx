@@ -2,6 +2,7 @@ import 'styles/globals.css';
 
 import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
 
+import { APOLLO_STATE_PROP_NAME, useApollo } from 'app/apollo';
 import { ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { Footer, Header } from 'components';
@@ -21,7 +22,6 @@ import clientHealthCheck from 'app/clientHealthCheck';
 import getExperiments from 'app/experiments';
 import { initializeLocalState } from 'data/localState';
 import { setupAnalytics } from 'app/analytics';
-import { useApollo } from 'app/apollo';
 import { useFetchUser } from 'vendor/auth0/user';
 import { useRouter } from 'next/router';
 
@@ -29,7 +29,7 @@ import { useRouter } from 'next/router';
 const clientSideEmotionCache = createEmotionCache();
 
 export interface CustomAppProps extends AppProps {
-  __APOLLO_STATE__: NormalizedCacheObject;
+  [APOLLO_STATE_PROP_NAME]: NormalizedCacheObject;
   emotionCache: EmotionCache;
 }
 

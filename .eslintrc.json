@@ -1,7 +1,7 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "extends": ["next/core-web-vitals", "eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": ["next/core-web-vitals", "eslint:recommended", "plugin:@typescript-eslint/recommended", "formatjs"],
   "plugins": ["@typescript-eslint", "testing-library"],
   "overrides": [
     // Only uses Testing Library lint rules in test files
@@ -12,6 +12,7 @@
   ],
   "rules": {
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "formatjs/enforce-default-message": ["error", "literal"]
   }
 }

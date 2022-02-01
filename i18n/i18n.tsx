@@ -1,4 +1,3 @@
-import { ComponentType, ReactNode } from 'react';
 import {
   FormattedMessage,
   IntlConfig,
@@ -10,6 +9,7 @@ import {
 } from 'react-intl';
 
 import MD5 from 'md5.js';
+import { ReactNode } from 'react';
 
 // Re-export everything and override below what we want to override.
 export * from 'react-intl';

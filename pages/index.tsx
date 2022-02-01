@@ -1,6 +1,6 @@
 import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
-import type { GetServerSidePropsContext, NextPage } from 'next';
+import type { GetStaticPropsContext, NextPage } from 'next';
 import { addApolloState, initializeApollo } from 'app/apollo';
 import { animated, useSpring } from 'react-spring';
 
@@ -159,7 +159,7 @@ const Home: NextPage = () => {
 
 export default Home;
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+export async function getStaticProps(ctx: GetStaticPropsContext) {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({

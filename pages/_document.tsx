@@ -17,7 +17,7 @@ const generateCsp = (): [csp: string, nonce: string] => {
 
   const isDevelopment = process.env.NODE_ENV === 'development';
   const cspDirectives: { [key: string]: string[] } = {
-    'connect-src': [isDevelopment ? '*' : "'self'"],
+    'connect-src': isDevelopment ? ['*'] : ["'self'", 'https://*.ingest.sentry.io'],
     'default-src': ["'none'"],
     'font-src': ["'self'", 'https:'],
     'frame-ancestors': ["'self'"],
@@ -26,6 +26,7 @@ const generateCsp = (): [csp: string, nonce: string] => {
     'manifest-src': ["'self'"],
     'media-src': ["'self'", 'blob:'],
     'object-src': ["'self'"],
+    'prefetch-src': ["'self'"],
     'report-uri': ['/api/report-csp-violation'],
     'script-src': ["'self'", 'https://cdn.auth0.com', 'https://storage.googleapis.com'].concat(
       isDevelopment ? ["'unsafe-inline'", "'unsafe-eval'"] : [`'nonce-${nonce}'`]
