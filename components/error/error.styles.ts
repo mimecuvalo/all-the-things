@@ -12,6 +12,6 @@ export const Message = styled('div')`
 export const Emoji = styled('span')`
   font-size: 128px;
   height: 128px;
-  width: 128px;
   line-height: 1;
+  white-space: nowrap;
 `;

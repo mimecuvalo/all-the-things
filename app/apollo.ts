@@ -14,7 +14,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 function createApolloClient() {
   // link to use if batching
   // also adds a `batch: true` header to the request to prove it's a different link (default)
-  const uri = 'http://localhost:3000/api/graphql';
+  const uri = process.env.APOLLO_URL;
   const batchHttpLink = new BatchHttpLink({ uri });
   // link to use if not batching
   const httpLink = new HttpLink({
