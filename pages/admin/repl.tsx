@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 
 import { Button } from '@mui/material';
-import configuration from 'app/configuration';
 
 // TODO(mime): This has a lot of work left to do.
 // In particular, need to be able to unbundle server side code so we properly require local code()

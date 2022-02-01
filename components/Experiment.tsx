@@ -19,6 +19,6 @@ export function Experiment({ children, name }: { children: React.ReactNode; name
   return <>{filteredChildren}</>;
 }
 
-export function Variant({ children, name }: { children: React.ReactNode; name: string }) {
+export function Variant({ children }: { children: React.ReactNode; name: string }) {
   return <>{children}</>;
 }

@@ -2,7 +2,6 @@ import { Button, Popover } from '@mui/material';
 import { MouseEvent, useEffect, useState } from 'react';
 
 import axe from 'axe-core';
-import classNames from 'classnames';
 import { styled } from '@mui/material/styles';
 
 const Container = styled('div')`
@@ -38,7 +37,7 @@ export default function A11y() {
     setAnchorEl(null);
   };
 
-  const handleRerun = (event: MouseEvent<HTMLElement>) => {
+  const handleRerun = () => {
     setErrorCount(0);
     setResults(null);
     setLoaded(false);

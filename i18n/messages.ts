@@ -1,4 +1,4 @@
-import { GetStaticPropsContext } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -7,7 +7,7 @@ type MessageConfig = { [key: string]: string };
 export default async function loadIntlMessages({
   locale,
   defaultLocale,
-}: GetStaticPropsContext): Promise<MessageConfig> {
+}: GetServerSidePropsContext): Promise<MessageConfig> {
   // If the default locale is being used we can skip it
   if (locale === defaultLocale) {
     return {};

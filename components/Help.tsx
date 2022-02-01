@@ -81,11 +81,6 @@ export default function Help() {
     window.open('http://localhost:9001', 'styleguide');
   };
 
-  const handleLanguage = () => {
-    handleClose();
-    window.location.href = '/?lang=fr';
-  };
-
   const handleSnackClick = () => {
     handleClose();
     setIsSnackbarOpen(true);

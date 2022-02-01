@@ -6,8 +6,6 @@ import Unauthorized from 'components/error/401';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
-const drawerWidth = 240;
-
 const USER_QUERY = gql`
   {
     user @client {

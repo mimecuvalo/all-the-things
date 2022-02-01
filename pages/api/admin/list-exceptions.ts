@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  let clientExceptions = {},
+  const clientExceptions = {},
     serverExceptions = {};
 
   res.json({ clientExceptions, serverExceptions });

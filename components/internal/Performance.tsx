@@ -1,7 +1,6 @@
 import { Button, Popover } from '@mui/material';
 import { MouseEvent, useEffect, useState } from 'react';
 
-import classNames from 'classnames';
 import { styled } from '@mui/material/styles';
 
 const Table = styled('div')`
@@ -50,7 +49,7 @@ export default function Performance() {
       return;
     }
 
-    const observer = new PerformanceObserver((list) => {
+    const observer = new PerformanceObserver(() => {
       const perfNavigationEntry = window['performance'].getEntriesByType('navigation')[0];
       const perfPaintEntries = window['performance'].getEntriesByType('paint');
       setDuration(perfNavigationEntry.duration);

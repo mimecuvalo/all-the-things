@@ -2,7 +2,7 @@ import 'styles/globals.css';
 
 import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
 
-import { ApolloProvider, NormalizedCacheObject, gql } from '@apollo/client';
+import { ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { Footer, Header } from 'components';
 import { IntlProvider, setupCreateIntl } from 'i18n';
@@ -27,14 +27,6 @@ import { useRouter } from 'next/router';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
-
-const UPDATE_USER = gql`
-  mutation UpdateUser($user: User!) {
-    updateUser(user: $user) {
-      email
-    }
-  }
-`;
 
 export interface CustomAppProps extends AppProps {
   __APOLLO_STATE__: NormalizedCacheObject;

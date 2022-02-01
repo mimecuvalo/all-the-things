@@ -1,6 +1,6 @@
 import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
-import type { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
+import type { GetServerSidePropsContext, NextPage } from 'next';
 import { addApolloState, initializeApollo } from 'app/apollo';
 import { animated, useSpring } from 'react-spring';
 
@@ -29,7 +29,7 @@ const HELLO_AND_ECHO_QUERY = gql`
   }
 `;
 
-const Home: NextPage = (props: HomePageProps) => {
+const Home: NextPage = () => {
   const intl = useIntl();
 
   // This uses React Spring: https://www.react-spring.io/
@@ -40,7 +40,7 @@ const Home: NextPage = (props: HomePageProps) => {
     from: { opacity: 0, bottom: 100 },
   });
 
-  const { loading, data } = useQuery(HELLO_AND_ECHO_QUERY, {
+  const { data } = useQuery(HELLO_AND_ECHO_QUERY, {
     variables: { str: '/' },
   });
 
@@ -159,7 +159,7 @@ const Home: NextPage = (props: HomePageProps) => {
 
 export default Home;
 
-export async function getStaticProps(ctx: GetStaticPropsContext) {
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
@@ -171,8 +171,5 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
     props: {
       intlMessages: await loadIntlMessages(ctx),
     },
-    revalidate: 1,
   });
 }
-
-type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>;
