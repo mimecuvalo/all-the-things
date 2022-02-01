@@ -8,8 +8,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=15.14.0",
-    "npm": ">=7.7.6"
+    "node": ">=14.x"
   },
   "bugs": {
     "url": "https://github.com/mimecuvalo/all-the-things/issues"
@@ -24,7 +23,7 @@
     "i18n:extract": "formatjs extract 'pages/**/*.ts*' 'components/**/*.ts*' --out-file i18n/en.json --additional-component-names F --id-interpolation-pattern '[md5:contenthash:hex:10]' --ignore '${TMP_DIR}/util/i18n.tsx' --format smartling",
     "i18n:compile": "formatjs compile-folder i18n i18n-compiled-lang --format smartling",
     "alex": "alex .",
-    "analyze": "source-map-explorer build/static/js/*.chunk.js",
+    "analyze": "source-map-explorer .next/static/**/*.js",
     "codegen": "graphql-codegen",
     "config": "node bin/config.js",
     "docker": "npm install && docker-compose up -d && npx sequelize db:migrate && npx sequelize db:seed:all",
