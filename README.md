@@ -8,7 +8,7 @@
   <a href="https://github.com/mimecuvalo/all-the-things/docs/license.md"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="license" /></a>
 </p>
 
-<strong>NOTE: still under active development and I'm not currently providing backwards compatibility until things stabilize.</strong>
+<strong>NOTE: still under active development and not currently providing backwards compatibility until things stabilize.</strong>
 
 ## 📯 Description
 
