@@ -12,7 +12,7 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-NODE-14-${{ hashFiles('**/yarn.lock') }}
       - name: Install
-        run: yarn --no-progress --non-interactive --no-lockfile
+        run: yarn
       - name: Alex
         run: yarn alex
       - name: Run ESLint
