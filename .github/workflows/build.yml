@@ -10,6 +10,6 @@ jobs:
       - name: Install
         run: yarn --no-progress --non-interactive --no-lockfile
       - name: Build
-        env: # Or as an environment variable
-        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: yarn build
