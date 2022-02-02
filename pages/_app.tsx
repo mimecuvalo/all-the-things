@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
-import { F } from 'i18n';
+import { FormattedMessage } from 'i18n';
 import { ThemeProvider } from '@mui/material/styles';
 import UserContext from 'app/UserContext';
 import classNames from 'classnames';
@@ -90,7 +90,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
             </UserContext.Provider>
 
             <noscript>
-              <F defaultMessage="You need to enable JavaScript to run this app." />
+              <FormattedMessage defaultMessage="You need to enable JavaScript to run this app." />
             </noscript>
           </ThemeProvider>
         </CacheProvider>

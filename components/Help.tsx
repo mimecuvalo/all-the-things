@@ -10,7 +10,7 @@ import {
   Snackbar,
   SwipeableDrawer,
 } from '@mui/material';
-import { F, defineMessages, useIntl } from 'i18n';
+import { FormattedMessage, defineMessages, useIntl } from 'i18n';
 import { MouseEvent, useEffect, useState } from 'react';
 
 import { $Experiment } from 'app/experiments';
@@ -141,21 +141,21 @@ export default function Help() {
         }}
       >
         <MenuItem key="admin" onClick={handleAdmin}>
-          <F defaultMessage="Admin" />
+          <FormattedMessage defaultMessage="Admin" />
         </MenuItem>
         <MenuItem key="experiments" onClick={handleExperiments}>
-          <F defaultMessage="Experiments" />
+          <FormattedMessage defaultMessage="Experiments" />
         </MenuItem>
         {renderStyleguide()}
         <MenuItem key="language">
           <Link href="/" passHref locale="fr">
             <a style={{ textDecoration: 'none' }}>
-              <F defaultMessage="Test language alternative" />
+              <FormattedMessage defaultMessage="Test language alternative" />
             </a>
           </Link>
         </MenuItem>
         <MenuItem key="snack" onClick={handleSnackClick}>
-          <F defaultMessage="Test snackbar" />
+          <FormattedMessage defaultMessage="Test snackbar" />
         </MenuItem>
       </Menu>
 
@@ -182,7 +182,7 @@ export default function Help() {
       </SwipeableDrawer>
       <Snackbar open={isSnackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
         <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
-          <F defaultMessage="Snackbar test" />
+          <FormattedMessage defaultMessage="Snackbar test" />
         </Alert>
       </Snackbar>
     </HelpContainer>

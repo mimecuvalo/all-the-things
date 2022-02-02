@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { F } from 'i18n';
+import { FormattedMessage } from 'i18n';
 import UserContext from 'app/UserContext';
 import { useContext } from 'react';
 
@@ -9,7 +9,7 @@ export default function LoginLogoutButton() {
   return (
     <span>
       <Button variant="contained" color="primary" href={user ? '/api/auth/logout' : '/api/auth/login'}>
-        {user ? <F defaultMessage="Logout" /> : <F defaultMessage="Login" />}
+        {user ? <FormattedMessage defaultMessage="Logout" /> : <FormattedMessage defaultMessage="Login" />}
       </Button>
     </span>
   );

@@ -1,5 +1,5 @@
 import { Emoji, Message } from './error.styles';
-import { F, defineMessages, useIntl } from 'i18n';
+import { FormattedMessage, defineMessages, useIntl } from 'i18n';
 
 const messages = defineMessages({
   personGesturingNo: { defaultMessage: 'person gesturing no' },
@@ -15,12 +15,12 @@ export default function Forbidden() {
         🙅
       </Emoji>
       <h1>
-        <span className="notranslate">403:</span> <F defaultMessage="forbidden" />
+        <span className="notranslate">403:</span> <FormattedMessage defaultMessage="forbidden" />
       </h1>
       <div>
-        <F defaultMessage="i'm sorry, dave. i'm afraid i can't do that." />
+        <FormattedMessage defaultMessage="i'm sorry, dave. i'm afraid i can't do that." />
         <br />
-        <F defaultMessage="try logging in." />
+        <FormattedMessage defaultMessage="try logging in." />
       </div>
     </Message>
   );

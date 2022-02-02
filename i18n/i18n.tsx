@@ -1,5 +1,4 @@
 import {
-  FormattedMessage,
   IntlConfig,
   IntlShape,
   MessageDescriptor,
@@ -27,19 +26,6 @@ function generateId({ id, description, defaultMessage }: MessageDescriptor) {
     .update(description ? `${defaultMessage}#${description}` : defaultMessage)
     .digest('hex')
     .slice(0, 10);
-}
-
-interface FType extends MessageDescriptor {
-  values?: { [key: string]: (msg: string) => ReactNode };
-}
-
-export function F(props: FType) {
-  const id = generateId(props);
-  return (
-    <span className="i18n-msg">
-      <FormattedMessage id={id} {...props} />
-    </span>
-  );
 }
 
 // We programmatically define ID's for messages to make things easier for devs.

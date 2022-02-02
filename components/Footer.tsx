@@ -1,6 +1,6 @@
 import { Suspense, lazy, memo, useEffect, useState } from 'react';
 
-import { F } from 'i18n';
+import { FormattedMessage } from 'i18n';
 import Help from './Help';
 import { styled } from '@mui/material/styles';
 
@@ -29,7 +29,7 @@ const Footer = memo(function Footer() {
       const IS_CLIENT = typeof window !== 'undefined';
       const Fallback = (
         <span>
-          <F defaultMessage="Loading…" />
+          <FormattedMessage defaultMessage="Loading…" />
         </span>
       );
 
