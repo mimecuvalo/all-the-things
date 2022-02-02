@@ -22,4 +22,6 @@ jobs:
       - name: Build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: nightlight-productions
+          SENTRY_PROJECT: nightlight-productions
         run: yarn build
