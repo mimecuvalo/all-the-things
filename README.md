@@ -37,7 +37,7 @@ This template includes scripts and configuration used by [Next.js](https://nextj
 - **error boundary**: adds a top-level one to the app. (see [doc](https://reactjs.org/docs/error-boundaries.html)).
 - **error pages**: [401](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401), [404](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404), [500](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500).
 - **error reporting**: listens to `window.onerror` and reports JS errors to the server for debugging.
-- **experiments framework**: allows you to add experiments quickly via a React component and hook.
+- **experiments framework**: allows you to add experiments quickly via a React component and hooks.
 - [**humans.txt**](http://humanstxt.org/) **/** [**robots.txt**](http://www.robotstxt.org/): adds stubs of these files.
 - **health checks**: runs a client health check every 5 minutes to see if the client is still valid.
 - **i18n**: via [react-intl](https://github.com/yahoo/react-intl/wiki#getting-started) and extraction tools.

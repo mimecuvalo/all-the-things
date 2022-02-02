@@ -1,4 +1,4 @@
-import { FormattedMessage } from 'i18n';
+import { F } from 'i18n';
 import Link from 'next/link';
 import LoginLogoutButton from 'components/login';
 import { styled } from '@mui/material/styles';
@@ -23,14 +23,14 @@ export default function Header() {
           <li>
             <Link passHref href="/">
               <a>
-                <FormattedMessage defaultMessage="Home" />
+                <F defaultMessage="Home" />
               </a>
             </Link>
           </li>
           <li>
             <Link passHref href="/your-feature">
               <a>
-                <FormattedMessage defaultMessage="Your Feature" />
+                <F defaultMessage="Your Feature" />
               </a>
             </Link>
           </li>

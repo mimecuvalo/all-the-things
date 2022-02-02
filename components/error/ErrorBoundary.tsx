@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 
-import { FormattedMessage } from 'i18n';
+import { F } from 'i18n';
 import { styled } from '@mui/material/styles';
 
 const H1 = styled('h1')`
@@ -20,7 +20,7 @@ export default function ErrorBoundary({ children }: { children: React.ReactNode 
     <Sentry.ErrorBoundary
       fallback={
         <H1>
-          <FormattedMessage defaultMessage="Something went wrong. 😦" />
+          <F defaultMessage="Something went wrong. 😦" />
         </H1>
       }
     >

@@ -13,11 +13,14 @@
   "0323de4f66": {
     "message": "Logout"
   },
-  "1a30804f0b": {
-    "message": "logo2"
-  },
   "2019743e1f": {
     "message": "All The Things Feature test"
+  },
+  "350f9d6822": {
+    "message": "forbidden"
+  },
+  "36fd540552": {
+    "message": "unauthorized"
   },
   "378bc111b7": {
     "message": "Rendering with React"
@@ -30,6 +33,9 @@
   },
   "3f40dc56bc": {
     "message": "Test snackbar"
+  },
+  "3f947b57fc": {
+    "message": "person gesturing no"
   },
   "44f00c21a1": {
     "message": "try going back to the <a>beginning</a>."
@@ -58,14 +64,14 @@
   "6b06791057": {
     "message": "Test language alternative"
   },
+  "6cac132a3b": {
+    "message": "try <a>logging in</a>."
+  },
   "835ca8f9cf": {
     "message": "it's not you, it's us. our server is monkeying around."
   },
   "8cf04a9734": {
     "message": "Home"
-  },
-  "96d6f2e7e1": {
-    "message": "logo"
   },
   "98088e4b13": {
     "message": "Something went wrong. 😦"
@@ -88,6 +94,9 @@
   "c512eabeb3": {
     "message": "GraphQL variables test (current url path): {url}"
   },
+  "d0fb5e8106": {
+    "message": "try logging in."
+  },
   "d40cbcb573": {
     "message": "see no evil, hear no evil, speak no evil monkeys"
   },
@@ -99,5 +108,8 @@
   },
   "ed1f0bfee1": {
     "message": "Your Feature"
+  },
+  "logo-id": {
+    "message": "logo"
   }
 }

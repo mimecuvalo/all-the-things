@@ -1,5 +1,5 @@
 import { Emoji, Message } from './error.styles';
-import { FormattedMessage, defineMessages, useIntl } from 'i18n';
+import { F, defineMessages, useIntl } from 'i18n';
 
 import Link from 'next/link';
 
@@ -17,12 +17,12 @@ export default function Unauthorized() {
         🙅
       </Emoji>
       <h1>
-        <span className="notranslate">401:</span> <FormattedMessage defaultMessage="unauthorized" />
+        <span className="notranslate">401:</span> <F defaultMessage="unauthorized" />
       </h1>
       <div>
-        <FormattedMessage defaultMessage="i'm sorry, dave. i'm afraid i can't do that." />
+        <F defaultMessage="i'm sorry, dave. i'm afraid i can't do that." />
         <br />
-        <FormattedMessage
+        <F
           defaultMessage="try <a>logging in</a>."
           values={{
             a: (msg: string) => (

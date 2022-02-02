@@ -1,5 +1,5 @@
 import { Experiment, Variant } from 'components/Experiment';
-import { FormattedMessage, defineMessages, useIntl } from 'i18n';
+import { F, defineMessages, useIntl } from 'i18n';
 import type { GetStaticPropsContext, NextPage } from 'next';
 import { addApolloState, initializeApollo } from 'app/apollo';
 import { animated, useSpring } from 'react-spring';
@@ -96,10 +96,10 @@ const Home: NextPage = () => {
         </div>
 
         <h1>
-          <FormattedMessage defaultMessage="All The Things Feature test" />
+          <F defaultMessage="All The Things Feature test" />
         </h1>
         <p className={styles.p}>
-          <FormattedMessage
+          <F
             defaultMessage="GraphQL variables test (current url path): {url}"
             values={{
               url: data?.echoExample.exampleField,
@@ -109,15 +109,15 @@ const Home: NextPage = () => {
         <p className={styles.p}>
           <Experiment name="my-experiment">
             <Variant name="on">
-              <FormattedMessage defaultMessage="Experiment enabled." />
+              <F defaultMessage="Experiment enabled." />
             </Variant>
             <Variant name="off">
-              <FormattedMessage defaultMessage="Experiment disabled" />
+              <F defaultMessage="Experiment disabled" />
             </Variant>
           </Experiment>
         </p>
         <p className={styles.p}>
-          <FormattedMessage
+          <F
             defaultMessage="i18n pluralization test: {itemCount, plural, =0 {no items} one {# item} other {# items}}."
             values={{
               // @ts-ignore not sure why this isn't typed right...
@@ -126,7 +126,7 @@ const Home: NextPage = () => {
           />
         </p>
         <p className={styles.p}>
-          <FormattedMessage
+          <F
             defaultMessage="i18n html test: <a>visit our website</a> and <cta>see the world</cta>"
             values={{
               a: (msg: string) => (

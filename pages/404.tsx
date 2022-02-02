@@ -1,5 +1,5 @@
 import { Emoji, Message } from 'components/error/error.styles';
-import { FormattedMessage, defineMessages, useIntl } from 'i18n';
+import { F, defineMessages, useIntl } from 'i18n';
 
 import Link from 'next/link';
 
@@ -17,12 +17,12 @@ export default function NotFound() {
         🙃
       </Emoji>
       <h1>
-        <span className="notranslate">404:</span> <FormattedMessage defaultMessage="not found" />
+        <span className="notranslate">404:</span> <F defaultMessage="not found" />
       </h1>
       <div>
-        <FormattedMessage defaultMessage="i'm sorry, dave. i'm afraid i can't do that." />
+        <F defaultMessage="i'm sorry, dave. i'm afraid i can't do that." />
         <br />
-        <FormattedMessage
+        <F
           defaultMessage="try going back to the <a>beginning</a>."
           values={{
             a: (msg: string) => (
