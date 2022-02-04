@@ -70,6 +70,8 @@ Then, to run your newly created server locally:
 yarn dev
 ```
 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 ## 👉 See main [readme.md](https://github.com/mimecuvalo/all-the-things/blob/main/docs/readme.md) for more details on running! 👈
 
 ## 📜 License

@@ -5,7 +5,7 @@ const messages = defineMessages({
   monkeys: { defaultMessage: 'see no evil, hear no evil, speak no evil monkeys' },
 });
 
-export default function NotFound() {
+export default function InternalServerError() {
   const intl = useIntl();
   const emojiAriaLabel = intl.formatMessage(messages.monkeys);
 

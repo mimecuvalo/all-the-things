@@ -17,7 +17,7 @@ Write your stunning description here.
 
 ## 💾 Install
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and [`all-the-things`](https://github.com/mimecuvalo/all-the-things).
 
 ```sh
 yarn
@@ -30,8 +30,6 @@ _Prerequisites: Node 14+ if you want proper internationalization (i18n) support 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
@@ -55,30 +53,33 @@ To run tests:
 yarn test
 ```
 
-To run migrations:
+To setup your DB:
 
 ```sh
-npx sequelize db:migrate && npx sequelize db:seed:all
+cp prisma/.env.example prisma/.env
 ```
 
-To create a new migration:
+and set DATABASE_URL=postgresql://postgres:password@databasedomain.com:PORT/postgres
+
+Then, to sync your DB:
 
 ```sh
-npx sequelize migration:generate --name [migration_name]
+npx prisma db push
 ```
 
-To learn more about Sequelize and migrations, read the docs [here](https://sequelize.org/master/manual/migrations.html).
+To view your DB locally:
+
+```sh
+npx prisma studio
+```
+
+To learn more about Prisma, read the docs [here](https://www.prisma.io/).
+Supabase is pretty great to get a good Postgres DB: https://app.supabase.io/
 
 To add your name/email to relevant files:
 
 ```sh
 yarn config
-```
-
-To extract i18n messages (they go into the folder `build/messages`):
-
-```sh
-yarn extract-messages
 ```
 
 To use [Docker](https://docs.docker.com/compose/install/):
