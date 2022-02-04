@@ -1,30 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { ApolloServer } from 'apollo-server-micro';
-import createLoaders from 'data/graphql/loaders';
-import models from 'data/models';
-import resolvers from 'data/graphql/resolvers';
-import typeDefs from 'data/graphql/schema';
+import { createContext as context } from 'data/context';
+import resolvers from 'data/resolvers';
+import typeDefs from 'data/schema';
 
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async ({ req, connection }) => {
-    if (connection) {
-      // For subscriptions
-      return {
-        models,
-      };
-    }
-
-    const currentUser = req.session?.user;
-
-    return {
-      currentUser,
-      loaders: createLoaders(),
-      models,
-    };
-  },
+  context,
 });
 
 const startServer = apolloServer.start();

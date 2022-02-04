@@ -1,7 +1,7 @@
 import { initAuth0 } from '@auth0/nextjs-auth0';
 
 export default initAuth0({
-  secret: process.env.SESSION_COOKIE_SECRET,
+  secret: process.env.AUTH0_SECRET,
   issuerBaseURL: process.env.NEXT_PUBLIC_AUTH0_DOMAIN,
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   clientID: process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID,
@@ -16,6 +16,6 @@ export default initAuth0({
   },
   session: {
     // @ts-ignore this is ok
-    absoluteDuration: process.env.SESSION_COOKIE_LIFETIME,
+    absoluteDuration: process.env.AUTH0_SESSION_COOKIE_LIFETIME,
   },
 });

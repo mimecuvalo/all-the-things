@@ -2,6 +2,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/
 import { useEffect, useState } from 'react';
 
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
+import authServerSideProps from 'app/authServerSideProps';
 import { styled } from '@mui/material/styles';
 
 const Container = styled('div')`
@@ -75,3 +76,5 @@ function ExceptionsDisplay({ exceptions }: { exceptions: Exception }) {
     <div>No exceptions today (yet).</div>
   );
 }
+
+export const getServerSideProps = authServerSideProps();

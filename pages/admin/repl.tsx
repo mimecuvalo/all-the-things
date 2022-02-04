@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 
 import { Button } from '@mui/material';
+import authServerSideProps from 'app/authServerSideProps';
 
 // TODO(mime): This has a lot of work left to do.
 // In particular, need to be able to unbundle server side code so we properly require local code()
@@ -45,3 +46,5 @@ export default function REPL() {
     </>
   );
 }
+
+export const getServerSideProps = authServerSideProps();

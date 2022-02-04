@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import authServerSideProps from 'app/authServerSideProps';
+
 export default function Experiments() {
   const [experiments, setExperiments] = useState({});
 
@@ -19,3 +21,5 @@ export default function Experiments() {
     </>
   );
 }
+
+export const getServerSideProps = authServerSideProps();

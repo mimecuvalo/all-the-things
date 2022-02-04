@@ -82,15 +82,6 @@ To add your name/email to relevant files:
 yarn config
 ```
 
-To use [Docker](https://docs.docker.com/compose/install/):
-
-```sh
-yarn docker
-```
-
-and then MySQL will be available on port 3002 (with username/password/database name all being `allthethings`).
-Redis will be on port 3003. To set up Redis be sure to set NEXT_PUBLIC_REDIS_HOST and NEXT_PUBLIC_REDIS_PORT.
-
 ## 📙 Learn More
 
 To learn more about Next.js, take a look at the following resources:

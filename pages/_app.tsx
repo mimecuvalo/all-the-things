@@ -9,20 +9,17 @@ import { Footer, Header } from 'components';
 import { IntlProvider, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
 import { reportWebVitals, trackWebVitals } from 'app/reportWebVitals';
-import { useEffect, useState } from 'react';
 
 import type { AppProps } from 'next/app';
 import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
 import { ThemeProvider } from '@mui/material/styles';
-import UserContext from 'app/UserContext';
+import { UserProvider } from '@auth0/nextjs-auth0';
 import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
-import getExperiments from 'app/experiments';
-import { initializeLocalState } from 'data/localState';
 import { setupAnalytics } from 'app/analytics';
-import { useFetchUser } from 'vendor/auth0/user';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -34,8 +31,6 @@ export interface CustomAppProps extends AppProps {
 }
 
 function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: CustomAppProps) {
-  const { user } = useFetchUser();
-  const [userContext, setUserContext] = useState({ user });
   const { locale = 'en', defaultLocale = 'en' } = useRouter();
   const apolloClient = useApollo(pageProps);
 
@@ -52,16 +47,12 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
     // Learn more about service workers: https://cra.link/PWA
     serviceWorkerRegistration.unregister();
 
-    window.configuration = {
-      user,
-      experiments: getExperiments(user),
-    };
-    initializeLocalState(user, window.configuration.experiments);
+    // TODO(mime)
+    // window.configuration = {
+    //   experiments: getExperiments(user),
+    // };
+    // initializeLocalState(window.configuration.experiments);
   });
-
-  useEffect(() => {
-    setUserContext({ user });
-  }, [user]);
 
   const messages = pageProps.intlMessages || {};
   // createIntl is used in non-React locations.
@@ -74,7 +65,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
           <ThemeProvider theme={muiTheme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            <UserContext.Provider value={userContext}>
+            <UserProvider>
               <ErrorBoundary>
                 <div
                   className={classNames({
@@ -87,7 +78,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                   <Footer />
                 </div>
               </ErrorBoundary>
-            </UserContext.Provider>
+            </UserProvider>
 
             <noscript>
               <F defaultMessage="You need to enable JavaScript to run this app." />

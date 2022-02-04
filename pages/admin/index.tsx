@@ -1,35 +1,9 @@
 import { Container, List, ListItem } from '@mui/material';
 
-import Forbidden from 'components/error/403';
 import Link from 'next/link';
-import Unauthorized from 'components/error/401';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/client';
+import authServerSideProps from 'app/authServerSideProps';
 
-const USER_QUERY = gql`
-  {
-    user @client {
-      email
-    }
-  }
-`;
-
-export default function Admin() {
-  const { data } = useQuery(USER_QUERY);
-  const user = data?.user;
-
-  if (!user) {
-    return <Unauthorized />;
-  }
-
-  if (!user?.model?.superuser && process.env.NODE_ENV !== 'development') {
-    return <Forbidden />;
-  }
-
-  return <AdminApp />;
-}
-
-function AdminApp() {
+export default function AdminApp() {
   return (
     <Container>
       <List className="notranslate">
@@ -57,3 +31,5 @@ function AdminApp() {
     </Container>
   );
 }
+
+export const getServerSideProps = authServerSideProps();

@@ -2,7 +2,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { REGISTERED_EXPERIMENTS } from 'app/experiments';
+import authenticate from 'app/authentication';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default authenticate(async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.json({ experiments: REGISTERED_EXPERIMENTS });
-}
+});

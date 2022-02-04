@@ -1,10 +1,9 @@
 import { Button } from '@mui/material';
 import { F } from 'i18n';
-import UserContext from 'app/UserContext';
-import { useContext } from 'react';
+import { useUser } from '@auth0/nextjs-auth0';
 
 export default function LoginLogoutButton() {
-  const user = useContext(UserContext).user;
+  const { user } = useUser();
 
   return (
     <span>

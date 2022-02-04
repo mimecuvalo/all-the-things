@@ -1,3 +1,5 @@
+import authServerSideProps from 'app/authServerSideProps';
+
 export default function SystemInfo() {
   return (
     <>
@@ -15,3 +17,5 @@ export default function SystemInfo() {
     </>
   );
 }
+
+export const getServerSideProps = authServerSideProps();

@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client';
 
-// Keep in sync with both models/user.js and migrations/[date]-create-user.js
 export default gql`
   type User {
     username: String!
@@ -8,12 +7,10 @@ export default gql`
   }
 
   extend type Query {
-    allUsers: [User]
-    fetchUser(id: Int!): User
+    users: [User]
   }
 
   extend type Mutation {
-    login(email: String!): String
     createUser(username: String!, email: String!): User
   }
 `;
