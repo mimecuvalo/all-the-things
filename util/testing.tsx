@@ -29,7 +29,7 @@ cache.writeQuery({
 });
 
 const AllTheProviders: FC = ({ children, ...pageProps }) => {
-  const apolloClient = useApollo(pageProps);
+  //const apolloClient = useApollo(pageProps);
 
   return (
     <ThemeProvider theme={muiTheme}>

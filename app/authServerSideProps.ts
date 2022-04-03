@@ -28,7 +28,7 @@ const authServerSideProps =
       },
     });
 
-    if (user.role !== 'ADMIN') {
+    if (user?.role !== 'ADMIN') {
       return {
         redirect: {
           permanent: false,

@@ -1,3 +1,4 @@
+/* eslint-disable */
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 const { withSentryConfig } = require('@sentry/nextjs');

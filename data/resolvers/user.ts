@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* eslint-disable */
 
 import { combineResolvers } from 'graphql-resolvers';
 import { isAdmin } from './authorization';
