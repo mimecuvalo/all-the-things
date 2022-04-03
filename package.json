@@ -32,6 +32,7 @@
     "prettier:all": "prettier --check .",
     "prettier:fix": "prettier --write",
     "prettier:fix:all": "prettier --write .",
+    "postinstall": "prisma generate",
     "ts-script": "ts-node-script -r tsconfig-paths/register",
     "build-storybook": "build-storybook -s public",
     "storybook": "start-storybook -p 9001 -c .storybook --ci --quiet",
