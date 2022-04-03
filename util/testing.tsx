@@ -6,7 +6,6 @@ import { IntlProvider } from 'i18n';
 import { MockedProvider } from '@apollo/client/testing';
 import { ThemeProvider } from '@mui/material/styles';
 import { muiTheme } from 'styles';
-import { useApollo } from 'app/apollo';
 
 const cache = new InMemoryCache();
 cache.writeQuery({
@@ -28,7 +27,7 @@ cache.writeQuery({
   },
 });
 
-const AllTheProviders: FC = ({ children, ...pageProps }) => {
+const AllTheProviders: FC = ({ children }) => {
   //const apolloClient = useApollo(pageProps);
 
   return (
