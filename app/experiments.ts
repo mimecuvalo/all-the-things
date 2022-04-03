@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie';
-import authorization from 'app/authorization';
 
 function isInternalUser(user: User | null): boolean {
   return !!user?.model?.superuser;
@@ -31,7 +30,7 @@ export const REGISTERED_EXPERIMENTS: { [key: string]: $Experiment } = {
 
 export default function getExperiments(user: User | null): EnabledExperiment[] {
   const cookieExperimentOverrides =
-    authorization.isAdmin(user) || process.env.NODE_ENV === 'development'
+    user?.model.superuser || process.env.NODE_ENV === 'development'
       ? JSON.parse(decodeURIComponent(Cookies.get('experiments') || '{}'))
       : [];
 

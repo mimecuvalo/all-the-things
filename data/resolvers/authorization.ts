@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { skip } from 'graphql-resolvers';
 
 export const isAuthenticated = (parent, args, ctx) => {

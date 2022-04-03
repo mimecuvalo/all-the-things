@@ -1,9 +1,11 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 import { getSession } from '@auth0/nextjs-auth0';
 import prisma from 'data/prisma';
 
 const authServerSideProps =
   (props: any = {}) =>
-  async ({ req, res }) => {
+  async ({ req, res }: { req: NextApiRequest; res: NextApiResponse }) => {
     const session = getSession(req, res);
 
     if (!session) {

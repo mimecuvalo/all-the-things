@@ -5,7 +5,7 @@ import { cache } from 'data/localState';
 import isEqual from 'lodash/isEqual';
 import merge from 'deepmerge';
 import { onError } from '@apollo/client/link/error';
-import schema from 'data/graphql/schema';
+import schema from 'data/schema';
 import { useMemo } from 'react';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';

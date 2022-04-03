@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { combineResolvers } from 'graphql-resolvers';
 import { isAdmin } from './authorization';
 
