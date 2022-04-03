@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# To use this add to .git/hooks/post-checkout
-#   bin/post-checkout.sh $1 $2
+# To use this add to .git/hooks/post-merge
+#   bin/post-merge.sh
 
 set -e
 

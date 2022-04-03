@@ -75,17 +75,18 @@ const palette: PaletteOptions = {
 };
 export default palette;
 
-export const fullPalette = {
-  ...primary,
-  ...grey,
-  ...error,
-  ...warning,
-  ...info,
-  ...success,
-  ...basics,
-  ...accents,
-  ...thirdParty,
-};
+// TODO(mime): redo
+// export const fullPalette = {
+//   ...primary,
+//   ...grey,
+//   ...error,
+//   ...warning,
+//   ...info,
+//   ...success,
+//   ...basics,
+//   ...accents,
+//   ...thirdParty,
+// };
 
 export const storybook = {
   primary,

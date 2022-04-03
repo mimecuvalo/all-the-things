@@ -18,7 +18,7 @@ const generateCsp = (): [csp: string, nonce: string] => {
   const isDevelopment = process.env.NODE_ENV === 'development';
   const cspDirectives: { [key: string]: string[] } = {
     'connect-src': isDevelopment ? ['*'] : ["'self'", 'https://*.ingest.sentry.io'],
-    'default-src': ["'none'"],
+    'default-src': ["'self'"],
     'font-src': ["'self'", 'https:'],
     'frame-ancestors': ["'self'"],
     'frame-src': ["'self'", 'http:', 'https:'],
@@ -146,7 +146,7 @@ function OpenGraphMetadata({ title }: { title: string }) {
 
   return (
     <>
-      <meta property="og:title" content="page title" />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content="page description" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />

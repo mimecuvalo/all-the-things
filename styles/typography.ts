@@ -6,7 +6,6 @@ const SYSTEM_FONTS =
 const constants = {
   fontFamily: `${SYSTEM_FONTS}`,
   fontFamilyHeader: `${SYSTEM_FONTS}`,
-  fontFamilyCondensed: `${SYSTEM_FONTS}`,
   fontMonospace:
     'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
 
@@ -16,18 +15,18 @@ const constants = {
 
   // NB: These are only meant to be used in conjunction with font sizes below.
   lineHeightXS: '1.5',
-  lineHeightS: '1.5',
+  lineHeightSM: '1.5',
   lineHeightBase: '1.5',
-  lineHeightM: '1.2',
-  lineHeightL: '1.2',
+  lineHeightMD: '1.2',
+  lineHeightLG: '1.2',
   lineHeightXL: '1.1',
 
   // Font sizes (in rems)
   fontSizeXS: '0.75rem',
-  fontSizeS: '0.875rem',
+  fontSizeSM: '0.875rem',
   fontSizeBase: '1rem',
-  fontSizeM: '1.125rem',
-  fontSizeL: '1.5rem',
+  fontSizeMD: '1.25rem',
+  fontSizeLG: '1.5rem',
   fontSizeXL: '2rem',
 };
 
@@ -49,16 +48,16 @@ export const muiTypography = {
   h2: {
     fontFamily: typography.fontFamilyHeader,
     fontWeight: typography.fontWeightBold,
-    fontSize: typography.fontSizeL,
-    lineHeight: typography.lineHeightL,
+    fontSize: typography.fontSizeLG,
+    lineHeight: typography.lineHeightLG,
     marginTop: spacing(1),
     marginBottom: spacing(1),
   },
   h3: {
     fontFamily: typography.fontFamilyHeader,
     fontWeight: typography.fontWeightBold,
-    fontSize: typography.fontSizeM,
-    lineHeight: typography.lineHeightM,
+    fontSize: typography.fontSizeMD,
+    lineHeight: typography.lineHeightMD,
     marginTop: spacing(1),
     marginBottom: spacing(1),
   },
@@ -66,7 +65,7 @@ export const muiTypography = {
     fontFamily: typography.fontFamilyHeader,
     fontWeight: typography.fontWeightBold,
     fontSize: typography.fontSizeBase,
-    lineHeight: typography.fontSizeBase,
+    lineHeight: typography.lineHeightBase,
     marginTop: spacing(1),
     marginBottom: spacing(1),
   },
@@ -74,13 +73,13 @@ export const muiTypography = {
     fontFamily: typography.fontFamily,
     fontWeight: typography.fontWeightRegular,
     fontSize: typography.fontSizeBase,
-    lineHeight: typography.fontSizeBase,
+    lineHeight: typography.lineHeightBase,
   },
   body2: {
     fontFamily: typography.fontFamily,
     fontWeight: typography.fontWeightRegular,
-    fontSize: typography.fontSizeS,
-    lineHeight: typography.fontSizeS,
+    fontSize: typography.fontSizeSM,
+    lineHeight: typography.lineHeightSM,
   },
   overline: {
     fontFamily: typography.fontFamily,
@@ -92,7 +91,7 @@ export const muiTypography = {
     fontFamily: typography.fontFamily,
     fontWeight: typography.fontWeightRegular,
     fontSize: typography.fontSizeXS,
-    lineHeight: typography.fontSizeXS,
+    lineHeight: typography.lineHeightXS,
   },
   subtitle2: {
     fontFamily: typography.fontFamily,
@@ -100,8 +99,4 @@ export const muiTypography = {
     fontSize: typography.fontSizeXS,
     lineHeight: typography.lineHeightXS,
   },
-};
-
-export const storybook = {
-  constants,
 };

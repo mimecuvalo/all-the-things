@@ -8,17 +8,18 @@ import { CacheProvider, EmotionCache } from '@emotion/react';
 import { Footer, Header } from 'components';
 import { IntlProvider, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
+import { disposeAnalytics, setupAnalytics } from 'app/analytics';
 import { reportWebVitals, trackWebVitals } from 'app/reportWebVitals';
 
 import type { AppProps } from 'next/app';
 import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
+import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
-import { setupAnalytics } from 'app/analytics';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
@@ -52,6 +53,10 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
     //   experiments: getExperiments(user),
     // };
     // initializeLocalState(window.configuration.experiments);
+
+    return () => {
+      disposeAnalytics();
+    };
   });
 
   const messages = pageProps.intlMessages || {};
@@ -74,6 +79,9 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                   })}
                 >
                   <Header />
+                  <Head>
+                    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+                  </Head>
                   <Component {...pageProps} />
                   <Footer />
                 </div>

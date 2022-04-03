@@ -5,7 +5,7 @@ type User = {
     superuser: boolean;
   };
 };
-declare var __user: User;
+declare let __user: User;
 
 type EnabledExperiment = {
   name: string;
@@ -16,7 +16,7 @@ type Configuration = {
   experiments: EnabledExperiment[];
 };
 
-declare var configuration: Configuration;
+declare let configuration: Configuration;
 
 declare module 'js-cookie';
 declare module 'md5.js';

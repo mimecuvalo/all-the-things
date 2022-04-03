@@ -15,7 +15,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 function createApolloClient() {
   // link to use if batching
   // also adds a `batch: true` header to the request to prove it's a different link (default)
-  const uri = process.env.APOLLO_URL;
+  const uri = process.env.NEXT_PUBLIC_APOLLO_URL;
   const batchHttpLink = new BatchHttpLink({ uri });
   // link to use if not batching
   const httpLink = new HttpLink({
@@ -25,7 +25,7 @@ function createApolloClient() {
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
       graphQLErrors.map(({ message, locations, path }) =>
-        console.log(`\n[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}\n`)
+        console.log(`\n[GraphQL error]: Message: ${message}, Location: ${JSON.stringify(locations)}, Path: ${path}\n`)
       );
     }
     if (networkError) {

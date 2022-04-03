@@ -71,3 +71,9 @@ export function setupAnalytics() {
     window.addEventListener('mousedown', handleMouseDown);
   }
 }
+
+export function disposeAnalytics() {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('mousedown', handleMouseDown);
+  }
+}
