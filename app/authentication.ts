@@ -11,7 +11,7 @@ const authenticate =
       return res.status(401).end('Not logged in.');
     }
 
-    const user = await prisma.user?.findUnique({
+    const user = await prisma?.user.findUnique({
       select: {
         email: true,
         role: true,
