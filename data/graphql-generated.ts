@@ -1,5 +1,6 @@
 // NOTE This file is auto-generated via yarn codegen - DO NOT EDIT DIRECTLY!
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any */ /* eslint-disable @typescript-eslint/ban-types */
+
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 
 import { Context } from './context';
