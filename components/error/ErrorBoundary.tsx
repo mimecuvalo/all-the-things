@@ -5,12 +5,12 @@ import { styled } from '@mui/material/styles';
 
 const H1 = styled('h1')`
   border: 3px double #f00;
-  borderradius: 3px;
+  border-radius: 3px;
   display: flex;
-  alignitems: center;
-  justifycontent: center;
+  align-items: center;
+  justify-content: center;
   margin: 10px;
-  fontweight: 400;
+  font-weight: 400;
   color: #f00;
 `;
 

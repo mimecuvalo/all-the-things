@@ -1,8 +1,7 @@
-// @ts-nocheck
-
+import { Context } from 'data/context';
 import { skip } from 'graphql-resolvers';
 
-export const isAuthenticated = (parent, args, ctx) => {
+export const isAuthenticated = (parent: unknown, args: unknown, ctx: Context) => {
   if (!ctx.user) {
     throw new Error(`Not logged in.`);
   }
@@ -10,7 +9,7 @@ export const isAuthenticated = (parent, args, ctx) => {
   return skip;
 };
 
-export const isAdmin = async (parent, args, ctx) => {
+export const isAdmin = async (parent: unknown, args: unknown, ctx: Context) => {
   if (!ctx.user) {
     throw new Error(`Not logged in.`);
   }
@@ -21,7 +20,7 @@ export const isAdmin = async (parent, args, ctx) => {
     },
   });
 
-  if (user.role !== 'ADMIN') {
+  if (!user || user.role !== 'ADMIN') {
     throw new Error(`I call shenanigans.`);
   }
 

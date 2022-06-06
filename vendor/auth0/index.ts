@@ -15,7 +15,7 @@ export default initAuth0({
     scope: process.env.NEXT_PUBLIC_AUTH0_SCOPE,
   },
   session: {
-    // @ts-ignore this is ok
-    absoluteDuration: process.env.AUTH0_SESSION_COOKIE_LIFETIME,
+    absoluteDuration: parseInt(process.env.AUTH0_SESSION_COOKIE_LIFETIME ?? ''),
+    rollingDuration: parseInt(process.env.AUTH0_SESSION_COOKIE_LIFETIME ?? ''),
   },
 });
