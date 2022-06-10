@@ -1,7 +1,7 @@
-import { ApolloClient, ApolloLink, HttpLink, NormalizedCacheObject, split } from '@apollo/client';
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, NormalizedCacheObject, split } from '@apollo/client';
 
 import { BatchHttpLink } from '@apollo/client/link/batch-http';
-import { cache } from 'data/localState';
+import { clientCache } from 'data/localState';
 import isEqual from 'lodash/isEqual';
 import merge from 'deepmerge';
 import { onError } from '@apollo/client/link/error';
@@ -13,15 +13,16 @@ export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 function createApolloClient() {
-  // link to use if batching
-  // also adds a `batch: true` header to the request to prove it's a different link (default)
   const uri = process.env.NEXT_PUBLIC_APOLLO_URL;
-  const batchHttpLink = new BatchHttpLink({ uri });
-  // link to use if not batching
-  const httpLink = new HttpLink({
+  const options = {
     uri, // Server URL (must be absolute)
     credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
-  });
+  };
+  // link to use if batching
+  // also adds a `batch: true` header to the request to prove it's a different link (default)
+  const batchHttpLink = new BatchHttpLink(options);
+  // link to use if not batching
+  const httpLink = new HttpLink(options);
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
       graphQLErrors.map(({ message, locations, path }) =>
@@ -42,7 +43,7 @@ function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link,
-    cache,
+    cache: typeof window === 'undefined' ? new InMemoryCache({}) : clientCache,
     typeDefs: schema,
   });
 }

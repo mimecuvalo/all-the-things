@@ -6,7 +6,7 @@ import { InMemoryCache, StoreObject, defaultDataIdFromObject, makeVar } from '@a
 export const user = makeVar<User | null>(null);
 export const experiments = makeVar({});
 
-export const cache: InMemoryCache = new InMemoryCache({
+export const clientCache: InMemoryCache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {

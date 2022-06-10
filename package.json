@@ -74,6 +74,7 @@
     "react-intl": "5.24.4",
     "react-spring": "9.4.2",
     "sanitize.css": "13.0.0",
+    "sharp": "0.30.6",
     "web-vitals": "2.1.0",
     "workbox-background-sync": "6.4.2",
     "workbox-broadcast-update": "6.4.2",
