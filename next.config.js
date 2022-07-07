@@ -20,9 +20,17 @@ const sentryWebpackPluginOptions = {
 const nextConfig = {
   reactStrictMode: true,
 
+  compiler: {
+    styledComponents: true,
+  },
+
   i18n: {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
+  },
+
+  sentry: {
+    hideSourceMaps: true,
   },
 
   webpack: (config, { dev, buildId, ...other }) => {
@@ -84,7 +92,4 @@ const nextConfig = {
   },
 };
 
-// XXX(mime): Sentry disabled for now until I can see how not to make sourcemaps completely public - wtf:
-// See: https://stackoverflow.com/questions/70278090/next-js-in-vercel-with-sentry-ignore-source-maps-in-production
-//module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
-module.exports = nextConfig;
+module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
