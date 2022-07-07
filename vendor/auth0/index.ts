@@ -12,7 +12,7 @@ export default initAuth0({
   },
   authorizationParams: {
     response_type: 'code',
-    scope: process.env.NEXT_PUBLIC_AUTH0_SCOPE,
+    scope: 'openid profile email offline_access',
   },
   session: {
     absoluteDuration: parseInt(process.env.AUTH0_SESSION_COOKIE_LIFETIME ?? ''),
