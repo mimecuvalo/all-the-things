@@ -30,7 +30,7 @@ function generateId({ id, description, defaultMessage }: MessageDescriptor) {
 }
 
 interface FType extends MessageDescriptor {
-  values?: { [key: string]: (msg: string) => ReactNode };
+  values?: { [key: string]: ((msg: string) => ReactNode) | string | number };
 }
 
 export function F(props: FType) {
