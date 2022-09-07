@@ -55,12 +55,12 @@ const Home: NextPage = () => {
       <Head>
         <title>Create Next App</title>
         <meta name="description" content="Next.js: All The Things" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.jpg" />
       </Head>
 
       <main className={className(styles.main, 'notranslate')}>
         <animated.div style={{ position: 'relative', ...springProps }}>
-          <Image src="/favicon.ico" className={styles.appLogo} alt={logoAltText} width={72} height={72} />
+          <Image src="/favicon.jpg" className={styles.appLogo} alt={logoAltText} width={72} height={72} />
         </animated.div>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>

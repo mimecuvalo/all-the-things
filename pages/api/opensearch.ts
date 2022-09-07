@@ -11,7 +11,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       <ShortName>${appName}</ShortName>
       <Description>Search ${appName}</Description>
       <Url type="text/html" method="get" template="${url}?q={searchTerms}"/>
-      <Image height="16" width="16" type="image/x-icon">${url}/favicon.ico</Image>
+      <Image height="16" width="16" type="image/jpeg">${url}/favicon.jpg</Image>
     </OpenSearchDescription>
   `);
 }
