@@ -20,14 +20,16 @@ const generateCsp = (): [csp: string, nonce: string] => {
     'connect-src': isDevelopment ? ['*'] : ["'self'", 'https://*.ingest.sentry.io'],
     'default-src': ["'self'"],
     'font-src': ["'self'", 'https:'],
-    'frame-ancestors': ["'self'"],
+    // TODO(mime)
+    //'frame-ancestors': ["'self'"],
     'frame-src': ["'self'", 'http:', 'https:'],
     'img-src': ['data:', 'http:', 'https:'],
     'manifest-src': ["'self'"],
     'media-src': ["'self'", 'blob:'],
     'object-src': ["'self'"],
     'prefetch-src': ["'self'"],
-    'report-uri': ['/api/report-csp-violation'],
+    // TODO(mime)
+    //'report-uri': ['/api/report-csp-violation'],
     'script-src': ["'self'", 'https://cdn.auth0.com', 'https://storage.googleapis.com'].concat(
       isDevelopment ? ["'unsafe-inline'", "'unsafe-eval'"] : [`'nonce-${nonce}'`]
     ),

@@ -7,6 +7,7 @@ export const user = makeVar<User | null>(null);
 export const experiments = makeVar({});
 
 export const clientCache: InMemoryCache = new InMemoryCache({
+  dataIdFromObject,
   typePolicies: {
     Query: {
       fields: {

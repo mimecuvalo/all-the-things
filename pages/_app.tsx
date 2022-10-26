@@ -64,6 +64,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
   setupCreateIntl({ defaultLocale, locale, messages });
 
   return (
+    // @ts-ignore looks like IntlProvider still needs updated types after React 18 transition.
     <IntlProvider defaultLocale={locale} locale={locale} messages={messages}>
       <ApolloProvider client={apolloClient}>
         <CacheProvider value={emotionCache}>

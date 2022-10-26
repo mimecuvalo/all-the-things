@@ -1,6 +1,6 @@
 import { F } from 'i18n';
 import Link from 'next/link';
-import LoginLogoutButton from 'components/login';
+import { Login } from 'components';
 import { styled } from '@mui/material/styles';
 
 const List = styled('ul')`
@@ -38,7 +38,7 @@ export default function Header() {
       </nav>
 
       <LoginWrapper>
-        <LoginLogoutButton />
+        <Login />
       </LoginWrapper>
     </header>
   );
