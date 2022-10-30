@@ -11,7 +11,13 @@ export type Context = {
 };
 
 export async function createContext({ req, res }: { req: NextApiRequest; res: NextApiResponse }): Promise<Context> {
-  const session = getSession(req, res);
+  let session;
+
+  try {
+    session = getSession(req, res);
+  } catch (ex) {
+    // fall through
+  }
 
   // if the user is not logged in, omit returning the user and accessToken
   if (!session) return { prisma };

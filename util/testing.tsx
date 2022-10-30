@@ -1,10 +1,10 @@
 import { InMemoryCache, gql } from '@apollo/client';
-import React, { FC, ReactElement } from 'react';
+import React, { FC, PropsWithChildren, ReactElement } from 'react';
 import { RenderOptions, render } from '@testing-library/react';
 
 import { IntlProvider } from 'i18n';
 import { MockedProvider } from '@apollo/client/testing';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material';
 import { muiTheme } from 'styles';
 
 const cache = new InMemoryCache();
@@ -27,7 +27,7 @@ cache.writeQuery({
   },
 });
 
-const AllTheProviders: FC = ({ children }) => {
+const AllTheProviders: FC<PropsWithChildren> = ({ children }) => {
   //const apolloClient = useApollo(pageProps);
 
   return (

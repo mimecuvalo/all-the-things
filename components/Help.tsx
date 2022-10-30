@@ -1,5 +1,4 @@
 import {
-  Alert,
   Checkbox,
   IconButton,
   List,
@@ -7,19 +6,17 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  Snackbar,
   SwipeableDrawer,
+  Typography,
 } from '@mui/material';
 import { F, defineMessages, useIntl } from 'i18n';
 import { MouseEvent, useEffect, useState } from 'react';
+import { styled, useTheme } from '@mui/material';
 
 import { $Experiment } from 'app/experiments';
 import Cookies from 'js-cookie';
 import { Help as HelpIcon } from '@mui/icons-material';
-import Link from 'next/link';
-import gql from 'graphql-tag';
-import { styled } from '@mui/material/styles';
-import { useQuery } from '@apollo/client';
+import Link from './Link';
 
 const HelpContainer = styled('div')`
   display: inline-block;
@@ -29,22 +26,22 @@ const messages = defineMessages({
   help: { defaultMessage: 'Help' },
 });
 
-const EXPERIMENTS_QUERY = gql`
-  {
-    experiments @client {
-      name
-    }
-  }
-`;
+// const EXPERIMENTS_QUERY = gql`
+//   {
+//     experiments @client {
+//       name
+//     }
+//   }
+// `;
 
 export default function Help() {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>();
   const [experiments, setExperiments] = useState<$Experiment[]>([]);
-  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
   const [isExperimentsOpen, setIsExperimentsOpen] = useState(false);
   const intl = useIntl();
-  const { data } = useQuery(EXPERIMENTS_QUERY);
-  const enabledExperiments = data?.experiments?.map((exp: EnabledExperiment) => exp.name) || [];
+  const theme = useTheme();
+  // const { data } = useQuery(EXPERIMENTS_QUERY);
+  const enabledExperiments: EnabledExperiment[] = []; //data?.experiments?.map((exp: EnabledExperiment) => exp.name) || [];
 
   useEffect(() => {
     async function fetchData() {
@@ -81,17 +78,8 @@ export default function Help() {
     window.open('http://localhost:9001', 'styleguide');
   };
 
-  const handleSnackClick = () => {
-    handleClose();
-    setIsSnackbarOpen(true);
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleSnackbarClose = () => {
-    setIsSnackbarOpen(false);
   };
 
   const handleExperimentChange = (name: string) => {
@@ -148,14 +136,9 @@ export default function Help() {
         </MenuItem>
         {renderStyleguide()}
         <MenuItem key="language">
-          <Link href="/" passHref locale="fr">
-            <a style={{ textDecoration: 'none' }}>
-              <F defaultMessage="Test language alternative" />
-            </a>
+          <Link href="/" locale="fr" sx={{ textDecoration: 'none !important', color: '#000' }}>
+            <F defaultMessage="Test language alternative" />
           </Link>
-        </MenuItem>
-        <MenuItem key="snack" onClick={handleSnackClick}>
-          <F defaultMessage="Test snackbar" />
         </MenuItem>
       </Menu>
 
@@ -165,7 +148,9 @@ export default function Help() {
         onClose={() => setIsExperimentsOpen(false)}
         onOpen={() => setIsExperimentsOpen(true)}
       >
-        <h1 style={{ padding: '0 10px' }}>Experiments</h1>
+        <Typography variant="h1" style={{ padding: `0 ${theme.spacing(1)}` }}>
+          Experiments
+        </Typography>
         <List>
           {allExperiments.map((exp) => (
             <ListItem button key={exp.name}>
@@ -180,11 +165,6 @@ export default function Help() {
           ))}
         </List>
       </SwipeableDrawer>
-      <Snackbar open={isSnackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
-        <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
-          <F defaultMessage="Snackbar test" />
-        </Alert>
-      </Snackbar>
     </HelpContainer>
   );
 }

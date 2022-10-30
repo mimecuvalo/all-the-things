@@ -1,41 +1,16 @@
-import { F } from 'i18n';
-import Link from 'next/link';
-import { Login } from 'components';
-import { styled } from '@mui/material/styles';
-
-const List = styled('ul')`
-  position: fixed;
-  top: 10px;
-  left: 10px;
-`;
+import Login from './Login';
+import { styled } from '@mui/material';
 
 const LoginWrapper = styled('div')`
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: ${(props) => props.theme.spacing(1)};
+  right: ${(props) => props.theme.spacing(2.5)}; // Swipeable drawer width.
 `;
 
 export default function Header() {
   return (
     <header>
-      <nav>
-        <List>
-          <li>
-            <Link passHref href="/">
-              <a>
-                <F defaultMessage="Home" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link passHref href="/your-feature">
-              <a>
-                <F defaultMessage="Your Feature" />
-              </a>
-            </Link>
-          </li>
-        </List>
-      </nav>
+      <nav></nav>
 
       <LoginWrapper>
         <Login />

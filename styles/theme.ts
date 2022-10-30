@@ -2,7 +2,7 @@ import { breakpoints, shape } from './constants';
 
 import components from './components';
 import createCache from '@emotion/cache';
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material';
 import palette from './palette';
 import { muiTypography as typography } from './typography';
 

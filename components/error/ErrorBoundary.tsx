@@ -1,15 +1,16 @@
 import * as Sentry from '@sentry/react';
 
-import { F } from 'i18n';
-import { styled } from '@mui/material/styles';
+import { Typography, styled } from 'components';
 
-const H1 = styled('h1')`
+import { F } from 'i18n';
+
+const H1 = styled(Typography)`
   border: 3px double #f00;
-  border-radius: 3px;
+  border-radius: ${(props) => props.theme.shape.borderRadius}px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px;
+  margin: ${(props) => props.theme.spacing(1)};
   font-weight: 400;
   color: #f00;
 `;
@@ -19,7 +20,7 @@ export default function ErrorBoundary({ children }: { children: React.ReactNode 
   return (
     <Sentry.ErrorBoundary
       fallback={
-        <H1>
+        <H1 variant="h1">
           <F defaultMessage="Something went wrong. 😦" />
         </H1>
       }

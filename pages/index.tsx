@@ -1,6 +1,7 @@
 import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
 import type { GetStaticPropsContext, NextPage } from 'next';
+import { Link, Typography } from 'components';
 import { addApolloState, initializeApollo } from 'app/apollo';
 import { animated, useSpring } from 'react-spring';
 
@@ -36,7 +37,7 @@ const Home: NextPage = () => {
   // Gives you some great animation easily for your app.
   const springProps = useSpring({
     opacity: 1,
-    bottom: 0,
+    bottom: 50,
     from: { opacity: 0, bottom: 100 },
   });
 
@@ -62,42 +63,43 @@ const Home: NextPage = () => {
         <animated.div style={{ position: 'relative', ...springProps }}>
           <Image src="/favicon.jpg" className={styles.appLogo} alt={logoAltText} width={72} height={72} />
         </animated.div>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Typography variant="h1" className={styles.title}>
+          Welcome to <Link href="https://nextjs.org">Next.js</Link>, with{' '}
+          <Link href="https://github.com/mimecuvalo/all-the-things">All The Things</Link>!
+        </Typography>
 
         <p className={styles.description}>
           Get started by editing <code className={styles.code}>pages/index.tsx</code>
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
+          <Link href="https://nextjs.org/docs" className={styles.card}>
+            <Typography variant="h2">Documentation &rarr;</Typography>
             <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          </Link>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
+          <Link href="https://nextjs.org/learn" className={styles.card}>
+            <Typography variant="h2">Learn &rarr;</Typography>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          </Link>
 
-          <a href="https://github.com/vercel/next.js/tree/canary/examples" className={styles.card}>
-            <h2>Examples &rarr;</h2>
+          <Link href="https://github.com/vercel/next.js/tree/canary/examples" className={styles.card}>
+            <Typography variant="h2">Examples &rarr;</Typography>
             <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}
           >
-            <h2>Deploy &rarr;</h2>
+            <Typography variant="h2">Deploy &rarr;</Typography>
             <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
+          </Link>
         </div>
 
-        <h1>
+        <Typography variant="h1">
           <F defaultMessage="All The Things Feature test" />
-        </h1>
+        </Typography>
         <p className={styles.p}>
           <F
             defaultMessage="GraphQL variables test (current url path): {url}"
@@ -130,28 +132,30 @@ const Home: NextPage = () => {
             defaultMessage="i18n html test: <a>visit our website</a> and <cta>see the world</cta>"
             values={{
               a: (msg: string) => (
-                <a className="external-link" target="_blank" rel="noopener noreferrer" href="https://www.example.com/">
+                <Link className="external-link" target="_blank" href="https://www.example.com/">
                   {msg}
-                </a>
+                </Link>
               ),
               cta: (msg: string) => <strong>{msg}</strong>,
             }}
           />
         </p>
+        <p>
+          and <Link href="https://github.com/mimecuvalo/all-the-things">much more</Link>!
+        </p>
       </main>
 
       <footer className={styles.footer}>
-        <a
+        <Link
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
-          rel="noopener noreferrer"
           className="notranslate"
         >
           Powered by{' '}
           <span className={styles.logo}>
             <Image src="/img/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
-        </a>
+        </Link>
       </footer>
     </div>
   );

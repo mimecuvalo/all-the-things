@@ -9,19 +9,20 @@ import { Footer, Header } from 'components';
 import { IntlProvider, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
 import { disposeAnalytics, setupAnalytics } from 'app/analytics';
-import { reportWebVitals, trackWebVitals } from 'app/reportWebVitals';
 
 import type { AppProps } from 'next/app';
 import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
 import Head from 'next/head';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+
+export { reportWebVitals } from 'app/reportWebVitals';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -38,8 +39,6 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
   useEffect(() => {
     // Upon starting the app, kick off a client health check which runs periodically.
     clientHealthCheck();
-
-    reportWebVitals(trackWebVitals);
 
     setupAnalytics();
 

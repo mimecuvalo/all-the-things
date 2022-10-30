@@ -1,4 +1,5 @@
-import { Container } from '@mui/material';
+import { Container, List, ListItem, Typography } from 'components';
+
 import { F } from 'i18n';
 
 /**
@@ -7,14 +8,14 @@ import { F } from 'i18n';
 export default function YourFeature() {
   return (
     <Container>
-      <h2>
+      <Typography variant="h2">
         <F defaultMessage="Your Feature" />
-      </h2>
-      <ul>
-        <li>
+      </Typography>
+      <List>
+        <ListItem>
           <F defaultMessage="Rendering with React" />
-        </li>
-      </ul>
+        </ListItem>
+      </List>
     </Container>
   );
 }

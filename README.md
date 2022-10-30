@@ -48,7 +48,7 @@ This template includes scripts and configuration used by [Next.js](https://nextj
 - **node inspection**: adds `--inspect` for development mode.
 - [**Open Graph**](http://ogp.me/): adds stub for social media embedding.
 - [**OpenSearch**](http://www.opensearch.org/Home): adds stub file so that you can add search queries to your site later.
-- **ORM**: via [sequelize](http://docs.sequelizejs.com/).
+- **ORM**: via [prisma](https://www.prisma.io/).
 - **perf indicator**: in the bottom corner of the app, it will display render times. (also has [web vitals](https://web.dev/vitals/) built in.)
 - [**Prettier**](https://prettier.io): adds linting upon commit. also sorts imports via [prettier-plugin-import-sort](https://www.npmjs.com/package/prettier-plugin-import-sort).
 - [**React Spring**](https://www.react-spring.io/): for great animation using a React hook.
