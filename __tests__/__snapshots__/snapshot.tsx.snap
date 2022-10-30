@@ -11,39 +11,38 @@ exports[`renders homepage unchanged 1`] = `
       <div
         style="position: relative; opacity: 0; bottom: 100px;"
       >
-        <span
-          style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-        >
-          <span
-            style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-          >
-            <img
-              alt=""
-              aria-hidden="true"
-              src="data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 version=%271.1%27 width=%2772%27 height=%2772%27/%3e"
-              style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-            />
-          </span>
-          <img
-            alt="logo"
-            class="appLogo"
-            data-nimg="intrinsic"
-            decoding="async"
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-          />
-          <noscript />
-        </span>
+        <img
+          alt="logo"
+          class="appLogo"
+          data-nimg="1"
+          decoding="async"
+          height="72"
+          loading="lazy"
+          src="/_next/image?url=%2Ffavicon.jpg&w=256&q=75"
+          srcset="/_next/image?url=%2Ffavicon.jpg&w=96&q=75 1x, /_next/image?url=%2Ffavicon.jpg&w=256&q=75 2x"
+          style="color: transparent;"
+          width="72"
+        />
       </div>
       <h1
-        class="title"
+        class="MuiTypography-root MuiTypography-h1 title css-lgx1dj-MuiTypography-root"
       >
         Welcome to 
         <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-18sjyu7-MuiTypography-root-MuiLink-root"
           href="https://nextjs.org"
         >
-          Next.js!
+          Next.js
         </a>
+        , with
+         
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-18sjyu7-MuiTypography-root-MuiLink-root"
+          href="https://github.com/mimecuvalo/all-the-things"
+        >
+          All The Things
+        </a>
+        !
       </h1>
       <p
         class="description"
@@ -59,10 +58,12 @@ exports[`renders homepage unchanged 1`] = `
         class="grid"
       >
         <a
-          class="card"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-18sjyu7-MuiTypography-root-MuiLink-root"
           href="https://nextjs.org/docs"
         >
-          <h2>
+          <h2
+            class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+          >
             Documentation →
           </h2>
           <p>
@@ -70,10 +71,12 @@ exports[`renders homepage unchanged 1`] = `
           </p>
         </a>
         <a
-          class="card"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-18sjyu7-MuiTypography-root-MuiLink-root"
           href="https://nextjs.org/learn"
         >
-          <h2>
+          <h2
+            class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+          >
             Learn →
           </h2>
           <p>
@@ -81,10 +84,12 @@ exports[`renders homepage unchanged 1`] = `
           </p>
         </a>
         <a
-          class="card"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-18sjyu7-MuiTypography-root-MuiLink-root"
           href="https://github.com/vercel/next.js/tree/canary/examples"
         >
-          <h2>
+          <h2
+            class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+          >
             Examples →
           </h2>
           <p>
@@ -92,10 +97,12 @@ exports[`renders homepage unchanged 1`] = `
           </p>
         </a>
         <a
-          class="card"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-18sjyu7-MuiTypography-root-MuiLink-root"
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         >
-          <h2>
+          <h2
+            class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+          >
             Deploy →
           </h2>
           <p>
@@ -103,13 +110,15 @@ exports[`renders homepage unchanged 1`] = `
           </p>
         </a>
       </div>
-      <h1>
+      <h2
+        class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+      >
         <span
           class="i18n-msg"
         >
           All The Things Feature test
         </span>
-      </h1>
+      </h2>
       <p
         class="p"
       >
@@ -145,7 +154,7 @@ exports[`renders homepage unchanged 1`] = `
         >
           i18n html test: 
           <a
-            class="external-link"
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover external-link css-18sjyu7-MuiTypography-root-MuiLink-root"
             href="https://www.example.com/"
             rel="noopener noreferrer"
             target="_blank"
@@ -158,12 +167,22 @@ exports[`renders homepage unchanged 1`] = `
           </strong>
         </span>
       </p>
+      <p>
+        and 
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-18sjyu7-MuiTypography-root-MuiLink-root"
+          href="https://github.com/mimecuvalo/all-the-things"
+        >
+          much more
+        </a>
+        !
+      </p>
     </main>
     <footer
       class="footer"
     >
       <a
-        class="notranslate"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover notranslate css-18sjyu7-MuiTypography-root-MuiLink-root"
         href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         rel="noopener noreferrer"
         target="_blank"
@@ -173,28 +192,17 @@ exports[`renders homepage unchanged 1`] = `
         <span
           class="logo"
         >
-          <span
-            style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-          >
-            <span
-              style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-            >
-              <img
-                alt=""
-                aria-hidden="true"
-                src="data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 version=%271.1%27 width=%2772%27 height=%2716%27/%3e"
-                style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-              />
-            </span>
-            <img
-              alt="Vercel Logo"
-              data-nimg="intrinsic"
-              decoding="async"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-            />
-            <noscript />
-          </span>
+          <img
+            alt="Vercel Logo"
+            data-nimg="1"
+            decoding="async"
+            height="16"
+            loading="lazy"
+            src="/img/vercel.svg"
+            srcset="/img/vercel.svg 1x, /img/vercel.svg 2x"
+            style="color: transparent;"
+            width="72"
+          />
         </span>
       </a>
     </footer>

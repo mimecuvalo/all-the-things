@@ -97,7 +97,7 @@ const Home: NextPage = () => {
           </Link>
         </div>
 
-        <Typography variant="h1">
+        <Typography variant="h2">
           <F defaultMessage="All The Things Feature test" />
         </Typography>
         <p className={styles.p}>
