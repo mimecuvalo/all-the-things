@@ -164,16 +164,24 @@ const Home: NextPage = () => {
 export default Home;
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const apolloClient = initializeApollo();
+  try {
+    const apolloClient = initializeApollo();
 
-  await apolloClient.query({
-    query: HELLO_AND_ECHO_QUERY,
-    variables: { str: '/' },
-  });
+    await apolloClient.query({
+      query: HELLO_AND_ECHO_QUERY,
+      variables: { str: '/' },
+    });
 
-  return addApolloState(apolloClient, {
-    props: {
-      intlMessages: await loadIntlMessages(ctx),
-    },
-  });
+    return addApolloState(apolloClient, {
+      props: {
+        intlMessages: await loadIntlMessages(ctx),
+      },
+    });
+  } catch (ex) {
+    return {
+      props: {
+        intlMessages: await loadIntlMessages(ctx),
+      },
+    };
+  }
 }
