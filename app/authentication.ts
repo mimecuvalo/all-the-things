@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from '@auth0/nextjs-auth0';
+import prisma from 'data/prisma';
 
 const authenticate =
   (handler: (req: NextApiRequest, res: NextApiResponse) => void) =>
@@ -11,7 +12,7 @@ const authenticate =
       return res.status(401).send({ msg: 'Not logged in.' });
     }
 
-    const user = await prisma?.user.findUnique({
+    const user = await prisma.user.findUnique({
       select: {
         email: true,
         role: true,
