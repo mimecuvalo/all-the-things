@@ -27,8 +27,9 @@ export {
   TextField,
   Toolbar,
   Typography,
-  styled,
 } from '@mui/material';
+
+export { useTheme, styled } from '@mui/material/styles';
 
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';

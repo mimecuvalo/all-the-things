@@ -16,7 +16,7 @@ import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
 import Head from 'next/head';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
