@@ -10,6 +10,7 @@ import { IntlProvider, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
 import { disposeAnalytics, setupAnalytics } from 'app/analytics';
 
+import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
 import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
@@ -83,6 +84,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                     <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
                   </Head>
                   <Component {...pageProps} />
+                  <Analytics />
                   <Footer />
                 </div>
               </ErrorBoundary>
