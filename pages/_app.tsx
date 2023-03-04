@@ -40,6 +40,7 @@ const clientSideEmotionCache = createEmotionCache();
 export interface CustomAppProps extends AppProps {
   [APOLLO_STATE_PROP_NAME]: NormalizedCacheObject;
   emotionCache: EmotionCache;
+  nonce: string;
 }
 
 function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: CustomAppProps) {
