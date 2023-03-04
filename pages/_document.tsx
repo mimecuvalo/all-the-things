@@ -5,7 +5,6 @@ import { createEmotionCache, muiTheme } from 'styles';
 import createEmotionServer from '@emotion/server/create-instance';
 import crypto from 'crypto';
 import { v4 } from 'uuid';
-import { withRouter } from 'next/router';
 
 const HOSTNAME = 'www.example.com';
 const TITLE = 'Next.js Example';
@@ -32,7 +31,7 @@ const generateCsp = (): [csp: string, nonce: string] => {
     'prefetch-src': ["'self'"],
     // TODO(mime)
     //'report-uri': ['/api/report-csp-violation'],
-    'script-src': ["'self'", 'https://cdn.auth0.com', 'https://storage.googleapis.com'].concat(
+    'script-src': ["'self'", 'https://cdn.auth0.com'].concat(
       isDevelopment ? ["'unsafe-inline'", "'unsafe-eval'"] : [`'nonce-${nonce}'`]
     ),
 
@@ -53,7 +52,7 @@ export interface CustomDocumentInitialProps extends DocumentInitialProps {
   emotionStyleTags: ReactNode[];
 }
 
-class MyDocument extends Document {
+export default class MyDocument extends Document {
   // Based off of: https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
   static async getInitialProps(ctx: DocumentContext): Promise<CustomDocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
@@ -103,12 +102,7 @@ class MyDocument extends Document {
             <meta name="theme-color" content={muiTheme.palette.primary.main} />
             <meta property="csp-nonce" content={nonce} />
             <meta httpEquiv="Content-Security-Policy" content={csp} />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link rel="shortcut icon" href="/favicon.jpg" />
-            {/* This is because of the withRouter */}
-            {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
             <link rel="author" href={`/humans.txt`} />
             <link rel="icon" href={`/favicon.jpg`} />
             <link rel="apple-touch-icon" href={`/favicon.jpg`} />
@@ -138,9 +132,6 @@ class MyDocument extends Document {
     );
   }
 }
-
-// @ts-ignore not sure how to fix this yet
-export default withRouter(MyDocument);
 
 // This needs to be filled out by the developer to provide content for the site.
 // Learn more here: http://ogp.me/

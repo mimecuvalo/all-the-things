@@ -16,12 +16,21 @@ import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
 import Head from 'next/head';
+import { Oswald } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+
+// If loading a variable font, you don't need to specify the font weight
+const oswald = Oswald({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-oswald',
+  display: 'swap',
+});
 
 export { reportWebVitals } from 'app/reportWebVitals';
 
@@ -77,6 +86,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                   className={classNames({
                     'App-logged-in': true,
                     'App-is-development': process.env.NODE_ENV === 'development',
+                    [oswald.variable]: true,
                   })}
                 >
                   <Header />
