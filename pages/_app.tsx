@@ -5,7 +5,7 @@ import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
 import { APOLLO_STATE_PROP_NAME, useApollo } from 'app/apollo';
 import { ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import { Footer, Header } from 'components';
+import { DebugWrapper, Header } from 'components';
 import { IntlProvider, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
 import { disposeAnalytics, setupAnalytics } from 'app/analytics';
@@ -96,7 +96,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                   </Head>
                   <Component {...pageProps} />
                   <Analytics />
-                  <Footer />
+                  <DebugWrapper />
                 </div>
               </ErrorBoundary>
             </UserProvider>

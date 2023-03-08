@@ -104,7 +104,7 @@ const Home: NextPage = () => {
           <F
             defaultMessage="GraphQL variables test (current url path): {url}"
             values={{
-              url: data?.echoExample.exampleField,
+              url: data?.echoExample.exampleField || '[loading]',
             }}
           />
         </p>
