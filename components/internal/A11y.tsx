@@ -48,12 +48,15 @@ export default function A11y() {
     }
     // Wait a tick until the page more or less finishes rendering to make sure this doesn't block
     // the app's main functionality.
-    setTimeout(() => runAudit(), 0);
+    const timeoutId = setTimeout(() => runAudit(), 0);
     setLoaded(true);
+
+    return () => clearTimeout(timeoutId);
   }, [loaded]);
 
   function runAudit() {
     console.debug('[a11y]: running accessibility audit...');
+
     try {
       axe.run(document, {}, (err, results) => {
         if (err) throw err;
