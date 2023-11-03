@@ -23,6 +23,8 @@ import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { trackWebVitals } from 'app/reportWebVitals';
+import { useReportWebVitals } from 'next/web-vitals';
 
 // If loading a variable font, you don't need to specify the font weight
 const oswald = Oswald({
@@ -31,8 +33,6 @@ const oswald = Oswald({
   variable: '--font-oswald',
   display: 'swap',
 });
-
-export { reportWebVitals } from 'app/reportWebVitals';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -46,6 +46,7 @@ export interface CustomAppProps extends AppProps {
 function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: CustomAppProps) {
   const { locale = 'en', defaultLocale = 'en' } = useRouter();
   const apolloClient = useApollo(pageProps);
+  useReportWebVitals(trackWebVitals);
 
   useEffect(() => {
     // Upon starting the app, kick off a client health check which runs periodically.
