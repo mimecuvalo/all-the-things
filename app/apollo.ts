@@ -2,11 +2,14 @@ import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, NormalizedCacheObjec
 import { clientCache, dataIdFromObject } from 'data/localState';
 
 import { BatchHttpLink } from '@apollo/client/link/batch-http';
+import { SchemaLink } from '@apollo/client/link/schema';
 import isEqual from 'lodash/isEqual';
 import merge from 'deepmerge';
 import { onError } from '@apollo/client/link/error';
+import resolvers from 'data/resolvers';
 import schema from 'data/schema';
 import { useMemo } from 'react';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
@@ -38,7 +41,21 @@ function createApolloClient() {
     httpLink, // if test is true, debatch
     batchHttpLink // otherwise, batch
   );
-  const link = ApolloLink.from([errorLink, splitLink]);
+
+  function createIsomorphLink() {
+    if (typeof window === 'undefined') {
+      console.log('blah');
+      const executableSchema = makeExecutableSchema({
+        typeDefs: schema,
+        resolvers,
+      });
+      return new SchemaLink({ schema: executableSchema });
+    } else {
+      return ApolloLink.from([errorLink, splitLink]);
+    }
+  }
+
+  const link = createIsomorphLink();
 
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
