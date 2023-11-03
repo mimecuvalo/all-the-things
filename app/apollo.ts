@@ -44,7 +44,6 @@ function createApolloClient() {
 
   function createIsomorphLink() {
     if (typeof window === 'undefined') {
-      console.log('blah');
       const executableSchema = makeExecutableSchema({
         typeDefs: schema,
         resolvers,
