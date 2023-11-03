@@ -25,6 +25,7 @@ const nextConfig = {
   },
 
   experimental: {
+    useDeploymentId: true, // skew protection
     scrollRestoration: true,
   },
 
