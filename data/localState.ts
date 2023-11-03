@@ -1,34 +1,12 @@
-import { InMemoryCache, StoreObject, defaultDataIdFromObject, makeVar } from '@apollo/client';
+import { InMemoryCache, StoreObject, defaultDataIdFromObject } from '@apollo/client';
 
 // This is your app's local state. Which can be queried and modified via Apollo.
 // Learn more here: https://www.apollographql.com/docs/react/data/local-state/
 
-export const user = makeVar<User | null>(null);
-export const experiments = makeVar({});
+export const clientCache: InMemoryCache = new InMemoryCache({ dataIdFromObject });
 
-export const clientCache: InMemoryCache = new InMemoryCache({
-  dataIdFromObject,
-  typePolicies: {
-    Query: {
-      fields: {
-        user: {
-          read() {
-            return user();
-          },
-        },
-        experiments: {
-          read() {
-            return experiments();
-          },
-        },
-      },
-    },
-  },
-});
-
-export function initializeLocalState(initialUser: User | null, initialExperiments: EnabledExperiment[]) {
-  user(initialUser);
-  experiments(initialExperiments);
+export function initializeLocalState() {
+  /* todo */
 }
 
 // You can add custom caching controls based on your data model.
