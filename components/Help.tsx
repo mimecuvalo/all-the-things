@@ -17,7 +17,7 @@ import { $Experiment } from 'app/experiments';
 import Cookies from 'js-cookie';
 import { Help as HelpIcon } from '@mui/icons-material';
 import Link from './Link';
-import { UserContext } from '@auth0/nextjs-auth0';
+import { UserContext } from '@auth0/nextjs-auth0/client';
 
 const HelpContainer = styled('div')`
   display: inline-block;

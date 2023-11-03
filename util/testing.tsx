@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import { InMemoryCache, gql } from '@apollo/client';
 import React, { FC, PropsWithChildren, ReactElement } from 'react';
 import { RenderOptions, render } from '@testing-library/react';
@@ -33,7 +34,9 @@ const AllTheProviders: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ThemeProvider theme={muiTheme}>
       <MockedProvider cache={cache}>
+        {/* @ts-ignore looks like IntlProvider still needs updated types after React 18 transition. */}
         <IntlProvider defaultLocale="en" locale="en" messages={{}}>
+          {/* @ts-ignore looks like IntlProvider still needs updated types after React 18 transition. */}
           {children}
         </IntlProvider>
       </MockedProvider>

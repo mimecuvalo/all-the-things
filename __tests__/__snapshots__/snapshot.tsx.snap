@@ -25,11 +25,11 @@ exports[`renders homepage unchanged 1`] = `
         />
       </div>
       <h1
-        class="MuiTypography-root MuiTypography-h1 title css-lgx1dj-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h1 title css-12qmnqw-MuiTypography-root"
       >
         Welcome to 
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-18sjyu7-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nkcouy-MuiTypography-root-MuiLink-root"
           href="https://nextjs.org"
         >
           Next.js
@@ -37,7 +37,7 @@ exports[`renders homepage unchanged 1`] = `
         , with
          
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-18sjyu7-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nkcouy-MuiTypography-root-MuiLink-root"
           href="https://github.com/mimecuvalo/all-the-things"
         >
           All The Things
@@ -58,11 +58,11 @@ exports[`renders homepage unchanged 1`] = `
         class="grid"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-18sjyu7-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-nkcouy-MuiTypography-root-MuiLink-root"
           href="https://nextjs.org/docs"
         >
           <h2
-            class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h2 css-19cg4yg-MuiTypography-root"
           >
             Documentation →
           </h2>
@@ -71,11 +71,11 @@ exports[`renders homepage unchanged 1`] = `
           </p>
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-18sjyu7-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-nkcouy-MuiTypography-root-MuiLink-root"
           href="https://nextjs.org/learn"
         >
           <h2
-            class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h2 css-19cg4yg-MuiTypography-root"
           >
             Learn →
           </h2>
@@ -84,11 +84,11 @@ exports[`renders homepage unchanged 1`] = `
           </p>
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-18sjyu7-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-nkcouy-MuiTypography-root-MuiLink-root"
           href="https://github.com/vercel/next.js/tree/canary/examples"
         >
           <h2
-            class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h2 css-19cg4yg-MuiTypography-root"
           >
             Examples →
           </h2>
@@ -97,11 +97,11 @@ exports[`renders homepage unchanged 1`] = `
           </p>
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-18sjyu7-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover card css-nkcouy-MuiTypography-root-MuiLink-root"
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         >
           <h2
-            class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h2 css-19cg4yg-MuiTypography-root"
           >
             Deploy →
           </h2>
@@ -111,7 +111,7 @@ exports[`renders homepage unchanged 1`] = `
         </a>
       </div>
       <h2
-        class="MuiTypography-root MuiTypography-h2 css-1icjozd-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h2 css-19cg4yg-MuiTypography-root"
       >
         <span
           class="i18n-msg"
@@ -125,7 +125,7 @@ exports[`renders homepage unchanged 1`] = `
         <span
           class="i18n-msg"
         >
-          GraphQL variables test (current url path): 
+          GraphQL variables test (current url path): [loading]
         </span>
       </p>
       <p
@@ -154,7 +154,7 @@ exports[`renders homepage unchanged 1`] = `
         >
           i18n html test: 
           <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover external-link css-18sjyu7-MuiTypography-root-MuiLink-root"
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover external-link css-nkcouy-MuiTypography-root-MuiLink-root"
             href="https://www.example.com/"
             rel="noopener noreferrer"
             target="_blank"
@@ -170,7 +170,7 @@ exports[`renders homepage unchanged 1`] = `
       <p>
         and 
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-18sjyu7-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nkcouy-MuiTypography-root-MuiLink-root"
           href="https://github.com/mimecuvalo/all-the-things"
         >
           much more
@@ -182,7 +182,7 @@ exports[`renders homepage unchanged 1`] = `
       class="footer"
     >
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover notranslate css-18sjyu7-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover notranslate css-nkcouy-MuiTypography-root-MuiLink-root"
         href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         rel="noopener noreferrer"
         target="_blank"
@@ -199,7 +199,6 @@ exports[`renders homepage unchanged 1`] = `
             height="16"
             loading="lazy"
             src="/img/vercel.svg"
-            srcset="/img/vercel.svg 1x, /img/vercel.svg 2x"
             style="color: transparent;"
             width="72"
           />

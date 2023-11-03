@@ -1,4 +1,5 @@
-import { Claims, getSession } from '@auth0/nextjs-auth0';
+import { Claims } from '@auth0/nextjs-auth0';
+import auth0 from 'vendor/auth0';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { PrismaClient } from '@prisma/client';
@@ -14,7 +15,7 @@ export async function createContext({ req, res }: { req: NextApiRequest; res: Ne
   let session;
 
   try {
-    session = getSession(req, res);
+    session = await auth0.getSession(req, res);
   } catch (ex) {
     // fall through
   }

@@ -7,60 +7,62 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  Date: any;
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  Date: { input: any; output: any; }
 };
 
 export type Echo = {
   __typename?: 'Echo';
-  exampleField: Scalars['String'];
+  exampleField: Scalars['String']['output'];
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
-  _?: Maybe<Scalars['Boolean']>;
+  _?: Maybe<Scalars['Boolean']['output']>;
   createUser?: Maybe<User>;
 };
 
 
 export type MutationCreateUserArgs = {
-  email: Scalars['String'];
-  username: Scalars['String'];
+  email: Scalars['String']['input'];
+  username: Scalars['String']['input'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  _?: Maybe<Scalars['Boolean']>;
+  _?: Maybe<Scalars['Boolean']['output']>;
   echoExample?: Maybe<Echo>;
-  hello?: Maybe<Scalars['String']>;
+  hello?: Maybe<Scalars['String']['output']>;
   users?: Maybe<Array<Maybe<User>>>;
 };
 
 
 export type QueryEchoExampleArgs = {
-  str: Scalars['String'];
+  str: Scalars['String']['input'];
 };
 
 export type Subscription = {
   __typename?: 'Subscription';
-  _?: Maybe<Scalars['Boolean']>;
+  _?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type User = {
   __typename?: 'User';
-  email: Scalars['String'];
-  username: Scalars['String'];
+  email: Scalars['String']['output'];
+  username: Scalars['String']['output'];
 };
 
 export type HelloAndEchoQueriesQueryVariables = Exact<{
-  str: Scalars['String'];
+  str: Scalars['String']['input'];
 }>;
 
 
@@ -133,26 +135,28 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>;
 
+
+
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  Date: ResolverTypeWrapper<Scalars['Date']>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  Date: ResolverTypeWrapper<Scalars['Date']['output']>;
   Echo: ResolverTypeWrapper<Echo>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
-  String: ResolverTypeWrapper<Scalars['String']>;
+  String: ResolverTypeWrapper<Scalars['String']['output']>;
   Subscription: ResolverTypeWrapper<{}>;
   User: ResolverTypeWrapper<User>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  Boolean: Scalars['Boolean'];
-  Date: Scalars['Date'];
+  Boolean: Scalars['Boolean']['output'];
+  Date: Scalars['Date']['output'];
   Echo: Echo;
   Mutation: {};
   Query: {};
-  String: Scalars['String'];
+  String: Scalars['String']['output'];
   Subscription: {};
   User: User;
 };

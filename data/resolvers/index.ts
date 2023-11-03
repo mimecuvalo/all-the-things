@@ -2,7 +2,7 @@ import { GraphQLScalarType, Kind, ValueNode } from 'graphql';
 
 import userResolvers from './user';
 
-const exampleResolvers = {
+const baseResolvers = {
   Date: new GraphQLScalarType({
     name: 'Date',
     description: 'Date custom scalar type',
@@ -31,5 +31,5 @@ const exampleResolvers = {
   },
 };
 
-const resolvers = [exampleResolvers, userResolvers];
+const resolvers = [baseResolvers, userResolvers];
 export default resolvers;

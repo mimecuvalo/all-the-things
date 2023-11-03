@@ -18,7 +18,7 @@ import { F } from 'i18n';
 import Head from 'next/head';
 import { Oswald } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
-import { UserProvider } from '@auth0/nextjs-auth0';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import classNames from 'classnames';
 import clientHealthCheck from 'app/clientHealthCheck';
 import { useEffect } from 'react';
