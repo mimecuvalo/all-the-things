@@ -146,6 +146,12 @@
       "style": "eslint"
     }
   },
+  "husky": {
+    "hooks": {
+      "post-checkout": "./bin/post-checkout",
+      "post-merge": "./bin/post-merge"
+    }
+  },
   "browserslist": "last 2 versions",
   "sideEffects": false
 }
