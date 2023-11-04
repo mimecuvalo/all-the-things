@@ -23,8 +23,8 @@ h6 {
   margin: 0;
 }
 
-/* In development, highlight untranslated strings. */
-.App-is-development *:not(.notranslate) {
+/* In development, turn this on to highlight untranslated strings. */
+/* .App-is-development *:not(.notranslate) {
   text-shadow: 3px 3px red;
 }
 
@@ -33,4 +33,4 @@ h6 {
 .App-is-development .i18n-msg,
 .App-is-development .i18n-msg * {
   text-shadow: none;
-}
+} */

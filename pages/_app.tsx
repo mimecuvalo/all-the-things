@@ -16,7 +16,7 @@ import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
 import Head from 'next/head';
-import { Oswald } from 'next/font/google';
+import { Inter, Oswald } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import classNames from 'classnames';
@@ -25,6 +25,8 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { trackWebVitals } from 'app/reportWebVitals';
 import { useReportWebVitals } from 'next/web-vitals';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 // If loading a variable font, you don't need to specify the font weight
 const oswald = Oswald({
@@ -89,6 +91,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                     'App-logged-in': true,
                     'App-is-development': process.env.NODE_ENV === 'development',
                     [oswald.variable]: true,
+                    [inter.variable]: true,
                   })}
                 >
                   <Header />

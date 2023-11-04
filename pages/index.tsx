@@ -1,17 +1,18 @@
+import 'styles/layout.css';
+import styles from 'styles/index.module.css';
+
+import Image from 'next/image';
+import Head from 'next/head';
+import className from 'classnames';
+import gql from 'graphql-tag';
+import loadIntlMessages from 'i18n/messages';
+import { useQuery } from '@apollo/client';
 import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
 import type { GetStaticPropsContext, NextPage } from 'next';
 import { Link, Typography } from 'components';
 import { addApolloState, initializeApollo } from 'app/apollo';
 import { animated, useSpring } from 'react-spring';
-
-import Head from 'next/head';
-import Image from 'next/image';
-import className from 'classnames';
-import gql from 'graphql-tag';
-import loadIntlMessages from 'i18n/messages';
-import styles from 'styles/Home.module.css';
-import { useQuery } from '@apollo/client';
 
 // For things like "alt" text and other strings not in JSX.
 const messages = defineMessages({
@@ -30,7 +31,7 @@ const HELLO_AND_ECHO_QUERY = gql`
   }
 `;
 
-const Home: NextPage = () => {
+export default function Home() {
   const intl = useIntl();
 
   // This uses React Spring: https://www.react-spring.io/
@@ -52,55 +53,51 @@ const Home: NextPage = () => {
   const logoAltText = intl.formatMessage(messages.greeting);
 
   return (
-    <div className={styles.container}>
+    <main className={styles.main}>
       <Head>
         <title>Create Next App</title>
         <meta name="description" content="Next.js: All The Things" />
         <link rel="icon" href="/favicon.jpg" />
       </Head>
 
-      <main className={className(styles.main, 'notranslate')}>
-        <animated.div style={{ position: 'relative', ...springProps }}>
-          <Image src="/favicon.jpg" className={styles.appLogo} alt={logoAltText} width={72} height={72} />
-        </animated.div>
-        <Typography variant="h1" className={styles.title}>
-          Welcome to <Link href="https://nextjs.org">Next.js</Link>, with{' '}
-          <Link href="https://github.com/mimecuvalo/all-the-things">All The Things</Link>!
-        </Typography>
+      <animated.div style={{ position: 'relative', ...springProps }}>
+        <Image src="/favicon.jpg" alt={logoAltText} width={72} height={72} />
+      </animated.div>
 
-        <p className={styles.description}>
-          Get started by editing <code className={styles.code}>pages/index.tsx</code>
+      <div className={styles.description}>
+        <p>
+          Get started by editing&nbsp;
+          <code className={styles.code}>app/page.tsx</code>
         </p>
-
-        <div className={styles.grid}>
-          <Link href="https://nextjs.org/docs" className={styles.card}>
-            <Typography variant="h2">Documentation &rarr;</Typography>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </Link>
-
-          <Link href="https://nextjs.org/learn" className={styles.card}>
-            <Typography variant="h2">Learn &rarr;</Typography>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </Link>
-
-          <Link href="https://github.com/vercel/next.js/tree/canary/examples" className={styles.card}>
-            <Typography variant="h2">Examples &rarr;</Typography>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </Link>
-
-          <Link
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
+        <div>
+          <a
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Typography variant="h2">Deploy &rarr;</Typography>
-            <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-          </Link>
+            By{' '}
+            <Image src="/vercel.svg" alt="Vercel Logo" className={styles.vercelLogo} width={100} height={24} priority />
+          </a>
         </div>
+      </div>
 
+      <div className={styles.center}>
+        <Image className={styles.logo} src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
+        <br />
+        <Typography variant="h1" className={styles.title}>
+          (with{' '}
+          <Link href="https://github.com/mimecuvalo/all-the-things" target="_blank">
+            All The Things
+          </Link>
+          )
+        </Typography>
+      </div>
+
+      <div className={styles.allTheThingsInfo}>
         <Typography variant="h2">
           <F defaultMessage="All The Things Feature test" />
         </Typography>
-        <p className={styles.p}>
+        <p>
           <F
             defaultMessage="GraphQL variables test (current url path): {url}"
             values={{
@@ -108,7 +105,7 @@ const Home: NextPage = () => {
             }}
           />
         </p>
-        <p className={styles.p}>
+        <p>
           <Experiment name="my-experiment">
             <Variant name="on">
               <F defaultMessage="Experiment enabled." />
@@ -118,7 +115,7 @@ const Home: NextPage = () => {
             </Variant>
           </Experiment>
         </p>
-        <p className={styles.p}>
+        <p>
           <F
             defaultMessage="i18n pluralization test: {itemCount, plural, =0 {no items} one {# item} other {# items}}."
             values={{
@@ -127,7 +124,7 @@ const Home: NextPage = () => {
             }}
           />
         </p>
-        <p className={styles.p}>
+        <p>
           <F
             defaultMessage="i18n html test: <a>visit our website</a> and <cta>see the world</cta>"
             values={{
@@ -143,25 +140,60 @@ const Home: NextPage = () => {
         <p>
           and <Link href="https://github.com/mimecuvalo/all-the-things">much more</Link>!
         </p>
-      </main>
+      </div>
 
-      <footer className={styles.footer}>
-        <Link
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+      <div className={styles.grid}>
+        <a
+          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className={styles.card}
           target="_blank"
-          className="notranslate"
+          rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/img/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </Link>
-      </footer>
-    </div>
-  );
-};
+          <h2>
+            Docs <span>-&gt;</span>
+          </h2>
+          <p>Find in-depth information about Next.js features and API.</p>
+        </a>
 
-export default Home;
+        <a
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className={styles.card}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Learn <span>-&gt;</span>
+          </h2>
+          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
+        </a>
+
+        <a
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className={styles.card}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Templates <span>-&gt;</span>
+          </h2>
+          <p>Explore the Next.js 14 playground.</p>
+        </a>
+
+        <a
+          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className={styles.card}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Deploy <span>-&gt;</span>
+          </h2>
+          <p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
+        </a>
+      </div>
+    </main>
+  );
+}
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
   try {
