@@ -101,6 +101,9 @@ export default class MyDocument extends Document {
     const { nonce } = this.props;
     const csp = generateCsp(nonce);
 
+    // TODO(mime): combine with url_factory code.
+    const url = `https://${HOSTNAME}`;
+
     return (
       <StrictMode>
         <Html lang={locale}>
@@ -116,8 +119,56 @@ export default class MyDocument extends Document {
             <link rel="search" href="/api/opensearch" type="application/opensearchdescription+xml" title={TITLE} />
             <meta name="description" content="website created using all-the-things." />
             <meta name="generator" content="all-the-things. https://github.com/mimecuvalo/all-the-things" />
-            <OpenGraphMetadata title={TITLE} />
-            <StructuredMetaData title={TITLE} nonce={nonce} />
+
+            {/* This needs to be filled out by the developer to provide content for the site. Learn more here: http://ogp.me/ */}
+            <meta property="og:title" content={TITLE} />
+            <meta property="og:description" content="page description" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={url} />
+            <meta property="og:site_name" content={TITLE} />
+            <meta property="og:image" content={`${url}/favicon.jpg`} />
+
+            {/*
+              This needs to be filled out by the developer to provide content for the site.
+              Learn more here: https://developers.google.com/search/docs/guides/intro-structured-data
+            */}
+
+            <script
+              nonce={nonce}
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: `
+                {
+                  "@context": "http://schema.org",
+                  "@type": "NewsArticle",
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "${url}"
+                  },
+                  "headline": "page title",
+                  "image": [
+                    "https://example.com/photos/16x9/photo.jpg"
+                  ],
+                  "datePublished": "2015-02-05T08:00:00+08:00",
+                  "dateModified": "2015-02-05T09:20:00+08:00",
+                  "author": {
+                    "@type": "Person",
+                    "name": "John Doe"
+                  },
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "${TITLE}",
+                    "logo": {
+                      "@type": "ImageObject",
+                      "url": "${url}favicon.jpg"
+                    }
+                  },
+                  "description": "page description"
+                }
+                `,
+              }}
+            />
+
             {/*
               manifest.json provides metadata used when your web app is added to the
               homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -138,69 +189,6 @@ export default class MyDocument extends Document {
       </StrictMode>
     );
   }
-}
-
-// This needs to be filled out by the developer to provide content for the site.
-// Learn more here: http://ogp.me/
-function OpenGraphMetadata({ title }: { title: string }) {
-  // TODO(mime): combine with url_factory code.
-  const url = `https://${HOSTNAME}`;
-
-  return (
-    <>
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content="page description" />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
-      <meta property="og:site_name" content={title} />
-      <meta property="og:image" content={`${url}/favicon.jpg`} />
-    </>
-  );
-}
-
-// This needs to be filled out by the developer to provide content for the site.
-// Learn more here: https://developers.google.com/search/docs/guides/intro-structured-data
-function StructuredMetaData({ nonce, title }: { nonce: string; title: string }) {
-  // TODO(mime): combine with url_factory code.
-  const url = `https://${HOSTNAME}`;
-
-  return (
-    <script
-      nonce={nonce}
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: `
-        {
-          "@context": "http://schema.org",
-          "@type": "NewsArticle",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "${url}"
-          },
-          "headline": "page title",
-          "image": [
-            "https://example.com/photos/16x9/photo.jpg"
-           ],
-          "datePublished": "2015-02-05T08:00:00+08:00",
-          "dateModified": "2015-02-05T09:20:00+08:00",
-          "author": {
-            "@type": "Person",
-            "name": "John Doe"
-          },
-           "publisher": {
-            "@type": "Organization",
-            "name": "${title}",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "${url}favicon.jpg"
-            }
-          },
-          "description": "page description"
-        }
-        `,
-      }}
-    />
-  );
 }
 
 // If there is an error that occurs upon page load, i.e. when executing the initial app code,
