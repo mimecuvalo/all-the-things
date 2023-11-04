@@ -3,13 +3,12 @@ import styles from 'styles/index.module.css';
 
 import Image from 'next/image';
 import Head from 'next/head';
-import className from 'classnames';
 import gql from 'graphql-tag';
 import loadIntlMessages from 'i18n/messages';
 import { useQuery } from '@apollo/client';
 import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
-import type { GetStaticPropsContext, NextPage } from 'next';
+import type { GetStaticPropsContext } from 'next';
 import { Link, Typography } from 'components';
 import { addApolloState, initializeApollo } from 'app/apollo';
 import { animated, useSpring } from 'react-spring';
