@@ -112,10 +112,10 @@ export default class MyDocument extends Document {
             <meta name="theme-color" content={muiTheme.palette.primary.main} />
             <meta property="csp-nonce" content={nonce} />
             <meta httpEquiv="Content-Security-Policy" content={csp} />
-            <link rel="shortcut icon" href="/favicon.jpg" />
+            <link rel="icon" href="/favicon.jpg" sizes="32x32" />
+            <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+            <link rel="apple-touch-icon" href="/favicon.jpg" />
             <link rel="author" href={`/humans.txt`} />
-            <link rel="icon" href={`/favicon.jpg`} />
-            <link rel="apple-touch-icon" href={`/favicon.jpg`} />
             <link rel="search" href="/api/opensearch" type="application/opensearchdescription+xml" title={TITLE} />
             <meta name="description" content="website created using all-the-things." />
             <meta name="generator" content="all-the-things. https://github.com/mimecuvalo/all-the-things" />
