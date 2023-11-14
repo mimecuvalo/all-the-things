@@ -12,7 +12,7 @@
 
 ## 📯 Description
 
-This template includes scripts and configuration used by [Next.js](https://nextjs.org/) but with LOTS more bells 🔔 and whistles 😗.
+This template includes scripts and configuration used by [Next.js](https://nextjs.org/) but with an opinionated set of bells 🔔 and whistles 😗.
 
 ## ⚡ Features
 

@@ -6,10 +6,10 @@ describe('Home', () => {
   it('renders a heading', async () => {
     render(<Home />);
 
-    const heading = screen.getByRole('heading', {
-      name: /welcome to next\.js/i,
+    const heading = screen.getAllByRole('heading', {
+      name: /All The Things/i,
     });
 
-    expect(heading).toBeInTheDocument();
+    expect(heading[0]).toBeInTheDocument();
   });
 });
