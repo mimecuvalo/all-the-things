@@ -1,13 +1,13 @@
 import { spacing } from './constants';
 
 const SYSTEM_FONTS =
-  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+  'var(--font-noto-color-emoji), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
 const constants = {
   fontFamily: `${SYSTEM_FONTS}`,
   fontFamilyHeader: `var(--font-oswald), ${SYSTEM_FONTS}`,
   fontMonospace:
-    'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, var(--font-noto-color-emoji), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
 
   fontWeightRegular: 400,
   fontWeightMedium: 500,

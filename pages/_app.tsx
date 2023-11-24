@@ -16,7 +16,7 @@ import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
 import Head from 'next/head';
-import { Inter, Oswald } from 'next/font/google';
+import { Inter, Oswald, Noto_Color_Emoji } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import classNames from 'classnames';
@@ -27,6 +27,7 @@ import { trackWebVitals } from 'app/reportWebVitals';
 import { useReportWebVitals } from 'next/web-vitals';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: '400', variable: '--noto-color-emoji' });
 
 // If loading a variable font, you don't need to specify the font weight
 const oswald = Oswald({
@@ -84,6 +85,13 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
           <ThemeProvider theme={muiTheme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
+            <style jsx global>{`
+              :root {
+                --font-oswald: ${oswald.style.fontFamily};
+                --font-inter: ${inter.style.fontFamily};
+                --font-noto-color-emoji: ${notoColorEmoji.style.fontFamily};
+              }
+            `}</style>
             <UserProvider>
               <ErrorBoundary>
                 <div
@@ -92,6 +100,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                     'App-is-development': process.env.NODE_ENV === 'development',
                     [oswald.variable]: true,
                     [inter.variable]: true,
+                    [notoColorEmoji.variable]: true,
                   })}
                 >
                   <Header />

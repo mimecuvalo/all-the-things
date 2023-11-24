@@ -7,7 +7,7 @@ import crypto from 'crypto';
 import { v4 } from 'uuid';
 
 const HOSTNAME = 'www.example.com';
-const TITLE = 'Next.js Example';
+const SITE_NAME = 'Next.js Example';
 
 const generateCsp = (nonce: string) => {
   const isDevelopment = process.env.NODE_ENV === 'development';
@@ -116,16 +116,16 @@ export default class MyDocument extends Document {
             <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
             <link rel="apple-touch-icon" href="/favicon.jpg" />
             <link rel="author" href={`/humans.txt`} />
-            <link rel="search" href="/api/opensearch" type="application/opensearchdescription+xml" title={TITLE} />
+            <link rel="search" href="/api/opensearch" type="application/opensearchdescription+xml" title={SITE_NAME} />
             <meta name="description" content="website created using all-the-things." />
             <meta name="generator" content="all-the-things. https://github.com/mimecuvalo/all-the-things" />
 
             {/* This needs to be filled out by the developer to provide content for the site. Learn more here: http://ogp.me/ */}
-            <meta property="og:title" content={TITLE} />
+            <meta property="og:title" content={SITE_NAME} />
             <meta property="og:description" content="page description" />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={url} />
-            <meta property="og:site_name" content={TITLE} />
+            <meta property="og:site_name" content={SITE_NAME} />
             <meta property="og:image" content={`${url}/favicon.jpg`} />
 
             {/*
@@ -157,10 +157,10 @@ export default class MyDocument extends Document {
                   },
                   "publisher": {
                     "@type": "Organization",
-                    "name": "${TITLE}",
+                    "name": "${SITE_NAME}",
                     "logo": {
                       "@type": "ImageObject",
-                      "url": "${url}favicon.jpg"
+                      "url": "${url}/favicon.jpg"
                     }
                   },
                   "description": "page description"
