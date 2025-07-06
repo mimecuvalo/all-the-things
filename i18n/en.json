@@ -31,9 +31,6 @@
   "3e1f651a10": {
     "message": "Experiment disabled"
   },
-  "3f40dc56bc": {
-    "message": "Test snackbar"
-  },
   "3f947b57fc": {
     "message": "person gesturing no"
   },
@@ -45,12 +42,6 @@
   },
   "5a2351b91b": {
     "message": "internal server error"
-  },
-  "5d45c0776e": {
-    "message": "Snackbar test"
-  },
-  "5f02f05c74": {
-    "message": "Loading…"
   },
   "64af1b1f5f": {
     "message": "upside down face"
@@ -69,9 +60,6 @@
   },
   "835ca8f9cf": {
     "message": "it's not you, it's us. our server is monkeying around."
-  },
-  "8cf04a9734": {
-    "message": "Home"
   },
   "98088e4b13": {
     "message": "Something went wrong. 😦"

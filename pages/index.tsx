@@ -11,7 +11,7 @@ import { F, defineMessages, useIntl } from 'i18n';
 import type { GetStaticPropsContext } from 'next';
 import { Link, Typography } from 'components';
 import { addApolloState, initializeApollo } from 'app/apollo';
-import { animated, useSpring } from 'react-spring';
+import { animated, useSpring } from '@react-spring/web';
 
 // For things like "alt" text and other strings not in JSX.
 const messages = defineMessages({
@@ -127,12 +127,12 @@ export default function Home() {
           <F
             defaultMessage="i18n html test: <a>visit our website</a> and <cta>see the world</cta>"
             values={{
-              a: (msg: string) => (
+              a: (msg) => (
                 <Link className="external-link" target="_blank" href="https://www.example.com/">
                   {msg}
                 </Link>
               ),
-              cta: (msg: string) => <strong>{msg}</strong>,
+              cta: (msg) => <strong>{msg}</strong>,
             }}
           />
         </p>
