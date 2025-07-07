@@ -1,4 +1,4 @@
-import { Checkbox, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Drawer, Typography } from '@mui/material';
+import { Checkbox, IconButton, List, ListItemText, Menu, MenuItem, Drawer, Typography } from '@mui/material';
 import { F, defineMessages, useIntl } from 'i18n';
 import { MouseEvent, useContext, useEffect, useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
@@ -8,6 +8,8 @@ import Cookies from 'js-cookie';
 import { Help as HelpIcon } from '@mui/icons-material';
 import Link from './Link';
 import { UserContext } from '@auth0/nextjs-auth0/client';
+
+import ListItemButton from '@mui/material/ListItemButton';
 
 const HelpContainer = styled('div')`
   display: inline-block;
@@ -135,14 +137,13 @@ export default function Help() {
           </Link>
         </MenuItem>
       </Menu>
-
       <Drawer anchor="right" open={isExperimentsOpen} onClose={() => setIsExperimentsOpen(false)}>
         <Typography variant="h1" style={{ padding: `0 ${theme.spacing(1)}` }}>
           Experiments
         </Typography>
         <List>
           {allExperiments.map((exp) => (
-            <ListItem button key={exp.name}>
+            <ListItemButton key={exp.name}>
               <Checkbox
                 checked={enabledExperiments.includes(exp.name)}
                 onChange={() => handleExperimentChange(exp.name)}
@@ -150,7 +151,7 @@ export default function Help() {
                 color="primary"
               />
               <ListItemText primary={exp.name} />
-            </ListItem>
+            </ListItemButton>
           ))}
         </List>
       </Drawer>
