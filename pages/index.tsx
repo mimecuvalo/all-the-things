@@ -118,7 +118,6 @@ export default function Home() {
           <F
             defaultMessage="i18n pluralization test: {itemCount, plural, =0 {no items} one {# item} other {# items}}."
             values={{
-              // @ts-ignore not sure why this isn't typed right...
               itemCount: 5000,
             }}
           />
