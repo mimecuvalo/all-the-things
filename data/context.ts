@@ -16,7 +16,7 @@ export async function createContext({ req, res }: { req: NextApiRequest; res: Ne
 
   try {
     session = await auth0.getSession(req, res);
-  } catch (ex) {
+  } catch {
     // fall through
   }
 

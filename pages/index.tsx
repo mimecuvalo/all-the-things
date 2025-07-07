@@ -208,7 +208,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
         intlMessages: await loadIntlMessages(ctx),
       },
     });
-  } catch (ex) {
+  } catch {
     return {
       props: {
         intlMessages: await loadIntlMessages(ctx),
