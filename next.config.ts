@@ -1,3 +1,5 @@
+import { NextConfig } from 'next';
+
 /* eslint-disable */
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
@@ -16,8 +18,7 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   compiler: {
@@ -25,7 +26,6 @@ const nextConfig = {
   },
 
   experimental: {
-    useDeploymentId: true, // skew protection
     scrollRestoration: true,
     swcPlugins: [
       [
