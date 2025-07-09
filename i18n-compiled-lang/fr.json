@@ -1,0 +1,266 @@
+{
+  "0323de4f66": [
+    {
+      "type": 0,
+      "value": "Déconnexion"
+    }
+  ],
+  "2019743e1f": [
+    {
+      "type": 0,
+      "value": "Test de la fonctionnalité All The Things"
+    }
+  ],
+  "350f9d6822": [
+    {
+      "type": 0,
+      "value": "interdit"
+    }
+  ],
+  "36fd540552": [
+    {
+      "type": 0,
+      "value": "non autorisé"
+    }
+  ],
+  "378bc111b7": [
+    {
+      "type": 0,
+      "value": "Rendu avec React"
+    }
+  ],
+  "3d728e1b6e": [
+    {
+      "type": 0,
+      "value": "Nous avons enregistré cette erreur et nous la corrigerons bientôt."
+    }
+  ],
+  "3e1f651a10": [
+    {
+      "type": 0,
+      "value": "Expérience désactivée"
+    }
+  ],
+  "3f947b57fc": [
+    {
+      "type": 0,
+      "value": "personne faisant un geste pour dire non"
+    }
+  ],
+  "44f00c21a1": [
+    {
+      "type": 0,
+      "value": "essayez de revenir au "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "début"
+        }
+      ],
+      "type": 8,
+      "value": "a"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "4829262cec": [
+    {
+      "type": 0,
+      "value": "Expériences"
+    }
+  ],
+  "5a2351b91b": [
+    {
+      "type": 0,
+      "value": "erreur interne du serveur"
+    }
+  ],
+  "64af1b1f5f": [
+    {
+      "type": 0,
+      "value": "visage à l'envers"
+    }
+  ],
+  "690d8ebdfb": [
+    {
+      "type": 0,
+      "value": "Je suis désolé, Dave. Je ne peux malheureusement pas faire ça."
+    }
+  ],
+  "6a26f54883": [
+    {
+      "type": 0,
+      "value": "Aide"
+    }
+  ],
+  "6b06791057": [
+    {
+      "type": 0,
+      "value": "Tester une autre langue"
+    }
+  ],
+  "6cac132a3b": [
+    {
+      "type": 0,
+      "value": "Essayez de vous connecter."
+    }
+  ],
+  "835ca8f9cf": [
+    {
+      "type": 0,
+      "value": "Ce n'est pas vous, c'est nous. Notre serveur fait des bêtises."
+    }
+  ],
+  "98088e4b13": [
+    {
+      "type": 0,
+      "value": "Une erreur s'est produite. 😦"
+    }
+  ],
+  "99dea78007": [
+    {
+      "type": 0,
+      "value": "Connexion"
+    }
+  ],
+  "a1619a6b1d": [
+    {
+      "type": 0,
+      "value": "Expérience activée."
+    }
+  ],
+  "ac40af9f13": [
+    {
+      "type": 0,
+      "value": "Test de pluralisation i18n : "
+    },
+    {
+      "offset": 0,
+      "options": {
+        "=0": {
+          "value": [
+            {
+              "type": 0,
+              "value": "no items"
+            }
+          ]
+        },
+        "one": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " item"
+            }
+          ]
+        },
+        "other": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " items"
+            }
+          ]
+        }
+      },
+      "pluralType": "cardinal",
+      "type": 6,
+      "value": "itemCount"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "ae5901e838": [
+    {
+      "type": 0,
+      "value": "Test HTML i18n : "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "visitez notre site web"
+        }
+      ],
+      "type": 8,
+      "value": "a"
+    },
+    {
+      "type": 0,
+      "value": " et "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "voyagez le monde"
+        }
+      ],
+      "type": 8,
+      "value": "cta"
+    }
+  ],
+  "baf33637a2": [
+    {
+      "type": 0,
+      "value": "Vous devez activer JavaScript pour exécuter cette application."
+    }
+  ],
+  "c512eabeb3": [
+    {
+      "type": 0,
+      "value": "Test des variables GraphQL (chemin d'URL actuel) : "
+    },
+    {
+      "type": 1,
+      "value": "url"
+    }
+  ],
+  "d0fb5e8106": [
+    {
+      "type": 0,
+      "value": "Essayez de vous connecter."
+    }
+  ],
+  "d40cbcb573": [
+    {
+      "type": 0,
+      "value": "Singes, ne voyez rien, n'entendez rien, ne dites rien, ne dites rien"
+    }
+  ],
+  "d8f4a19935": [
+    {
+      "type": 0,
+      "value": "introuvable"
+    }
+  ],
+  "e3afed0047": [
+    {
+      "type": 0,
+      "value": "Admin"
+    }
+  ],
+  "ed1f0bfee1": [
+    {
+      "type": 0,
+      "value": "Votre fonctionnalité"
+    }
+  ],
+  "logo-id": [
+    {
+      "type": 0,
+      "value": "logo"
+    }
+  ]
+}

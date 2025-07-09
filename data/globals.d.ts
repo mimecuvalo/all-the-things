@@ -21,4 +21,3 @@ interface Window {
 }
 
 declare module 'js-cookie';
-declare module 'md5.js';

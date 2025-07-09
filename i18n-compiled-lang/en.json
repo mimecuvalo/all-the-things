@@ -1,0 +1,280 @@
+{
+  "0323de4f66": [
+    {
+      "type": 0,
+      "value": "Logout"
+    }
+  ],
+  "2019743e1f": [
+    {
+      "type": 0,
+      "value": "All The Things Feature test"
+    }
+  ],
+  "350f9d6822": [
+    {
+      "type": 0,
+      "value": "forbidden"
+    }
+  ],
+  "36fd540552": [
+    {
+      "type": 0,
+      "value": "unauthorized"
+    }
+  ],
+  "378bc111b7": [
+    {
+      "type": 0,
+      "value": "Rendering with React"
+    }
+  ],
+  "3d728e1b6e": [
+    {
+      "type": 0,
+      "value": "we've logged this error and we'll fix it soon."
+    }
+  ],
+  "3e1f651a10": [
+    {
+      "type": 0,
+      "value": "Experiment disabled"
+    }
+  ],
+  "3f947b57fc": [
+    {
+      "type": 0,
+      "value": "person gesturing no"
+    }
+  ],
+  "44f00c21a1": [
+    {
+      "type": 0,
+      "value": "try going back to the "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "beginning"
+        }
+      ],
+      "type": 8,
+      "value": "a"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "4829262cec": [
+    {
+      "type": 0,
+      "value": "Experiments"
+    }
+  ],
+  "5a2351b91b": [
+    {
+      "type": 0,
+      "value": "internal server error"
+    }
+  ],
+  "64af1b1f5f": [
+    {
+      "type": 0,
+      "value": "upside down face"
+    }
+  ],
+  "690d8ebdfb": [
+    {
+      "type": 0,
+      "value": "i'm sorry, dave. i'm afraid i can't do that."
+    }
+  ],
+  "6a26f54883": [
+    {
+      "type": 0,
+      "value": "Help"
+    }
+  ],
+  "6b06791057": [
+    {
+      "type": 0,
+      "value": "Test language alternative"
+    }
+  ],
+  "6cac132a3b": [
+    {
+      "type": 0,
+      "value": "try "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "logging in"
+        }
+      ],
+      "type": 8,
+      "value": "a"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "835ca8f9cf": [
+    {
+      "type": 0,
+      "value": "it's not you, it's us. our server is monkeying around."
+    }
+  ],
+  "98088e4b13": [
+    {
+      "type": 0,
+      "value": "Something went wrong. 😦"
+    }
+  ],
+  "99dea78007": [
+    {
+      "type": 0,
+      "value": "Login"
+    }
+  ],
+  "a1619a6b1d": [
+    {
+      "type": 0,
+      "value": "Experiment enabled."
+    }
+  ],
+  "ac40af9f13": [
+    {
+      "type": 0,
+      "value": "i18n pluralization test: "
+    },
+    {
+      "offset": 0,
+      "options": {
+        "=0": {
+          "value": [
+            {
+              "type": 0,
+              "value": "no items"
+            }
+          ]
+        },
+        "one": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " item"
+            }
+          ]
+        },
+        "other": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " items"
+            }
+          ]
+        }
+      },
+      "pluralType": "cardinal",
+      "type": 6,
+      "value": "itemCount"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "ae5901e838": [
+    {
+      "type": 0,
+      "value": "i18n html test: "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "visit our website"
+        }
+      ],
+      "type": 8,
+      "value": "a"
+    },
+    {
+      "type": 0,
+      "value": " and "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "see the world"
+        }
+      ],
+      "type": 8,
+      "value": "cta"
+    }
+  ],
+  "baf33637a2": [
+    {
+      "type": 0,
+      "value": "You need to enable JavaScript to run this app."
+    }
+  ],
+  "c512eabeb3": [
+    {
+      "type": 0,
+      "value": "GraphQL variables test (current url path): "
+    },
+    {
+      "type": 1,
+      "value": "url"
+    }
+  ],
+  "d0fb5e8106": [
+    {
+      "type": 0,
+      "value": "try logging in."
+    }
+  ],
+  "d40cbcb573": [
+    {
+      "type": 0,
+      "value": "see no evil, hear no evil, speak no evil monkeys"
+    }
+  ],
+  "d8f4a19935": [
+    {
+      "type": 0,
+      "value": "not found"
+    }
+  ],
+  "e3afed0047": [
+    {
+      "type": 0,
+      "value": "Admin"
+    }
+  ],
+  "ed1f0bfee1": [
+    {
+      "type": 0,
+      "value": "Your Feature"
+    }
+  ],
+  "logo-id": [
+    {
+      "type": 0,
+      "value": "logo"
+    }
+  ]
+}
