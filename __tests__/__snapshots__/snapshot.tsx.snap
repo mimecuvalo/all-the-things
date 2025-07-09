@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`renders homepage unchanged 1`] = `
 <div>
@@ -44,7 +44,6 @@ exports[`renders homepage unchanged 1`] = `
             class="vercelLogo"
             data-nimg="1"
             decoding="async"
-            fetchpriority="high"
             height="24"
             src="/vercel.svg"
             style="color: transparent;"
@@ -61,7 +60,6 @@ exports[`renders homepage unchanged 1`] = `
         class="logo"
         data-nimg="1"
         decoding="async"
-        fetchpriority="high"
         height="37"
         src="/next.svg"
         style="color: transparent;"
@@ -69,12 +67,12 @@ exports[`renders homepage unchanged 1`] = `
       />
       <br />
       <h1
-        class="MuiTypography-root MuiTypography-h1 title css-12qmnqw-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h1 title css-1jux6tw-MuiTypography-root"
       >
         (with
          
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nkcouy-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-6x7ab-MuiTypography-root-MuiLink-root"
           href="https://github.com/mimecuvalo/all-the-things"
           rel="noopener noreferrer"
           target="_blank"
@@ -88,7 +86,7 @@ exports[`renders homepage unchanged 1`] = `
       class="allTheThingsInfo"
     >
       <h2
-        class="MuiTypography-root MuiTypography-h2 css-19cg4yg-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h2 css-1m45372-MuiTypography-root"
       >
         <span
           class="i18n-msg"
@@ -123,7 +121,7 @@ exports[`renders homepage unchanged 1`] = `
         >
           i18n html test: 
           <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover external-link css-nkcouy-MuiTypography-root-MuiLink-root"
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover external-link css-6x7ab-MuiTypography-root-MuiLink-root"
             href="https://www.example.com/"
             rel="noopener noreferrer"
             target="_blank"
@@ -139,7 +137,7 @@ exports[`renders homepage unchanged 1`] = `
       <p>
         and 
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nkcouy-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-6x7ab-MuiTypography-root-MuiLink-root"
           href="https://github.com/mimecuvalo/all-the-things"
         >
           much more
