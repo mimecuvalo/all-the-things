@@ -10,7 +10,7 @@ import { Experiment, Variant } from 'components/Experiment';
 import { F, defineMessages, useIntl } from 'i18n';
 import type { GetStaticPropsContext } from 'next';
 import { Link, Typography } from 'components';
-import { addApolloState, initializeApollo } from 'app/apollo';
+import { addApolloState, initializeApollo } from '@/application/apollo';
 import { animated, useSpring } from '@react-spring/web';
 
 // For things like "alt" text and other strings not in JSX.

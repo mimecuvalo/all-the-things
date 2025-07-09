@@ -1,14 +1,14 @@
 import 'styles/globals.css';
 
-import * as serviceWorkerRegistration from 'app/serviceWorkerRegistration';
+import * as serviceWorkerRegistration from '@/application/serviceWorkerRegistration';
 
-import { APOLLO_STATE_PROP_NAME, useApollo } from 'app/apollo';
+import { APOLLO_STATE_PROP_NAME, useApollo } from '@/application/apollo';
 import { ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { DebugWrapper, Header } from 'components';
 import { IntlProvider, setupCreateIntl } from 'i18n';
 import { createEmotionCache, muiTheme } from 'styles';
-import { disposeAnalytics, setupAnalytics } from 'app/analytics';
+import { disposeAnalytics, setupAnalytics } from '@/application/analytics';
 
 import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
@@ -20,10 +20,10 @@ import { Inter, Oswald, Noto_Color_Emoji } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import classNames from 'classnames';
-import clientHealthCheck from 'app/clientHealthCheck';
+import clientHealthCheck from '@/application/clientHealthCheck';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { trackWebVitals } from 'app/reportWebVitals';
+import { trackWebVitals } from '@/application/reportWebVitals';
 import { useReportWebVitals } from 'next/web-vitals';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
