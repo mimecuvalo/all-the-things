@@ -32,7 +32,7 @@ const authServerSideProps =
       return {
         redirect: {
           permanent: false,
-          destination: '/404',
+          destination: '/not-found',
         },
         props: {},
       };

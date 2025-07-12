@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from 'components';
 
 export const Message = styled('div')`

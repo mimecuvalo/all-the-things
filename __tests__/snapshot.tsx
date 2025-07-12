@@ -1,4 +1,4 @@
-import Home from '@/pages';
+import Home from '../app/page';
 import { render } from 'util/testing';
 
 it('renders homepage unchanged', () => {
