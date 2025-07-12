@@ -10,7 +10,11 @@ import { NextRequest, NextResponse } from 'next/server';
  * option.
  */
 
-export async function GET(request: NextRequest) {
+export default async function clientHealthCheck(request: NextRequest) {
+  if (request.method !== 'GET') {
+    return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
+  }
+
   const url = new URL(request.url);
   const buildId = url.searchParams.get('buildId');
   const commitSHA = url.searchParams.get('commitSHA');

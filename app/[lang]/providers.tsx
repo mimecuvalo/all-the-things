@@ -12,7 +12,6 @@ import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
 import { Inter, Oswald, Noto_Color_Emoji } from 'next/font/google';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
 import classNames from 'classnames';
 import clientHealthCheck from '@/application/clientHealthCheck';
 import { trackWebVitals } from '@/application/reportWebVitals';
@@ -91,21 +90,19 @@ export default function Providers({ children, lang }: { children: ReactNode; non
               --font-noto-color-emoji: ${notoColorEmoji.style.fontFamily};
             }
           `}</style>
-          <UserProvider>
-            <ErrorBoundary>
-              <div
-                className={classNames({
-                  'App-logged-in': true,
-                  'App-is-development': process.env.NODE_ENV === 'development',
-                })}
-              >
-                <Header />
-                {children}
-                <Analytics />
-                <DebugWrapper />
-              </div>
-            </ErrorBoundary>
-          </UserProvider>
+          <ErrorBoundary>
+            <div
+              className={classNames({
+                'App-logged-in': true,
+                'App-is-development': process.env.NODE_ENV === 'development',
+              })}
+            >
+              <Header />
+              {children}
+              <Analytics />
+              <DebugWrapper />
+            </div>
+          </ErrorBoundary>
 
           <noscript>
             <F defaultMessage="You need to enable JavaScript to run this app." />

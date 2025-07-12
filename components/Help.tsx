@@ -1,13 +1,13 @@
 import { Checkbox, IconButton, List, ListItemText, Menu, MenuItem, Drawer, Typography } from '@mui/material';
 import { F, defineMessages, useIntl } from 'i18n';
-import { MouseEvent, useContext, useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 
 import { $Experiment } from '@/application/experiments';
 import Cookies from 'js-cookie';
 import { Help as HelpIcon } from '@mui/icons-material';
 import Link from './Link';
-import { UserContext } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 
 import ListItemButton from '@mui/material/ListItemButton';
 
@@ -28,7 +28,7 @@ const messages = defineMessages({
 // `;
 
 export default function Help() {
-  const { user } = useContext(UserContext);
+  const { user } = useUser();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>();
   const [experiments, setExperiments] = useState<$Experiment[]>([]);
   const [isExperimentsOpen, setIsExperimentsOpen] = useState(false);

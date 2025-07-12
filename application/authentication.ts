@@ -1,32 +1,29 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-
+import { NextRequest, NextResponse } from 'next/server';
 import auth0 from 'vendor/auth0';
 import prisma from 'data/prisma';
 
-const authenticate =
-  (handler: (req: NextApiRequest, res: NextApiResponse) => void) =>
-  async (req: NextApiRequest, res: NextApiResponse) => {
-    const session = await auth0.getSession(req, res);
+const authenticate = (handler: (req: NextRequest) => Promise<NextResponse>) => async (req: NextRequest) => {
+  const session = await auth0.getSession();
 
-    if (!session) {
-      return res.status(401).send({ msg: 'Not logged in.' });
-    }
+  if (!session?.user) {
+    return NextResponse.json({ msg: 'Not logged in.' }, { status: 401 });
+  }
 
-    const user = await prisma.user.findUnique({
-      select: {
-        email: true,
-        role: true,
-      },
-      where: {
-        email: session.user.email,
-      },
-    });
+  const user = await prisma.user.findUnique({
+    select: {
+      email: true,
+      role: true,
+    },
+    where: {
+      email: session.user.email,
+    },
+  });
 
-    if (user?.role !== 'ADMIN') {
-      return res.status(403).send({ msg: 'I call shenanigans.' });
-    }
+  if (user?.role !== 'ADMIN') {
+    return NextResponse.json({ msg: 'I call shenanigans.' }, { status: 403 });
+  }
 
-    return handler(req, res);
-  };
+  return handler(req);
+};
 
 export default authenticate;

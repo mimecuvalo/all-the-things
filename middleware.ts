@@ -1,28 +1,32 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import auth0 from 'vendor/auth0';
 
-// Define supported locales
 const locales = ['en', 'fr'];
 const defaultLocale = 'en';
 
-function getLocale(request: NextRequest): string {
-  // Get the Accept-Language header
-  const acceptLanguage = request.headers.get('Accept-Language') || '';
+function getLocale(request: NextRequest) {
+  const acceptLanguage = request.headers.get('accept-language');
 
-  // Simple locale matching based on Accept-Language header
-  // Look for exact matches first, then partial matches
-  for (const locale of locales) {
-    if (acceptLanguage.includes(locale)) {
-      return locale;
-    }
+  if (acceptLanguage) {
+    const preferredLocale = acceptLanguage
+      .split(',')
+      .map((lang) => lang.trim().split(';')[0])
+      .find((lang) => locales.includes(lang));
+
+    if (preferredLocale) return preferredLocale;
   }
 
-  // Return default locale if no match found
   return defaultLocale;
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Handle Auth0 authentication routes first
+  if (pathname.startsWith('/auth/')) {
+    return await auth0.middleware(request);
+  }
 
   // Skip middleware for:
   // - API routes
@@ -57,7 +61,13 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next, api, favicon, etc.)
-    '/((?!_next|api|favicon.ico).*)',
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
   ],
 };
