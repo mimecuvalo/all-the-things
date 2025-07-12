@@ -1,6 +1,6 @@
 import { render, screen } from 'util/testing';
 
-import Home from '../app/page';
+import Home from '../app/[lang]/page';
 
 describe('Home', () => {
   it('renders a heading', async () => {
