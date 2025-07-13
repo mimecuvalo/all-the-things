@@ -65,9 +65,14 @@ export default function Providers({ children, lang }: { children: ReactNode; non
         return;
       }
 
-      const res = await fetch(`/i18n-compiled-lang/${lang}.json`);
-      const messages = await res.json();
-      setMessages(messages);
+      try {
+        const res = await fetch(`/i18n-compiled-lang/${lang}.json`);
+        const messages = await res.json();
+        setMessages(messages);
+      } catch (error) {
+        console.error('Failed to load messages for locale:', lang, error);
+        setMessages(translationsEnJson); // Fallback to English
+      }
     }
     fetchMessages();
   }, [lang]);

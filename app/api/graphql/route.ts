@@ -4,6 +4,7 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { createContext, Context } from 'data/context';
 import resolvers from 'data/resolvers';
 import typeDefs from 'data/schema';
+import { NextResponse } from 'next/server';
 
 const server = new ApolloServer<Context>({
   typeDefs,
@@ -19,17 +20,20 @@ const handler = startServerAndCreateNextHandler(server, {
   context: async () => createContext(),
 });
 
-// Export the handler for both GET and POST
 export { handler as GET, handler as POST };
 
 export async function OPTIONS() {
-  return new Response(null, {
-    status: 200,
-    headers: {
-      Allow: 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    },
-  });
+  if (process.env.NODE_ENV === 'development') {
+    return new NextResponse(null, {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://studio.apollographql.com',
+        'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+        'Access-Control-Allow-Credentials': 'true',
+      },
+    });
+  }
+
+  return new NextResponse(null, { status: 405 });
 }
