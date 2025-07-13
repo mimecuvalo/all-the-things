@@ -2,11 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // OpenSearch is a way to tell your browser to let a user hit <tab> and search your site.
 // See http://www.opensearch.org/Home
-export default async function opensearch(request: NextRequest) {
-  if (request.method !== 'GET') {
-    return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
-  }
-
+export async function GET(request: NextRequest) {
   const appName = 'Next.js: All The Things';
   const url = `https://${request.headers.get('host')}`;
 

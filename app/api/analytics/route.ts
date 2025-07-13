@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export default async function analytics(request: NextRequest) {
-  if (request.method !== 'POST') {
-    return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
-  }
-
+export async function POST(request: NextRequest) {
   const body = await request.json();
 
   // Hook up a analytics service here on the backend if desired. (e.g. Amplitude)

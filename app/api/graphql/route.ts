@@ -4,6 +4,7 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { createContext, Context } from 'data/context';
 import resolvers from 'data/resolvers';
 import typeDefs from 'data/schema';
+import { pick } from 'lodash';
 import { NextResponse } from 'next/server';
 
 const server = new ApolloServer<Context>({
@@ -11,7 +12,9 @@ const server = new ApolloServer<Context>({
   resolvers,
   introspection: process.env.NODE_ENV === 'development',
   plugins: [],
-  // Enable batching to match client configuration
+  formatError: (err) => {
+    return pick(err, 'message');
+  },
   allowBatchedHttpRequests: true,
 });
 
