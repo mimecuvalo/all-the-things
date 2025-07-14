@@ -5,6 +5,12 @@
       "value": "Logout"
     }
   ],
+  "14361fce9b": [
+    {
+      "type": 0,
+      "value": "TODO: Implement exceptions view"
+    }
+  ],
   "2019743e1f": [
     {
       "type": 0,
@@ -27,6 +33,12 @@
     {
       "type": 0,
       "value": "Rendering with React"
+    }
+  ],
+  "3c9e5c8af3": [
+    {
+      "type": 0,
+      "value": "Registered experiments:"
     }
   ],
   "3d728e1b6e": [
@@ -65,6 +77,12 @@
     {
       "type": 0,
       "value": "."
+    }
+  ],
+  "47d8ee65ba": [
+    {
+      "type": 0,
+      "value": "System Info"
     }
   ],
   "4829262cec": [
@@ -133,6 +151,12 @@
     {
       "type": 0,
       "value": "Something went wrong. 😦"
+    }
+  ],
+  "9986c9e6ba": [
+    {
+      "type": 0,
+      "value": "TODOS:"
     }
   ],
   "99dea78007": [
@@ -241,6 +265,12 @@
       "value": "url"
     }
   ],
+  "c5301693c4": [
+    {
+      "type": 0,
+      "value": "Run"
+    }
+  ],
   "d0fb5e8106": [
     {
       "type": 0,
@@ -251,6 +281,12 @@
     {
       "type": 0,
       "value": "see no evil, hear no evil, speak no evil monkeys"
+    }
+  ],
+  "d5f1381c5f": [
+    {
+      "type": 0,
+      "value": "Exceptions"
     }
   ],
   "d8f4a19935": [
@@ -265,10 +301,22 @@
       "value": "Admin"
     }
   ],
+  "ea19e92f8d": [
+    {
+      "type": 0,
+      "value": "REPL"
+    }
+  ],
   "ed1f0bfee1": [
     {
       "type": 0,
       "value": "Your Feature"
+    }
+  ],
+  "f915a95e60": [
+    {
+      "type": 0,
+      "value": "Try again"
     }
   ],
   "logo-id": [
