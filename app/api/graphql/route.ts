@@ -19,11 +19,9 @@ const server = new ApolloServer<Context>({
 });
 
 // Create the Next.js handler
-const handler = startServerAndCreateNextHandler(server, {
+export default startServerAndCreateNextHandler(server, {
   context: async () => createContext(),
 });
-
-export { handler as GET, handler as POST };
 
 export async function OPTIONS() {
   if (process.env.NODE_ENV === 'development') {
