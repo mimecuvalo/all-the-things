@@ -5,7 +5,7 @@ import { createContext, Context } from 'data/context';
 import resolvers from 'data/resolvers';
 import typeDefs from 'data/schema';
 import { pick } from 'lodash';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const server = new ApolloServer<Context>({
   typeDefs,
@@ -23,7 +23,13 @@ const handler = startServerAndCreateNextHandler(server, {
   context: async () => createContext(),
 });
 
-export { handler as GET, handler as POST };
+export async function GET(request: NextRequest) {
+  return handler(request);
+}
+
+export async function POST(request: NextRequest) {
+  return handler(request);
+}
 
 export async function OPTIONS() {
   if (process.env.NODE_ENV === 'development') {
