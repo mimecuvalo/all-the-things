@@ -5,9 +5,8 @@ import { ReactNode, StrictMode } from 'react';
 import { Metadata } from 'next';
 import { muiTheme } from 'styles';
 import classNames from 'classnames';
-import crypto from 'crypto';
-import { v4 } from 'uuid';
 import Providers from './providers';
+import { headers } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: '400', variable: '--noto-color-emoji' });
@@ -27,54 +26,6 @@ const geistMono = Geist_Mono({
 
 const HOSTNAME = 'www.example.com';
 const SITE_NAME = 'Next.js Example';
-
-// Generate CSP nonce for this request
-function generateNonce(): string {
-  const hash = crypto.createHash('sha256');
-  hash.update(v4());
-  return hash.digest('base64');
-}
-
-// Generate CSP header
-function generateCsp(nonce: string): string {
-  const isDevelopment = process.env.NODE_ENV === 'development';
-  const cspDirectives: { [key: string]: string[] } = {
-    'connect-src': isDevelopment
-      ? ['*']
-      : ["'self'", 'https://*.ingest.sentry.io', 'https://vitals.vercel-insights.com'],
-    'default-src': ["'self'"],
-    'font-src': ["'self'", 'https:'],
-    // TODO(mime)
-    //'frame-ancestors': ["'self'"],
-    'frame-src': ["'self'", 'http:', 'https:'],
-    'img-src': ['data:', 'http:', 'https:'],
-    'manifest-src': ["'self'"],
-    'media-src': ["'self'", 'blob:'],
-    'object-src': ["'self'"],
-    // 'prefetch-src': ["'self'"],
-    // TODO(mime)
-    //'report-uri': ['/api/report-csp-violation'],
-    'script-src': [
-      "'self'",
-      'https://cdn.auth0.com',
-      'https://cdn.vercel-insights.com',
-      'https://va.vercel-scripts.com',
-    ].concat(isDevelopment ? ["'unsafe-inline'", "'unsafe-eval'"] : [`'nonce-${nonce}'`]),
-
-    // XXX(mime): we have inline styles around - can we pass nonce around the app properly?
-    'style-src': ["'self'", 'https:', "'unsafe-inline'"], //(req, res) => `'nonce-${nonce}'`],
-  };
-
-  if (!isDevelopment) {
-    cspDirectives['upgrade-insecure-requests'] = [];
-  }
-
-  const csp = Object.keys(cspDirectives)
-    .map((directive) => `${directive} ${cspDirectives[directive].join(' ')}`)
-    .join('; ');
-
-  return csp;
-}
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -122,10 +73,7 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-
-  // Generate nonce for this request
-  const nonce = generateNonce();
-  const csp = generateCsp(nonce);
+  const nonce = (await headers()).get('x-nonce') || '';
 
   return (
     <StrictMode>
@@ -135,7 +83,6 @@ export default async function RootLayout({
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
           <meta name="theme-color" content={muiTheme.palette.primary.main} />
           <meta property="csp-nonce" content={nonce} />
-          <meta httpEquiv="Content-Security-Policy" content={csp} />
           <link rel="icon" href="/favicon.jpg" sizes="32x32" />
           <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
           <link rel="apple-touch-icon" href="/favicon.jpg" />

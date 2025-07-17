@@ -20,6 +20,46 @@ function getLocale(request: NextRequest) {
   return defaultLocale;
 }
 
+function generateCsp(nonce: string) {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const cspDirectives: { [key: string]: string[] } = {
+    'connect-src': isDevelopment
+      ? ['*']
+      : ["'self'", 'https://*.ingest.sentry.io', 'https://vitals.vercel-insights.com'],
+    'default-src': ["'self'"],
+    'font-src': ["'self'", 'https:'],
+    // TODO(mime)
+    //'frame-ancestors': ["'self'"],
+    'frame-src': ["'self'", 'http:', 'https:'],
+    'img-src': ['data:', 'http:', 'https:'],
+    'manifest-src': ["'self'"],
+    'media-src': ["'self'", 'blob:'],
+    'object-src': ["'self'"],
+    // 'prefetch-src': ["'self'"],
+    // TODO(mime)
+    //'report-uri': ['/api/report-csp-violation'],
+    'script-src': [
+      "'self'",
+      'https://cdn.auth0.com',
+      'https://cdn.vercel-insights.com',
+      'https://va.vercel-scripts.com',
+    ].concat(isDevelopment ? ["'unsafe-inline'", "'unsafe-eval'"] : [`'nonce-${nonce}'`]),
+
+    // XXX(mime): we have inline styles around - can we pass nonce around the app properly?
+    'style-src': ["'self'", 'https:', "'unsafe-inline'"], //(req, res) => `'nonce-${nonce}'`],
+  };
+
+  if (!isDevelopment) {
+    cspDirectives['upgrade-insecure-requests'] = [];
+  }
+
+  const csp = Object.keys(cspDirectives)
+    .map((directive) => `${directive} ${cspDirectives[directive].join(' ')}`)
+    .join('; ');
+
+  return csp;
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -43,12 +83,27 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-nonce', nonce);
+
+  const contentSecurityPolicyHeaderValue = generateCsp(nonce);
+  requestHeaders.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
+
   // Check if pathname already has a supported locale
   const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
 
   // If pathname already has a locale, continue
   if (pathnameHasLocale) {
-    return NextResponse.next();
+    const response = NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
+    response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
+
+    return response;
   }
 
   // Redirect to locale-prefixed path
