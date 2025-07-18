@@ -7,7 +7,7 @@ export default function LoginLogoutButton() {
 
   return (
     <span>
-      <Button variant="contained" color="primary" href={user ? '/api/auth/logout' : '/api/auth/login'}>
+      <Button variant="contained" color="primary" href={user ? '/auth/logout' : '/auth/login'}>
         {user ? <F defaultMessage="Logout" /> : <F defaultMessage="Login" />}
       </Button>
     </span>
