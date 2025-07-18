@@ -83,7 +83,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const nonce = isDevelopment ? '' : Buffer.from(crypto.randomUUID()).toString('base64');
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-nonce', nonce);
@@ -94,7 +95,10 @@ export async function middleware(request: NextRequest) {
   // Check if pathname already has a supported locale
   const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
 
-  // If pathname already has a locale, continue
+  // Get the user's preferred locale
+  const locale = getLocale(request);
+
+  // If pathname already has a locale, just continue
   if (pathnameHasLocale) {
     const response = NextResponse.next({
       request: {
@@ -106,8 +110,22 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
-  // Redirect to locale-prefixed path
-  const locale = getLocale(request);
+  // For 'en' locale, rewrite internally to /en/path (no redirect, keeps clean URL)
+  if (locale === 'en') {
+    const rewriteUrl = request.nextUrl.clone();
+    rewriteUrl.pathname = `/en${pathname === '/' ? '' : pathname}`;
+
+    const response = NextResponse.rewrite(rewriteUrl, {
+      request: {
+        headers: requestHeaders,
+      },
+    });
+    response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
+
+    return response;
+  }
+
+  // For other locales, redirect to show the locale in the URL
   const redirectUrl = request.nextUrl.clone();
   redirectUrl.pathname = `/${locale}${pathname}`;
 
