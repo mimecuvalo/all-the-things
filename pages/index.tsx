@@ -1,4 +1,3 @@
-import 'styles/layout.css';
 import styles from 'styles/index.module.css';
 
 import Image from 'next/image';

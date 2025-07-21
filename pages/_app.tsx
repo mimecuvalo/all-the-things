@@ -1,4 +1,5 @@
 import 'styles/globals.css';
+import 'styles/layout.css';
 
 import * as serviceWorkerRegistration from '@/application/serviceWorkerRegistration';
 
