@@ -17,7 +17,7 @@ This template includes scripts and configuration used by [Next.js](https://nextj
 ## ⚡ Features
 
 - ♿ **accessibility (a11y) analyzer**: via [axe](https://www.google.com/search?q=axe-core&oq=axe-core&aqs=chrome..69i57.1485j0j7&sourceid=chrome&ie=UTF-8). in the bottom corner of CRA you’ll see a menu that will give you a list of items your site is violating in terms of a11y.
-- 🔐 **authentication**: via [Auth0](https://auth0.com/). gives you the ability to login using Google/Facebook.
+- 🔐 **authentication**: via [Auth.js](https://authjs.dev/). gives you the ability to login using Google and other social logins.
 - 🔎 **bundle size analyzer**: via [source-map-explorer](https://www.npmjs.com/package/source-map-explorer). do `yarn analyze` after creating a build.
 - 🛠️ **component Libary (UI)**: via [Material-UI](https://mui.com/).
 - 🔐 **CSP nonce**

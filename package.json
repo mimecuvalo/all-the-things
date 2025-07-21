@@ -41,7 +41,6 @@
   },
   "dependencies": {
     "@apollo/client": "3.13.8",
-    "@auth0/nextjs-auth0": "3.2.0",
     "@emotion/react": "11.14.0",
     "@emotion/server": "11.11.0",
     "@emotion/styled": "11.14.1",
@@ -64,6 +63,7 @@
     "lodash": "4.17.21",
     "micro": "10.0.1",
     "next": "15.3.5",
+    "next-auth": "^4.24.11",
     "prisma": "6.11.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",

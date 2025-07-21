@@ -1,13 +1,13 @@
-import { Claims } from '@auth0/nextjs-auth0';
-import auth0 from 'vendor/auth0';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/util/auth';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { PrismaClient } from '@prisma/client';
+import { Session } from 'next-auth';
 import prisma from './prisma';
 
 export type Context = {
-  user?: Claims;
-  accessToken?: string;
+  user?: Session['user'];
   prisma: PrismaClient;
 };
 
@@ -15,19 +15,16 @@ export async function createContext({ req, res }: { req: NextApiRequest; res: Ne
   let session;
 
   try {
-    session = await auth0.getSession(req, res);
+    session = await getServerSession(req, res, authOptions);
   } catch {
     // fall through
   }
 
-  // if the user is not logged in, omit returning the user and accessToken
+  // if the user is not logged in, omit returning the session
   if (!session) return { prisma };
 
-  const { user, accessToken } = session;
-
   return {
-    user,
-    accessToken,
+    user: session.user,
     prisma,
   };
 }

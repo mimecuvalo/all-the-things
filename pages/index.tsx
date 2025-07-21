@@ -45,10 +45,6 @@ export default function Home() {
     variables: { str: '/' },
   });
 
-  if (typeof navigator !== 'undefined' && !navigator.onLine) {
-    return <div>Running offline with service worker.</div>;
-  }
-
   const logoAltText = intl.formatMessage(messages.greeting);
 
   return (

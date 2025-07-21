@@ -18,7 +18,7 @@ import { F } from 'i18n';
 import Head from 'next/head';
 import { Inter, Oswald, Noto_Color_Emoji } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { SessionProvider } from 'next-auth/react';
 import classNames from 'classnames';
 import clientHealthCheck from '@/application/clientHealthCheck';
 import { useEffect } from 'react';
@@ -92,7 +92,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                 --font-noto-color-emoji: ${notoColorEmoji.style.fontFamily};
               }
             `}</style>
-            <UserProvider>
+            <SessionProvider>
               <ErrorBoundary>
                 <div
                   className={classNames({
@@ -112,7 +112,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                   <DebugWrapper />
                 </div>
               </ErrorBoundary>
-            </UserProvider>
+            </SessionProvider>
 
             <noscript>
               <F defaultMessage="You need to enable JavaScript to run this app." />

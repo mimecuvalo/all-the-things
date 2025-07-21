@@ -45,7 +45,7 @@ In dev or prod you'll want to setup your environment as well. Check out the `.en
 
 - `NEXT_PUBLIC_DB*` for your database
 - `NEXT_PUBLIC_SESSION_SECRET` for session management
-- `NEXT_PUBLIC_AUTH0*` variables if you would like to use Auth0 for logging in
+- `AUTH_*` variables if you would like to use Auth.js for logging in
 
 To run tests:
 

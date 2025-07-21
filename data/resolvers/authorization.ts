@@ -2,7 +2,7 @@ import { Context } from 'data/context';
 import { skip } from 'graphql-resolvers';
 
 export const isAuthenticated = (parent: unknown, args: unknown, ctx: Context) => {
-  if (!ctx.user) {
+  if (!ctx.user || !ctx.user.email) {
     throw new Error(`Not logged in.`);
   }
 
@@ -10,7 +10,7 @@ export const isAuthenticated = (parent: unknown, args: unknown, ctx: Context) =>
 };
 
 export const isAdmin = async (parent: unknown, args: unknown, ctx: Context) => {
-  if (!ctx.user) {
+  if (!ctx.user || !ctx.user.email) {
     throw new Error(`Not logged in.`);
   }
 
