@@ -17,7 +17,7 @@ import { CssBaseline } from '@mui/material';
 import ErrorBoundary from 'components/error/ErrorBoundary';
 import { F } from 'i18n';
 import Head from 'next/head';
-import { Inter, Oswald, Noto_Color_Emoji } from 'next/font/google';
+import { Inter, Oswald, Noto_Color_Emoji, Geist, Geist_Mono } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
 import { SessionProvider } from 'next-auth/react';
 import classNames from 'classnames';
@@ -26,6 +26,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { trackWebVitals } from '@/application/reportWebVitals';
 import { useReportWebVitals } from 'next/web-vitals';
+import enJson from '../i18n-compiled-lang/en.json';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: '400', variable: '--noto-color-emoji' });
@@ -36,6 +37,16 @@ const oswald = Oswald({
   subsets: ['latin'],
   variable: '--font-oswald',
   display: 'swap',
+});
+
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -74,7 +85,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
     };
   });
 
-  const messages = pageProps.intlMessages || {};
+  const messages = pageProps.intlMessages || enJson;
   // createIntl is used in non-React locations.
   setupCreateIntl({ defaultLocale, locale, messages });
 
@@ -91,6 +102,8 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                 --font-oswald: ${oswald.style.fontFamily};
                 --font-inter: ${inter.style.fontFamily};
                 --font-noto-color-emoji: ${notoColorEmoji.style.fontFamily};
+                --font-geist-sans: ${geistSans.style.fontFamily};
+                --font-geist-mono: ${geistMono.style.fontFamily};
               }
             `}</style>
             <SessionProvider>
@@ -102,6 +115,8 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
                     [oswald.variable]: true,
                     [inter.variable]: true,
                     [notoColorEmoji.variable]: true,
+                    [geistSans.variable]: true,
+                    [geistMono.variable]: true,
                   })}
                 >
                   <Header />

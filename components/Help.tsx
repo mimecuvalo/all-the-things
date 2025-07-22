@@ -107,6 +107,9 @@ export default function Help() {
         aria-owns={isOpen ? 'help-menu' : undefined}
         aria-haspopup="true"
         onClick={handleMenuOpenerClick}
+        sx={{
+          color: 'var(--foreground)',
+        }}
       >
         <HelpIcon />
       </IconButton>

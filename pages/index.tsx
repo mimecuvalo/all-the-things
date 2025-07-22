@@ -47,7 +47,7 @@ export default function Home() {
   const logoAltText = intl.formatMessage(messages.greeting);
 
   return (
-    <main className={styles.main}>
+    <div className={styles.page}>
       <Head>
         <title>Create Next App</title>
         <meta name="description" content="Next.js: All The Things" />
@@ -55,136 +55,125 @@ export default function Home() {
       </Head>
 
       <animated.div style={{ position: 'relative', ...springProps }}>
-        <Image src="/favicon.jpg" alt={logoAltText} width={72} height={72} />
+        <Image src="/favicon.jpg" alt={logoAltText} width={72} height={72} style={{ borderRadius: '50%' }} />
       </animated.div>
 
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image src="/vercel.svg" alt="Vercel Logo" className={styles.vercelLogo} width={100} height={24} priority />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image className={styles.logo} src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
-        <br />
+      <main className={styles.main}>
+        <Image className={styles.logo} src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
         <Typography variant="h1" className={styles.title}>
           (with{' '}
           <Link href="https://github.com/mimecuvalo/all-the-things" target="_blank">
-            All The Things
+            All. <u>The</u>.{' '}
+            <u>
+              <em>Things</em>
+            </u>
+            .
           </Link>
           )
         </Typography>
-      </div>
+        <ol>
+          <li>
+            Get started by editing <code>app/page.tsx</code>.
+          </li>
+          <li>Save and see your changes instantly.</li>
+        </ol>
 
-      <div className={styles.allTheThingsInfo}>
-        <Typography variant="h2">
-          <F defaultMessage="All The Things Feature test" />
-        </Typography>
-        <p>
-          <F
-            defaultMessage="GraphQL variables test (current url path): {url}"
-            values={{
-              url: data?.echoExample.exampleField || '[loading]',
-            }}
-          />
-        </p>
-        <p>
-          <Experiment name="my-experiment">
-            <Variant name="on">
-              <F defaultMessage="Experiment enabled." />
-            </Variant>
-            <Variant name="off">
-              <F defaultMessage="Experiment disabled" />
-            </Variant>
-          </Experiment>
-        </p>
-        <p>
-          <F
-            defaultMessage="i18n pluralization test: {itemCount, plural, =0 {no items} one {# item} other {# items}}."
-            values={{
-              itemCount: 5000,
-            }}
-          />
-        </p>
-        <p>
-          <F
-            defaultMessage="i18n html test: <a>visit our website</a> and <cta>see the world</cta>"
-            values={{
-              a: (msg) => (
-                <Link className="external-link" target="_blank" href="https://www.example.com/">
-                  {msg}
-                </Link>
-              ),
-              cta: (msg) => <strong>{msg}</strong>,
-            }}
-          />
-        </p>
-        <p>
-          and <Link href="https://github.com/mimecuvalo/all-the-things">much more</Link>!
-        </p>
-      </div>
+        <div className={styles.ctas}>
+          <a
+            className={styles.primary}
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image className={styles.logo} src="/vercel.svg" alt="Vercel logomark" width={20} height={20} />
+            Deploy now
+          </a>
+          <a
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.secondary}
+          >
+            Read our docs
+          </a>
+        </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+        <div className={styles.allTheThingsInfo}>
+          <Typography variant="h2">
+            <F defaultMessage="All The Things Feature test" />
+          </Typography>
+          <p>
+            <F
+              defaultMessage="GraphQL variables test (current url path): {url}"
+              values={{
+                url: data?.echoExample.exampleField || '[loading]',
+              }}
+            />
+          </p>
+          <p>
+            <Experiment name="my-experiment">
+              <Variant name="on">
+                <F defaultMessage="Experiment enabled." />
+              </Variant>
+              <Variant name="off">
+                <F defaultMessage="Experiment disabled" />
+              </Variant>
+            </Experiment>
+          </p>
+          <p>
+            <F
+              defaultMessage="i18n pluralization test: {itemCount, plural, =0 {no items} one {# item} other {# items}}."
+              values={{
+                itemCount: 5000,
+              }}
+            />
+          </p>
+          <p>
+            <F
+              defaultMessage="i18n html test: <a>visit our website</a> and <cta>see the world</cta>"
+              values={{
+                a: (msg) => (
+                  <Link className="external-link" target="_blank" href="https://www.example.com/">
+                    {msg}
+                  </Link>
+                ),
+                cta: (msg) => <strong>{msg}</strong>,
+              }}
+            />
+          </p>
+          <p>
+            and <Link href="https://github.com/mimecuvalo/all-the-things">much more</Link>!
+          </p>
+        </div>
+      </main>
 
+      <footer className={styles.footer}>
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
+          <Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
+          Learn
         </a>
-
         <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 14 playground.</p>
+          <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
+          Examples
         </a>
-
         <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
+          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
+          <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
+          Go to nextjs.org →
         </a>
-      </div>
-    </main>
+      </footer>
+    </div>
   );
 }
 
