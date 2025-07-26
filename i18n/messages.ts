@@ -19,5 +19,5 @@ export default async function loadIntlMessages({ locale, defaultLocale }: GetSta
     }
   }
 
-  return {};
+  return enJson;
 }
