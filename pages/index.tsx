@@ -1,6 +1,6 @@
 import styles from 'styles/index.module.css';
 
-import Image from 'next/image';
+import Image from 'components/Image';
 import Head from 'next/head';
 import gql from 'graphql-tag';
 import loadIntlMessages from 'i18n/messages';
