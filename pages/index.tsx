@@ -10,7 +10,8 @@ import { F, defineMessages, useIntl } from 'i18n';
 import type { GetStaticPropsContext } from 'next';
 import { Link, Typography } from 'components';
 import { addApolloState, initializeApollo } from '@/application/apollo';
-import { animated, useSpring } from '@react-spring/web';
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 // For things like "alt" text and other strings not in JSX.
 const messages = defineMessages({
@@ -31,20 +32,14 @@ const HELLO_AND_ECHO_QUERY = gql`
 
 export default function Home() {
   const intl = useIntl();
-
-  // This uses React Spring: https://www.react-spring.io/
-  // Gives you some great animation easily for your app.
-  const springProps = useSpring({
-    opacity: 1,
-    bottom: 50,
-    from: { opacity: 0, bottom: 100 },
-  });
-
+  const [isLoaded, setIsLoaded] = useState(false);
   const { data } = useQuery(HELLO_AND_ECHO_QUERY, {
     variables: { str: '/' },
   });
 
   const logoAltText = intl.formatMessage(messages.greeting);
+
+  useEffect(() => setIsLoaded(true), []);
 
   return (
     <div className={styles.page}>
@@ -54,9 +49,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.jpg" />
       </Head>
 
-      <animated.div style={{ position: 'relative', ...springProps }}>
-        <Image src="/favicon.jpg" alt={logoAltText} width={72} height={72} style={{ borderRadius: '50%' }} />
-      </animated.div>
+      <Image
+        src="/favicon.jpg"
+        className={classNames(styles.nightlight, isLoaded && styles.loaded)}
+        alt={logoAltText}
+        width={72}
+        height={72}
+      />
 
       <main className={styles.main}>
         <Image className={styles.logo} src="/next.svg" alt="Next.js logo" width={180} height={38} priority />

@@ -46,7 +46,6 @@ This template includes scripts and configuration used by [Next.js](https://nextj
 - 💽 **ORM**: via [prisma](https://www.prisma.io/).
 - 📏 **perf indicator**: in the bottom corner of the app, it will display render times. (also has [web vitals](https://web.dev/vitals/) built in.)
 - ✨ [**Prettier**](https://prettier.io): adds linting upon commit. also sorts imports via [prettier-plugin-import-sort](https://www.npmjs.com/package/prettier-plugin-import-sort).
-- 🪩 [**React Spring**](https://www.react-spring.io/): for great animation using a React hook.
 - 🆘 [**Sentry**](https://sentry.io/): exception collection and analysis.
 - 💅 **styleguide**: via [Storybook](https://storybook.js.org).
 

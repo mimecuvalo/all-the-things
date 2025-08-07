@@ -90,6 +90,35 @@
   padding: 1rem 0;
 }
 
+.nightlight {
+  position: relative;
+  opacity: 0;
+  bottom: 100px;
+  border-radius: 50%;
+  transition: all 1s;
+  transition-timing-function: linear(
+    0,
+    0.402 7.4%,
+    0.711 15.3%,
+    0.929 23.7%,
+    1.008 28.2%,
+    1.067 33%,
+    1.099 36.9%,
+    1.12 41%,
+    1.13 45.4%,
+    1.13 50.1%,
+    1.111 58.5%,
+    1.019 83.2%,
+    1.004 91.3%,
+    1
+  );
+}
+
+.nightlight.loaded {
+  opacity: 1;
+  bottom: 18px;
+}
+
 a.primary {
   background: var(--foreground);
   color: var(--background);
