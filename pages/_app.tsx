@@ -26,7 +26,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { trackWebVitals } from '@/application/reportWebVitals';
 import { useReportWebVitals } from 'next/web-vitals';
-import enJson from '../i18n-compiled-lang/en.json';
+import enJson from '../i18n/compiled/en.json';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: '400', variable: '--noto-color-emoji' });
