@@ -1,5 +1,6 @@
-import { Container, List, ListItem, Typography } from 'components';
+import styles from 'styles/index.module.css';
 
+import { Link, List, ListItem, Typography } from 'components';
 import { F } from 'i18n';
 
 /**
@@ -7,15 +8,19 @@ import { F } from 'i18n';
  */
 export default function YourFeature() {
   return (
-    <Container>
-      <Typography variant="h2">
-        <F defaultMessage="Your Feature" />
-      </Typography>
-      <List>
-        <ListItem>
-          <F defaultMessage="Rendering with React" />
-        </ListItem>
-      </List>
-    </Container>
+    <div className={styles.page}>
+      <main className={styles.main}>
+        <Typography variant="h2">
+          <F defaultMessage="Your Feature" />
+        </Typography>
+        <List>
+          <ListItem>
+            <Link href="/">
+              <F defaultMessage="Go back" />
+            </Link>
+          </ListItem>
+        </List>
+      </main>
+    </div>
   );
 }

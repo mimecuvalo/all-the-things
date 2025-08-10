@@ -131,11 +131,7 @@ export default function Home() {
             <F
               defaultMessage="i18n html test: <a>visit our website</a> and <cta>see the world</cta>"
               values={{
-                a: (msg) => (
-                  <Link className="external-link" target="_blank" href="https://www.example.com/">
-                    {msg}
-                  </Link>
-                ),
+                a: (msg) => <Link href="/your-feature">{msg}</Link>,
                 cta: (msg) => <strong>{msg}</strong>,
               }}
             />
