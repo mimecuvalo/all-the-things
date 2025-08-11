@@ -11,6 +11,12 @@
       "value": "All The Things Feature test"
     }
   ],
+  "22b653bd8d": [
+    {
+      "type": 0,
+      "value": "Go back"
+    }
+  ],
   "350f9d6822": [
     {
       "type": 0,
@@ -21,12 +27,6 @@
     {
       "type": 0,
       "value": "unauthorized"
-    }
-  ],
-  "378bc111b7": [
-    {
-      "type": 0,
-      "value": "Rendering with React"
     }
   ],
   "3d728e1b6e": [
@@ -97,12 +97,6 @@
       "value": "Help"
     }
   ],
-  "6b06791057": [
-    {
-      "type": 0,
-      "value": "Test language alternative"
-    }
-  ],
   "6cac132a3b": [
     {
       "type": 0,
@@ -151,6 +145,12 @@
     {
       "type": 0,
       "value": "Experiment enabled."
+    }
+  ],
+  "a4a78c3a33": [
+    {
+      "type": 0,
+      "value": "i18n: French"
     }
   ],
   "ac40af9f13": [
@@ -245,6 +245,12 @@
     {
       "type": 1,
       "value": "url"
+    }
+  ],
+  "c84d77792c": [
+    {
+      "type": 0,
+      "value": "i18n: Long"
     }
   ],
   "d0fb5e8106": [

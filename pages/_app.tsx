@@ -1,7 +1,5 @@
 import 'styles/globals.css';
 
-import * as serviceWorkerRegistration from '@/application/serviceWorkerRegistration';
-
 import { APOLLO_STATE_PROP_NAME, useApollo } from '@/application/apollo';
 import { ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 import { CacheProvider, EmotionCache } from '@emotion/react';
@@ -67,11 +65,6 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
     clientHealthCheck();
 
     setupAnalytics();
-
-    // If you want your app to work offline and load faster, you can change
-    // unregister() to register() below. Note this comes with some pitfalls.
-    // Learn more about service workers: https://cra.link/PWA
-    serviceWorkerRegistration.unregister();
 
     // TODO(mime)
     // window.configuration = {

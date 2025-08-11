@@ -25,6 +25,7 @@
     "analyze": "source-map-explorer .next/static/**/*.js",
     "codegen": "graphql-codegen",
     "config": "node bin/config.js",
+    "prepare": "husky",
     "prettier:all": "prettier --check .",
     "prettier:fix": "prettier --write",
     "prettier:fix:all": "prettier --write .",
@@ -34,8 +35,7 @@
     "storybook": "storybook dev -p 9001 -c .storybook --ci --quiet",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "type-check": "tsc --noEmit",
-    "prepare": "husky"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@apollo/client": "3.13.8",
@@ -69,19 +69,7 @@
     "sanitize.css": "13.0.0",
     "sharp": "0.34.2",
     "uuid": "11.1.0",
-    "web-vitals": "5.0.3",
-    "workbox-background-sync": "7.3.0",
-    "workbox-broadcast-update": "7.3.0",
-    "workbox-cacheable-response": "7.3.0",
-    "workbox-core": "7.3.0",
-    "workbox-expiration": "7.3.0",
-    "workbox-google-analytics": "7.3.0",
-    "workbox-navigation-preload": "7.3.0",
-    "workbox-precaching": "7.3.0",
-    "workbox-range-requests": "7.3.0",
-    "workbox-routing": "7.3.0",
-    "workbox-strategies": "7.3.0",
-    "workbox-streams": "7.3.0"
+    "web-vitals": "5.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -136,8 +124,8 @@
     "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ],
-    "**/*.{js,jsx,ts,tsx,json}": [
-      "yarn i18n:extract && yarn i18n:compile"
+    "**/*.{js,jsx,ts,tsx}": [
+      "bash -c 'yarn i18n:extract && yarn i18n:compile'"
     ],
     "**/*/(schema|resolvers)/*.ts": [
       "yarn codegen"
@@ -151,17 +139,17 @@
       "style": "eslint"
     }
   },
+  "browserslist": "last 2 versions",
+  "resolutions": {
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6"
+  },
   "husky": {
     "hooks": {
       "post-checkout": "./bin/post-checkout",
       "post-merge": "./bin/post-merge"
     }
   },
-  "browserslist": "last 2 versions",
   "sideEffects": false,
-  "packageManager": "yarn@1.22.19",
-  "resolutions": {
-    "@types/react": "19.1.8",
-    "@types/react-dom": "19.1.6"
-  }
+  "packageManager": "yarn@1.22.19"
 }
