@@ -4,7 +4,7 @@ import { Link, List, ListItem, Typography } from 'components';
 import { F } from 'i18n';
 
 /**
- * Provides a simple React component as an example React component to manipulate out-of-the-box.
+ * Provides a simple React component.
  */
 export default function YourFeature() {
   return (
