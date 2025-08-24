@@ -5,21 +5,18 @@ exports[`renders homepage unchanged 1`] = `
   <div
     class="page"
   >
-    <div
-      style="position: relative; opacity: 0; bottom: 100px;"
-    >
-      <img
-        alt="logo"
-        data-nimg="1"
-        decoding="async"
-        height="72"
-        loading="lazy"
-        src="/_next/image?url=%2Ffavicon.jpg&w=256&q=75"
-        srcset="/_next/image?url=%2Ffavicon.jpg&w=96&q=75 1x, /_next/image?url=%2Ffavicon.jpg&w=256&q=75 2x"
-        style="color: transparent; border-radius: 50%;"
-        width="72"
-      />
-    </div>
+    <img
+      alt="logo"
+      class="nightlight loaded"
+      data-nimg="1"
+      decoding="async"
+      height="72"
+      loading="lazy"
+      src="http://localhost/_next/image?url=%2Ffavicon.jpg&w=256&q=75"
+      srcset="/_next/image?url=%2Ffavicon.jpg&w=96&q=75 1x, /_next/image?url=%2Ffavicon.jpg&w=256&q=75 2x"
+      style="color: transparent;"
+      width="72"
+    />
     <main
       class="main"
     >
@@ -29,7 +26,7 @@ exports[`renders homepage unchanged 1`] = `
         data-nimg="1"
         decoding="async"
         height="38"
-        src="/next.svg"
+        src="http://localhost/next.svg"
         style="color: transparent;"
         width="180"
       />
@@ -87,7 +84,7 @@ exports[`renders homepage unchanged 1`] = `
             decoding="async"
             height="20"
             loading="lazy"
-            src="/vercel.svg"
+            src="http://localhost/vercel.svg"
             style="color: transparent;"
             width="20"
           />
@@ -141,10 +138,8 @@ exports[`renders homepage unchanged 1`] = `
           >
             i18n html test: 
             <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover external-link css-6x7ab-MuiTypography-root-MuiLink-root"
-              href="https://www.example.com/"
-              rel="noopener noreferrer"
-              target="_blank"
+              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-6x7ab-MuiTypography-root-MuiLink-root"
+              href="/your-feature"
             >
               visit our website
             </a>
@@ -181,7 +176,7 @@ exports[`renders homepage unchanged 1`] = `
           decoding="async"
           height="16"
           loading="lazy"
-          src="/file.svg"
+          src="http://localhost/file.svg"
           style="color: transparent;"
           width="16"
         />
@@ -199,7 +194,7 @@ exports[`renders homepage unchanged 1`] = `
           decoding="async"
           height="16"
           loading="lazy"
-          src="/window.svg"
+          src="http://localhost/window.svg"
           style="color: transparent;"
           width="16"
         />
@@ -217,7 +212,7 @@ exports[`renders homepage unchanged 1`] = `
           decoding="async"
           height="16"
           loading="lazy"
-          src="/globe.svg"
+          src="http://localhost/globe.svg"
           style="color: transparent;"
           width="16"
         />
