@@ -48,7 +48,7 @@
     "@sentry/nextjs": "^9.35.0",
     "@vercel/analytics": "1.5.0",
     "apollo-server-micro": "3.13.0",
-    "body-parser": "2.2.0",
+    "body-parser": "2.2.1",
     "circular-dependency-plugin": "5.2.2",
     "classnames": "2.5.1",
     "cookie-parser": "1.4.7",
