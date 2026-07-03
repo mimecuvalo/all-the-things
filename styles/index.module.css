@@ -13,7 +13,7 @@
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
-  font-family: var(--font-geist-sans);
+  font-family: var(--font-system);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,7 +35,7 @@
 }
 
 .main ol {
-  font-family: var(--font-geist-mono);
+  font-family: monospace;
   padding-left: 0;
   margin: 0;
   font-size: 14px;
@@ -54,6 +54,10 @@
   padding: 2px 4px;
   border-radius: 4px;
   font-weight: 600;
+}
+
+.title {
+  text-align: center;
 }
 
 .ctas {

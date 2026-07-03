@@ -1,15 +1,11 @@
 import { render, screen } from 'util/testing';
 
-import Home from '@/pages';
+import YourFeature from 'components/pages/YourFeature';
 
-describe('Home', () => {
-  it('renders a heading', async () => {
-    render(<Home />);
+describe('YourFeature', () => {
+  it('renders a heading', () => {
+    render(<YourFeature />);
 
-    const heading = screen.getAllByRole('heading', {
-      name: /All The Things/i,
-    });
-
-    expect(heading[0]).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Your Feature/i })).toBeInTheDocument();
   });
 });

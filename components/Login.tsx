@@ -1,9 +1,8 @@
-import { Button } from '@mui/material';
 import { F } from 'i18n';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'lib/auth-client';
 
 export default function LoginLogoutButton() {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   const handleClick = () => {
     if (session) {
@@ -15,9 +14,9 @@ export default function LoginLogoutButton() {
 
   return (
     <span>
-      <Button variant="contained" color="primary" onClick={handleClick}>
+      <button type="button" className="btn" onClick={handleClick}>
         {session ? <F defaultMessage="Logout" /> : <F defaultMessage="Login" />}
-      </Button>
+      </button>
     </span>
   );
 }

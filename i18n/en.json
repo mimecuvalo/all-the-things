@@ -13,32 +13,17 @@
   "0323de4f66": {
     "message": "Logout"
   },
-  "2019743e1f": {
-    "message": "All The Things Feature test"
+  "19fcdff787": {
+    "message": "RPC variables test (current url path): {url}"
   },
   "22b653bd8d": {
     "message": "Go back"
   },
-  "350f9d6822": {
-    "message": "forbidden"
-  },
-  "36fd540552": {
-    "message": "unauthorized"
-  },
   "3d728e1b6e": {
     "message": "we've logged this error and we'll fix it soon."
   },
-  "3e1f651a10": {
-    "message": "Experiment disabled"
-  },
-  "3f947b57fc": {
-    "message": "person gesturing no"
-  },
   "44f00c21a1": {
     "message": "try going back to the <a>beginning</a>."
-  },
-  "4829262cec": {
-    "message": "Experiments"
   },
   "5a2351b91b": {
     "message": "internal server error"
@@ -46,14 +31,11 @@
   "64af1b1f5f": {
     "message": "upside down face"
   },
+  "654b0a0a07": {
+    "message": "i18n: English"
+  },
   "690d8ebdfb": {
     "message": "i'm sorry, dave. i'm afraid i can't do that."
-  },
-  "6a26f54883": {
-    "message": "Help"
-  },
-  "6cac132a3b": {
-    "message": "try <a>logging in</a>."
   },
   "794bd545aa": {
     "message": "React Scan"
@@ -67,9 +49,6 @@
   "99dea78007": {
     "message": "Login"
   },
-  "a1619a6b1d": {
-    "message": "Experiment enabled."
-  },
   "a4a78c3a33": {
     "message": "i18n: French"
   },
@@ -79,26 +58,17 @@
   "ae5901e838": {
     "message": "i18n html test: <a>visit our website</a> and <cta>see the world</cta>"
   },
-  "baf33637a2": {
-    "message": "You need to enable JavaScript to run this app."
-  },
-  "c512eabeb3": {
-    "message": "GraphQL variables test (current url path): {url}"
-  },
   "c84d77792c": {
     "message": "i18n: Long"
   },
-  "d0fb5e8106": {
-    "message": "try logging in."
+  "d3bb8a1754": {
+    "message": "Feature test"
   },
   "d40cbcb573": {
     "message": "see no evil, hear no evil, speak no evil monkeys"
   },
   "d8f4a19935": {
     "message": "not found"
-  },
-  "e3afed0047": {
-    "message": "Admin"
   },
   "ed1f0bfee1": {
     "message": "Your Feature"

@@ -58,3 +58,8 @@ logs/*.log.gz
 
 # Sentry
 .sentryclirc
+
+# prisma generated client
+generated/
+
+/dist

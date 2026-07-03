@@ -1,10 +1,15 @@
-import { Link as MuiLink, LinkProps as MuiLinkProps } from '@mui/material';
+import type { AnchorHTMLAttributes } from 'react';
+import classNames from 'classnames';
 
-// TODO: Next.js's Link doesn't seem to work with view transitions.
-const Link: React.FC<MuiLinkProps> = ({ children, target, ...props }) => (
-  <MuiLink underline="hover" target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined} {...props}>
-    {children}
-  </MuiLink>
-);
-
-export default Link;
+export default function Link({ children, target, className, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
+  return (
+    <a
+      target={target}
+      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+      className={classNames('link', className)}
+      {...props}
+    >
+      {children}
+    </a>
+  );
+}

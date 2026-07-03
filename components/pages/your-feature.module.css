@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.title {
+  font-family: var(--font-oswald);
+  font-weight: 400;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
