@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": false,
     "forceConsistentCasingInFileNames": true,
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "node", "vitest/globals", "@testing-library/jest-dom"],
     "paths": {
       "*": ["./*"],
       "@/*": ["./*"],
@@ -28,17 +28,6 @@
       "lib/*": ["./lib/*"]
     }
   },
-  "include": [
-    "env.d.ts",
-    "routes",
-    "router.tsx",
-    "routeTree.gen.ts",
-    "server",
-    "lib",
-    "components",
-    "i18n",
-    "styles",
-    "util"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
   "exclude": ["node_modules", "dist", ".output", ".vercel"]
 }
