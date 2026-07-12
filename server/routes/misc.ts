@@ -15,7 +15,7 @@ export const miscRoutes = new Hono()
   })
   // OpenSearch description so browsers can offer tab-to-search. http://www.opensearch.org/Home
   .get('/opensearch', (c) => {
-    const appName = 'Next.js: All The Things';
+    const appName = 'All The Things';
     const url = `https://${c.req.header('host')}`;
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">

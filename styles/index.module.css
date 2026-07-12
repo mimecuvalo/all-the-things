@@ -30,6 +30,7 @@
 .main {
   display: flex;
   flex-direction: column;
+  margin-top: -100px;
   gap: 32px;
   grid-row-start: 2;
 }
@@ -97,7 +98,9 @@
 .nightlight {
   position: relative;
   opacity: 0;
-  bottom: 100px;
+  left: 50%;
+  top: -100px;
+  transform: translateX(-50%);
   border-radius: 50%;
   transition: all 1s;
   transition-timing-function: linear(
@@ -120,7 +123,7 @@
 
 .nightlight.loaded {
   opacity: 1;
-  bottom: 18px;
+  top: 18px;
 }
 
 a.primary {
