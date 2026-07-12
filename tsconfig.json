@@ -15,8 +15,8 @@
     "verbatimModuleSyntax": false,
     "forceConsistentCasingInFileNames": true,
     "types": ["vite/client", "node"],
-    "baseUrl": ".",
     "paths": {
+      "*": ["./*"],
       "@/*": ["./*"],
       "components": ["./components"],
       "components/*": ["./components/*"],
@@ -28,6 +28,17 @@
       "lib/*": ["./lib/*"]
     }
   },
-  "include": ["routes", "router.tsx", "routeTree.gen.ts", "server", "lib", "components", "i18n", "styles", "util"],
+  "include": [
+    "env.d.ts",
+    "routes",
+    "router.tsx",
+    "routeTree.gen.ts",
+    "server",
+    "lib",
+    "components",
+    "i18n",
+    "styles",
+    "util"
+  ],
   "exclude": ["node_modules", "dist", ".output", ".vercel"]
 }

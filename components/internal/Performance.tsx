@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Popover } from '@base-ui-components/react/popover';
+import { Popover } from '@base-ui/react/popover';
 import styles from './dev.module.css';
 
 const WEB_VITALS_NAME_TO_READABLE: Record<string, string> = {

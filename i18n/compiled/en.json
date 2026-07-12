@@ -5,16 +5,6 @@
       "value": "Logout"
     }
   ],
-  "19fcdff787": [
-    {
-      "type": 0,
-      "value": "RPC variables test (current url path): "
-    },
-    {
-      "type": 1,
-      "value": "url"
-    }
-  ],
   "22b653bd8d": [
     {
       "type": 0,
@@ -101,94 +91,10 @@
       "value": "i18n: French"
     }
   ],
-  "ac40af9f13": [
-    {
-      "type": 0,
-      "value": "i18n pluralization test: "
-    },
-    {
-      "offset": 0,
-      "options": {
-        "=0": {
-          "value": [
-            {
-              "type": 0,
-              "value": "no items"
-            }
-          ]
-        },
-        "one": {
-          "value": [
-            {
-              "type": 7
-            },
-            {
-              "type": 0,
-              "value": " item"
-            }
-          ]
-        },
-        "other": {
-          "value": [
-            {
-              "type": 7
-            },
-            {
-              "type": 0,
-              "value": " items"
-            }
-          ]
-        }
-      },
-      "pluralType": "cardinal",
-      "type": 6,
-      "value": "itemCount"
-    },
-    {
-      "type": 0,
-      "value": "."
-    }
-  ],
-  "ae5901e838": [
-    {
-      "type": 0,
-      "value": "i18n html test: "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "visit our website"
-        }
-      ],
-      "type": 8,
-      "value": "a"
-    },
-    {
-      "type": 0,
-      "value": " and "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "see the world"
-        }
-      ],
-      "type": 8,
-      "value": "cta"
-    }
-  ],
   "c84d77792c": [
     {
       "type": 0,
       "value": "i18n: Long"
-    }
-  ],
-  "d3bb8a1754": [
-    {
-      "type": 0,
-      "value": "Feature test"
     }
   ],
   "d40cbcb573": [

@@ -13,9 +13,6 @@
   "0323de4f66": {
     "message": "Logout"
   },
-  "19fcdff787": {
-    "message": "RPC variables test (current url path): {url}"
-  },
   "22b653bd8d": {
     "message": "Go back"
   },
@@ -52,17 +49,8 @@
   "a4a78c3a33": {
     "message": "i18n: French"
   },
-  "ac40af9f13": {
-    "message": "i18n pluralization test: {itemCount, plural, =0 {no items} one {# item} other {# items}}."
-  },
-  "ae5901e838": {
-    "message": "i18n html test: <a>visit our website</a> and <cta>see the world</cta>"
-  },
   "c84d77792c": {
     "message": "i18n: Long"
-  },
-  "d3bb8a1754": {
-    "message": "Feature test"
   },
   "d40cbcb573": {
     "message": "see no evil, hear no evil, speak no evil monkeys"

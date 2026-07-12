@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Popover } from '@base-ui-components/react/popover';
+import { Popover } from '@base-ui/react/popover';
 import axe from 'axe-core';
 import styles from './dev.module.css';
 

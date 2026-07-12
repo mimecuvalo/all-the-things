@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import type { AppEnv } from './env';
 import { authHandler } from './auth';
+import { createCsrfMiddleware } from './csrf';
 import { createContext } from './context';
 import { ForbiddenError, UnauthorizedError } from './authorization';
 import { echoRoutes } from './routes/echo';
@@ -10,6 +11,8 @@ import { userRoutes } from './routes/user';
 const app = new Hono<AppEnv>().basePath('/api');
 
 app.all('/auth/*', (c) => authHandler(c.req.raw));
+
+app.use('*', createCsrfMiddleware());
 
 app.use('*', async (c, next) => {
   c.set('ctx', await createContext(c.req.raw));
