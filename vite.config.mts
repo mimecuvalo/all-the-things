@@ -2,7 +2,6 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import { config as loadEnv } from 'dotenv';
 import { nitro } from 'nitro/vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import { sentryTanstackStart } from '@sentry/tanstackstart-react/vite';
 import viteReact from '@vitejs/plugin-react';
@@ -28,10 +27,11 @@ const sentryPlugins =
 
 export default defineConfig({
   server: { port: 3000 },
+  // Native tsconfig `paths` resolution (replaces the vite-tsconfig-paths plugin).
+  resolve: { tsconfigPaths: true },
   optimizeDeps: { exclude: ['pg', '@prisma/adapter-pg'] },
   ssr: { external: ['pg', '@prisma/adapter-pg'] },
   plugins: [
-    tsconfigPaths(),
     tanstackStart({
       srcDirectory: '.',
       router: { routesDirectory: 'routes' },
@@ -39,7 +39,10 @@ export default defineConfig({
     // Compiles the server into a deployable output (.output locally; Vercel's
     // Build Output API when VERCEL=1). Required for Vercel/Node deployment —
     // without it, `vite build` only emits a raw dist/ that Vercel can't serve.
-    nitro(),
+    // serverEntry:false — our root server.ts IS the SSR render entry (Sentry-
+    // wrapped); tell Nitro not to also treat it as a separate custom server
+    // entry (it would otherwise warn and disable it anyway).
+    nitro({ serverEntry: false }),
     ...sentryPlugins,
     viteReact(),
     babel({
