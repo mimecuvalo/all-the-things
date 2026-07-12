@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import { config as loadEnv } from 'dotenv';
+import { nitro } from 'nitro/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import { sentryTanstackStart } from '@sentry/tanstackstart-react/vite';
@@ -35,6 +36,10 @@ export default defineConfig({
       srcDirectory: '.',
       router: { routesDirectory: 'routes' },
     }),
+    // Compiles the server into a deployable output (.output locally; Vercel's
+    // Build Output API when VERCEL=1). Required for Vercel/Node deployment —
+    // without it, `vite build` only emits a raw dist/ that Vercel can't serve.
+    nitro(),
     ...sentryPlugins,
     viteReact(),
     babel({

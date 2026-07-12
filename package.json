@@ -74,6 +74,7 @@
     "husky": "9.1.7",
     "jsdom": "29.1.1",
     "lint-staged": "16.1.2",
+    "nitro": "3.0.260610-beta",
     "oxfmt": "0.57.0",
     "oxlint": "1.72.0",
     "@typescript/native-preview": "7.0.0-dev.20260707.2",
