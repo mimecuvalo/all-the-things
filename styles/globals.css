@@ -80,19 +80,30 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-top: var(--space-2);
   min-width: 64px;
   padding: var(--space-0-5) var(--space-2);
   border: 0;
-  border-radius: var(--radius);
   font: inherit;
   font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: var(--font-size-sm);
   line-height: 1.75;
   color: var(--color-primary-contrast);
-  background-color: var(--color-primary);
+  background-color: var(--background);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transform: translateY(-50%);
+  transition: all 0.2s ease-out;
+  border: 1px solid var(--color-primary);
+  box-shadow:
+    1px 1px var(--color-primary),
+    2px 2px var(--color-primary),
+    3px 3px var(--color-primary);
+}
+
+.btn:active {
+  box-shadow: none;
+  transform: translateY(-50%) translate(3px, 3px);
 }
 
 .btn:hover {
