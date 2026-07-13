@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitest/config';
 import viteReact from '@vitejs/plugin-react';
-import babel from '@rolldown/plugin-babel';
+import formatjs from '@formatjs/unplugin/vite';
 
 const abs = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 
@@ -20,15 +20,12 @@ export default defineConfig({
     ],
   },
   plugins: [
-    viteReact(),
-    babel({
-      plugins: [
-        [
-          'formatjs',
-          { idInterpolationPattern: '[md5:contenthash:hex:10]', additionalComponentNames: ['F'], ast: true },
-        ],
-      ],
+    formatjs({
+      idInterpolationPattern: '[md5:contenthash:hex:10]',
+      additionalComponentNames: ['F'],
+      ast: true,
     }),
+    viteReact(),
   ],
   test: {
     environment: 'jsdom',
