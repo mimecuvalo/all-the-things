@@ -1,13 +1,12 @@
 import { Hono } from 'hono';
 
 export const miscRoutes = new Hono()
-  .get('/report-error', (c) => {
-    const raw = c.req.query('data');
+  .post('/report-error', async (c) => {
     let data: unknown;
     try {
-      data = raw ? JSON.parse(raw) : undefined;
+      data = ((await c.req.json()) as { data?: unknown })?.data;
     } catch {
-      data = raw;
+      data = undefined;
     }
     // Hook up a backend error logging service here if desired (e.g. Sentry).
     console.debug('Error:', data);
