@@ -59,7 +59,7 @@ logs/*.log.gz
 # Sentry
 .sentryclirc
 
-# prisma generated client
+# tanstack start / vite / prisma
 generated/
-
 /dist
+/.output/

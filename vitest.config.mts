@@ -10,7 +10,7 @@ export default defineConfig({
     alias: [
       { find: /^components$/, replacement: abs('./components/index.tsx') },
       { find: /^components\/(.*)$/, replacement: abs('./components/$1') },
-      { find: /^util\/(.*)$/, replacement: abs('./util/$1') },
+      { find: /^util\/(?!types$)(.+)$/, replacement: abs('./util/$1') },
       { find: /^lib\/(.*)$/, replacement: abs('./lib/$1') },
       { find: /^server\/(.*)$/, replacement: abs('./server/$1') },
       { find: /^i18n$/, replacement: abs('./i18n/index.ts') },

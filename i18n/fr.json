@@ -13,32 +13,14 @@
   "0323de4f66": {
     "message": "Déconnexion"
   },
-  "2019743e1f": {
-    "message": "Test de la fonctionnalité All The Things"
-  },
-  "350f9d6822": {
-    "message": "interdit"
-  },
-  "36fd540552": {
-    "message": "non autorisé"
-  },
-  "378bc111b7": {
-    "message": "Rendu avec React"
+  "22b653bd8d": {
+    "message": "Retour"
   },
   "3d728e1b6e": {
     "message": "Nous avons enregistré cette erreur et nous la corrigerons bientôt."
   },
-  "3e1f651a10": {
-    "message": "Expérience désactivée"
-  },
-  "3f947b57fc": {
-    "message": "personne faisant un geste pour dire non"
-  },
   "44f00c21a1": {
     "message": "essayez de revenir au <a>début</a>."
-  },
-  "4829262cec": {
-    "message": "Expériences"
   },
   "5a2351b91b": {
     "message": "erreur interne du serveur"
@@ -46,17 +28,14 @@
   "64af1b1f5f": {
     "message": "visage à l'envers"
   },
+  "654b0a0a07": {
+    "message": "i18n : anglais"
+  },
   "690d8ebdfb": {
     "message": "Je suis désolé, Dave. Je ne peux malheureusement pas faire ça."
   },
-  "6a26f54883": {
-    "message": "Aide"
-  },
-  "6b06791057": {
-    "message": "Tester une autre langue"
-  },
-  "6cac132a3b": {
-    "message": "Essayez de vous connecter."
+  "794bd545aa": {
+    "message": "React Scan"
   },
   "835ca8f9cf": {
     "message": "Ce n'est pas vous, c'est nous. Notre serveur fait des bêtises."
@@ -67,32 +46,17 @@
   "99dea78007": {
     "message": "Connexion"
   },
-  "a1619a6b1d": {
-    "message": "Expérience activée."
+  "a4a78c3a33": {
+    "message": "i18n : français"
   },
-  "ac40af9f13": {
-    "message": "Test de pluralisation i18n : {itemCount, plural, =0 {no items} one {# item} other {# items}}."
-  },
-  "ae5901e838": {
-    "message": "Test HTML i18n : <a>visitez notre site web</a> et <cta>voyagez le monde</cta>"
-  },
-  "baf33637a2": {
-    "message": "Vous devez activer JavaScript pour exécuter cette application."
-  },
-  "c512eabeb3": {
-    "message": "Test des variables GraphQL (chemin d'URL actuel) : {url}"
-  },
-  "d0fb5e8106": {
-    "message": "Essayez de vous connecter."
+  "c84d77792c": {
+    "message": "i18n : long"
   },
   "d40cbcb573": {
     "message": "Singes, ne voyez rien, n'entendez rien, ne dites rien, ne dites rien"
   },
   "d8f4a19935": {
     "message": "introuvable"
-  },
-  "e3afed0047": {
-    "message": "Admin"
   },
   "ed1f0bfee1": {
     "message": "Votre fonctionnalité"

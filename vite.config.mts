@@ -8,6 +8,7 @@ import viteReact from '@vitejs/plugin-react';
 import babel from '@rolldown/plugin-babel';
 
 const isProd = process.env.NODE_ENV === 'production';
+const clientSentryDsn = process.env.VITE_SENTRY_DSN || process.env.SENTRY_DSN || '';
 const abs = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 
 loadEnv({ path: abs('./.env.local') });
@@ -27,6 +28,9 @@ const sentryPlugins =
 
 export default defineConfig({
   server: { port: 3000 },
+  define: {
+    'import.meta.env.VITE_SENTRY_DSN': JSON.stringify(clientSentryDsn),
+  },
   // Native tsconfig `paths` resolution (replaces the vite-tsconfig-paths plugin).
   resolve: { tsconfigPaths: true },
   optimizeDeps: { exclude: ['pg', '@prisma/adapter-pg'] },

@@ -1,8 +1,8 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "yarn start",
-      "startServerReadyPattern": "ready on",
+      "startServerCommand": "bun run start",
+      "startServerReadyPattern": "Listening on",
       "url": ["http://localhost:3000/"]
     },
     "assert": {

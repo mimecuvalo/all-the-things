@@ -25,7 +25,7 @@ export const FormattedNumber: React.FC<any> = originalFormattedNumber;
 
 const INTERNAL_LOCALES = ['xx-LS'];
 
-// We use `@swc/plugin-formatjs` in `next.config.ts` to generate IDs for messages.
+// The FormatJS Babel plugin in `vite.config.mts` generates IDs for messages.
 // This should always have an ID, so we throw an error if it's missing.
 function generateId({ id }: MessageDescriptor) {
   if (id) {

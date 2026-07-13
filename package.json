@@ -1,7 +1,7 @@
 {
   "name": "all-the-things",
   "private": true,
-  "description": "all the bells 🔔 and whistles 😙 for next.js",
+  "description": "all the bells 🔔 and whistles 😙 for TanStack Start",
   "repository": {
     "type": "git",
     "url": "https://github.com/mimecuvalo/all-the-things.git"

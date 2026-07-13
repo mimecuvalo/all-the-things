@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import type { ErrorComponentProps } from '@tanstack/react-router';
 import * as Sentry from '@sentry/tanstackstart-react';
 import { F, IntlProvider } from 'i18n';
+import en from 'i18n/compiled/en.json';
 import { logError } from 'lib/error';
 import styles from './error.module.css';
 
@@ -25,7 +26,7 @@ function Content({ error }: { error: Error }) {
 
 export default function ErrorScreen({ error }: ErrorComponentProps) {
   return (
-    <IntlProvider defaultLocale="en" locale="en" messages={{}}>
+    <IntlProvider defaultLocale="en" locale="en" messages={en}>
       <Content error={error} />
     </IntlProvider>
   );

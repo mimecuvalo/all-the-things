@@ -29,7 +29,13 @@ jobs:
         run: bun run alex
       - name: Run oxlint
         run: bun run lint
+      - name: Check formatting
+        run: bun run format:check
       - name: Run tests
         run: bun run test:ci
       - name: Run type-check
         run: bun run type-check
+      - name: Verify message catalogs
+        run: bun run i18n:extract && bun run i18n:compile && git diff --exit-code -- i18n
+      - name: Build production application
+        run: bun run build

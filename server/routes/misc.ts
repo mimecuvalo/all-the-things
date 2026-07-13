@@ -15,7 +15,10 @@ export const miscRoutes = new Hono()
   // OpenSearch description so browsers can offer tab-to-search. http://www.opensearch.org/Home
   .get('/opensearch', (c) => {
     const appName = 'All The Things';
-    const url = `https://${c.req.header('host')}`;
+    const requestUrl = new URL(c.req.url);
+    const host = c.req.header('x-forwarded-host') || c.req.header('host') || requestUrl.host;
+    const protocol = c.req.header('x-forwarded-proto') || requestUrl.protocol.replace(':', '');
+    const url = `${protocol}://${host}`;
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
       <ShortName>${appName}</ShortName>

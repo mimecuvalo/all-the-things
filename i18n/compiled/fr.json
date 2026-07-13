@@ -5,46 +5,16 @@
       "value": "Déconnexion"
     }
   ],
-  "2019743e1f": [
+  "22b653bd8d": [
     {
       "type": 0,
-      "value": "Test de la fonctionnalité All The Things"
-    }
-  ],
-  "350f9d6822": [
-    {
-      "type": 0,
-      "value": "interdit"
-    }
-  ],
-  "36fd540552": [
-    {
-      "type": 0,
-      "value": "non autorisé"
-    }
-  ],
-  "378bc111b7": [
-    {
-      "type": 0,
-      "value": "Rendu avec React"
+      "value": "Retour"
     }
   ],
   "3d728e1b6e": [
     {
       "type": 0,
       "value": "Nous avons enregistré cette erreur et nous la corrigerons bientôt."
-    }
-  ],
-  "3e1f651a10": [
-    {
-      "type": 0,
-      "value": "Expérience désactivée"
-    }
-  ],
-  "3f947b57fc": [
-    {
-      "type": 0,
-      "value": "personne faisant un geste pour dire non"
     }
   ],
   "44f00c21a1": [
@@ -67,12 +37,6 @@
       "value": "."
     }
   ],
-  "4829262cec": [
-    {
-      "type": 0,
-      "value": "Expériences"
-    }
-  ],
   "5a2351b91b": [
     {
       "type": 0,
@@ -85,28 +49,22 @@
       "value": "visage à l'envers"
     }
   ],
+  "654b0a0a07": [
+    {
+      "type": 0,
+      "value": "i18n : anglais"
+    }
+  ],
   "690d8ebdfb": [
     {
       "type": 0,
       "value": "Je suis désolé, Dave. Je ne peux malheureusement pas faire ça."
     }
   ],
-  "6a26f54883": [
+  "794bd545aa": [
     {
       "type": 0,
-      "value": "Aide"
-    }
-  ],
-  "6b06791057": [
-    {
-      "type": 0,
-      "value": "Tester une autre langue"
-    }
-  ],
-  "6cac132a3b": [
-    {
-      "type": 0,
-      "value": "Essayez de vous connecter."
+      "value": "React Scan"
     }
   ],
   "835ca8f9cf": [
@@ -127,110 +85,16 @@
       "value": "Connexion"
     }
   ],
-  "a1619a6b1d": [
+  "a4a78c3a33": [
     {
       "type": 0,
-      "value": "Expérience activée."
+      "value": "i18n : français"
     }
   ],
-  "ac40af9f13": [
+  "c84d77792c": [
     {
       "type": 0,
-      "value": "Test de pluralisation i18n : "
-    },
-    {
-      "offset": 0,
-      "options": {
-        "=0": {
-          "value": [
-            {
-              "type": 0,
-              "value": "no items"
-            }
-          ]
-        },
-        "one": {
-          "value": [
-            {
-              "type": 7
-            },
-            {
-              "type": 0,
-              "value": " item"
-            }
-          ]
-        },
-        "other": {
-          "value": [
-            {
-              "type": 7
-            },
-            {
-              "type": 0,
-              "value": " items"
-            }
-          ]
-        }
-      },
-      "pluralType": "cardinal",
-      "type": 6,
-      "value": "itemCount"
-    },
-    {
-      "type": 0,
-      "value": "."
-    }
-  ],
-  "ae5901e838": [
-    {
-      "type": 0,
-      "value": "Test HTML i18n : "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "visitez notre site web"
-        }
-      ],
-      "type": 8,
-      "value": "a"
-    },
-    {
-      "type": 0,
-      "value": " et "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "voyagez le monde"
-        }
-      ],
-      "type": 8,
-      "value": "cta"
-    }
-  ],
-  "baf33637a2": [
-    {
-      "type": 0,
-      "value": "Vous devez activer JavaScript pour exécuter cette application."
-    }
-  ],
-  "c512eabeb3": [
-    {
-      "type": 0,
-      "value": "Test des variables GraphQL (chemin d'URL actuel) : "
-    },
-    {
-      "type": 1,
-      "value": "url"
-    }
-  ],
-  "d0fb5e8106": [
-    {
-      "type": 0,
-      "value": "Essayez de vous connecter."
+      "value": "i18n : long"
     }
   ],
   "d40cbcb573": [
@@ -243,12 +107,6 @@
     {
       "type": 0,
       "value": "introuvable"
-    }
-  ],
-  "e3afed0047": [
-    {
-      "type": 0,
-      "value": "Admin"
     }
   ],
   "ed1f0bfee1": [
