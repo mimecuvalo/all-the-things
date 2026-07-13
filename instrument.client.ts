@@ -11,10 +11,14 @@ if (dsn) {
   });
 }
 
-let reportedGlobalError = false;
+const reportedGlobalErrors = new WeakSet<object>();
+
 function reportGlobalError(error: unknown) {
-  if (reportedGlobalError) return;
-  reportedGlobalError = true;
+  if (error instanceof Error && error.message === 'Transition was skipped') return;
+  if (typeof error === 'object' && error !== null) {
+    if (reportedGlobalErrors.has(error)) return;
+    reportedGlobalErrors.add(error);
+  }
   const value = error instanceof Error ? { message: error.message, stack: error.stack } : { message: String(error) };
   logError({ ...value, url: window.location.href, userAgent: navigator.userAgent });
 }

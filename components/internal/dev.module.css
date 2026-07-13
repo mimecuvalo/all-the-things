@@ -69,7 +69,7 @@
 }
 
 .menuItem[data-highlighted] {
-  background: var(--color-primary-light);
+  background: var(--color-grey-800);
 }
 
 .reRun {

@@ -39,6 +39,7 @@
     "@hono/zod-validator": "0.8.0",
     "@prisma/adapter-pg": "7.8.0",
     "@prisma/client": "7.8.0",
+    "@radix-ui/react-icons": "1.3.2",
     "@sentry/tanstackstart-react": "10.63.0",
     "@tanstack/react-query": "5.101.2",
     "@tanstack/react-router": "1.170.17",

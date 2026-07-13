@@ -1,5 +1,5 @@
 import { sentryGlobalFunctionMiddleware, sentryGlobalRequestMiddleware } from '@sentry/tanstackstart-react';
-import { createMiddleware, createStart } from '@tanstack/react-start';
+import { createCsrfMiddleware, createMiddleware, createStart } from '@tanstack/react-start';
 import { setResponseHeader } from '@tanstack/react-start/server';
 import crypto from 'node:crypto';
 import { buildContentSecurityPolicy } from 'lib/security';
@@ -19,7 +19,11 @@ const securityHeadersMiddleware = createMiddleware().server(({ next }) => {
   return next({ context: { nonce } });
 });
 
+const csrfMiddleware = createCsrfMiddleware({
+  filter: (ctx) => ctx.handlerType === 'serverFn',
+});
+
 export const startInstance = createStart(() => ({
-  requestMiddleware: [securityHeadersMiddleware, sentryGlobalRequestMiddleware],
+  requestMiddleware: [securityHeadersMiddleware, csrfMiddleware, sentryGlobalRequestMiddleware],
   functionMiddleware: [sentryGlobalFunctionMiddleware],
 }));
