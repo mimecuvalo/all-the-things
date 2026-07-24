@@ -4,6 +4,7 @@ import 'sanitize.css/sanitize.css';
 import 'sanitize.css/forms.css';
 import 'sanitize.css/typography.css';
 import '@fontsource-variable/oswald';
+import '@fontsource/noto-color-emoji';
 import 'styles/globals.css';
 import { Header } from 'components';
 import AppProviders from 'components/providers/AppProviders';

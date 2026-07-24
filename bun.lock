@@ -8,6 +8,7 @@
         "@auth/core": "0.34.3",
         "@base-ui/react": "1.6.0",
         "@fontsource-variable/oswald": "5.2.8",
+        "@fontsource/noto-color-emoji": "5.2.12",
         "@hono/zod-validator": "0.8.0",
         "@prisma/adapter-pg": "7.8.0",
         "@prisma/client": "7.8.0",
@@ -208,6 +209,8 @@
     "@floating-ui/utils": ["@floating-ui/utils@0.2.11", "", {}, "sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg=="],
 
     "@fontsource-variable/oswald": ["@fontsource-variable/oswald@5.2.8", "", {}, "sha512-sIXwfKbyHOATgBWOlpR73VMQ8pA8XCToiyy6sL02ZfYEZPpW18TLtpxPBpYXId7xKbWCousOTzlJsa/9rTd8WQ=="],
+
+    "@fontsource/noto-color-emoji": ["@fontsource/noto-color-emoji@5.2.12", "", {}, "sha512-UVOh4qxD/y42mcB4XvEdpV1WE01zn7O4+4tAWwzp5QAd4JY5jWPHu3/3T1kQoD04oYbQ5cJ9SI12IfcCKaS8aw=="],
 
     "@formatjs/cli": ["@formatjs/cli@6.7.2", "", { "peerDependencies": { "@glimmer/syntax": "^0.94.9", "@vue/compiler-core": "^3.5.12", "content-tag": "^3.0.0", "ember-template-recast": "^6.1.5", "vue": "^3.5.12" }, "optionalPeers": ["@glimmer/syntax", "@vue/compiler-core", "content-tag", "ember-template-recast", "vue"], "bin": { "formatjs": "bin/formatjs" } }, "sha512-714/ifbtq7CmOtcLVGjYZp5EX0vKclQt3XZ+4Oiz0lhrHWU1ObFTtX9sLS9dADGta1pgDtS4+A3YpjWMY26Spg=="],
 
