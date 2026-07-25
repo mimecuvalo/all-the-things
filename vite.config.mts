@@ -52,6 +52,7 @@ export default defineConfig({
       idInterpolationPattern: '[md5:contenthash:hex:10]',
       additionalComponentNames: ['F'],
       ast: true,
+      flatten: true,
       removeDefaultMessage: isProd,
     }),
     viteReact(),

@@ -1,14 +1,14 @@
 {
   "smartling": {
-    "string_format": "icu",
     "translate_paths": [
       {
-        "instruction": "*/description",
+        "path": "*/message",
         "key": "{*}/message",
-        "path": "*/message"
+        "instruction": "*/description"
       }
     ],
-    "variants_enabled": true
+    "variants_enabled": true,
+    "string_format": "icu"
   },
   "0323de4f66": {
     "message": "Logout"

@@ -23,14 +23,14 @@
       "value": "try going back to the "
     },
     {
+      "type": 8,
+      "value": "a",
       "children": [
         {
           "type": 0,
           "value": "beginning"
         }
-      ],
-      "type": 8,
-      "value": "a"
+      ]
     },
     {
       "type": 0,
