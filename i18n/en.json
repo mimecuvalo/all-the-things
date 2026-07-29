@@ -13,9 +13,6 @@
   "0323de4f66": {
     "message": "Logout"
   },
-  "22b653bd8d": {
-    "message": "Go back"
-  },
   "3d728e1b6e": {
     "message": "we've logged this error and we'll fix it soon."
   },
@@ -57,9 +54,6 @@
   },
   "d8f4a19935": {
     "message": "not found"
-  },
-  "ed1f0bfee1": {
-    "message": "Your Feature"
   },
   "logo-id": {
     "message": "logo"

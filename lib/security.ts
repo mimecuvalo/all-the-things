@@ -2,7 +2,7 @@ export function buildContentSecurityPolicy(options: { isDevelopment: boolean; no
   const { isDevelopment, nonce } = options;
   const directives: Record<string, string[]> = {
     'default-src': ["'self'"],
-    'connect-src': isDevelopment ? ['*', 'ws:', 'wss:'] : ["'self'", 'https://*.ingest.sentry.io'],
+    'connect-src': isDevelopment ? ['*', 'ws:', 'wss:'] : ["'self'"],
     'font-src': ["'self'", 'https:', 'data:'],
     'frame-src': ["'self'", 'http:', 'https:'],
     'img-src': ["'self'", 'data:', 'blob:', 'http:', 'https:'],

@@ -4,7 +4,6 @@
 
 <p align="center">
   <a href="https://github.com/mimecuvalo/all-the-things/actions"><img src="https://github.com/mimecuvalo/all-the-things/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>
-  <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg" alt="prettier status" /></a>
   <a href="https://github.com/mimecuvalo/all-the-things/docs/license.md"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="license" /></a>
 </p>
 
@@ -32,7 +31,6 @@ This template includes scripts and configuration used by [Next.js](https://nextj
   - [pull request template](https://help.github.com/articles/about-issue-and-pull-request-templates/) (GitHub-specific)
   - [readme](https://www.makeareadme.com/)
   - [support](https://help.github.com/articles/adding-support-resources-to-your-project/) (GitHub-specific)
-  - [alex](https://alexjs.com/) for more inclusive, equitable docs.
 - 🚫 **error boundary**: adds a top-level one to the app. (see [doc](https://reactjs.org/docs/error-boundaries.html)).
 - ❌ **error pages**: [401](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401), [404](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404), [500](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500).
 - 🆘 **error reporting**: listens to `window.onerror` and reports JS errors to the server for debugging.
@@ -45,9 +43,6 @@ This template includes scripts and configuration used by [Next.js](https://nextj
 - 🗜️ **imports**: absolute imports are turned on.
 - 💽 **ORM**: via [prisma](https://www.prisma.io/).
 - 📏 **perf indicator**: in the bottom corner of the app, it will display render times. (also has [web vitals](https://web.dev/vitals/) built in.)
-- ✨ [**Prettier**](https://prettier.io): adds linting upon commit. also sorts imports via [prettier-plugin-import-sort](https://www.npmjs.com/package/prettier-plugin-import-sort).
-- 🆘 [**Sentry**](https://sentry.io/): exception collection and analysis.
-- 💅 **styleguide**: via [Storybook](https://storybook.js.org).
 
 ## 💾 Install
 

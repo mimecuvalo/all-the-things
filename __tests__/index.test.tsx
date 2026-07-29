@@ -1,11 +1,11 @@
 import { render, screen } from 'util/testing';
 
-import YourFeature from 'components/pages/YourFeature';
+import HomeContent from 'components/pages/HomeContent';
 
-describe('YourFeature', () => {
+describe('HomeContent', () => {
   it('renders a heading', () => {
-    render(<YourFeature />);
+    render(<HomeContent />);
 
-    expect(screen.getByRole('heading', { name: /Your Feature/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /All\. The\. Things\./i })).toBeInTheDocument();
   });
 });

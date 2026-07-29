@@ -16,6 +16,7 @@ export default defineConfig({
       { find: /^i18n$/, replacement: abs('./i18n/index.ts') },
       { find: /^i18n\/(.*)$/, replacement: abs('./i18n/$1') },
       { find: /^styles$/, replacement: abs('./styles') },
+      { find: /^styles\/(.*)$/, replacement: abs('./styles/$1') },
       { find: /^hooks$/, replacement: abs('./hooks') },
     ],
   },
