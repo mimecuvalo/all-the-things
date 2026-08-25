@@ -6,9 +6,6 @@ Contact: mimecuvalo@gmail.com
 Site: http://nightlight.rocks
 Location: teh interwebs
 
-/* THANKS */
-The next.js team: https://github.com/vercel
-
 /* SITE */
 Components:
 - all-the-things: https://github.com/mimecuvalo/all-the-things
