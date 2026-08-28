@@ -7,9 +7,6 @@
     "url": "https://github.com/mimecuvalo/all-the-things.git"
   },
   "license": "MIT",
-  "engines": {
-    "node": ">=22.22.1"
-  },
   "bugs": {
     "url": "https://github.com/mimecuvalo/all-the-things/issues"
   },
