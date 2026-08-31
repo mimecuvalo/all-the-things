@@ -7,7 +7,7 @@ import { makeQueryClient } from 'lib/query';
 interface AppProvidersProps {
   locale?: string;
   defaultLocale?: string;
-  messages: Record<string, unknown>;
+  messages?: Record<string, unknown>;
   children: ReactNode;
 }
 

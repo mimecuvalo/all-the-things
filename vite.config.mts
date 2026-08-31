@@ -16,7 +16,19 @@ loadEnv({ path: abs('./prisma/.env') });
 export default defineConfig({
   server: { port: 3000 },
   // Native tsconfig `paths` resolution (replaces the vite-tsconfig-paths plugin).
-  resolve: { tsconfigPaths: true },
+  resolve: {
+    tsconfigPaths: true,
+    // react-intl without the ICU parser (~40% smaller):
+    // https://formatjs.io/docs/guides/advanced-usage#react-intl-without-parser-40-smaller
+    alias: isProd
+      ? [
+          {
+            find: /^@formatjs\/icu-messageformat-parser$/,
+            replacement: '@formatjs/icu-messageformat-parser/no-parser.js',
+          },
+        ]
+      : [],
+  },
   optimizeDeps: { exclude: ['pg', '@prisma/adapter-pg'] },
   ssr: { external: ['pg', '@prisma/adapter-pg'] },
   plugins: [
@@ -39,7 +51,6 @@ export default defineConfig({
       additionalComponentNames: ['F'],
       ast: true,
       flatten: true,
-      removeDefaultMessage: isProd,
     }),
     viteReact(),
   ],

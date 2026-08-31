@@ -1,5 +1,6 @@
 import { createServerFn } from '@tanstack/react-start';
 import { getRequestHeader } from '@tanstack/react-start/server';
+import { getMessages } from 'lib/messages';
 
 export const SUPPORTED_LOCALES = ['en', 'fr', 'xx-LS'] as const;
 export const DEFAULT_LOCALE = 'en';
@@ -19,5 +20,6 @@ function detectLocale(): string {
 }
 
 export const initRequest = createServerFn({ method: 'GET' }).handler(() => {
-  return { locale: detectLocale() };
+  const locale = detectLocale();
+  return { locale, messages: getMessages(locale) };
 });

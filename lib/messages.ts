@@ -1,8 +1,10 @@
-import en from 'i18n/compiled/en.json';
+import type { IntlConfig } from 'react-intl';
 import fr from 'i18n/compiled/fr.json';
 
-const all: Record<string, Record<string, unknown>> = { en, fr };
+type Messages = NonNullable<IntlConfig['messages']>;
 
-export function getMessages(locale = 'en'): Record<string, unknown> {
-  return all[locale] ?? all.en;
+const all: Record<string, Messages> = { fr: fr as Messages };
+
+export function getMessages(locale: string): Messages | undefined {
+  return all[locale];
 }

@@ -10,14 +10,11 @@ import AppProviders from 'components/providers/AppProviders';
 import DebugWrapper from 'components/internal/DebugWrapper';
 import NotFound from 'components/pages/NotFound';
 import ErrorScreen from 'components/pages/ErrorScreen';
-import { getMessages } from 'lib/messages';
 import { initRequest } from 'lib/request-init';
 
 export const Route = createRootRoute({
-  loader: async () => {
-    const { locale } = await initRequest();
-    return { locale, messages: getMessages(locale) };
-  },
+  // Runs server-side on initial load: resolves the locale and its compiled message catalog.
+  loader: async () => await initRequest(),
   head: () => ({
     meta: [
       { charSet: 'utf-8' },

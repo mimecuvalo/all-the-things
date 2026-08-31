@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import messages from 'i18n/compiled/en.json';
 import frenchMessages from 'i18n/compiled/fr.json';
+import { getMessages } from 'lib/messages';
 import { buildContentSecurityPolicy } from 'lib/security';
 import { miscRoutes } from 'server/routes/misc';
 
@@ -15,6 +16,14 @@ describe('migration regression coverage', () => {
 
   it('keeps translated catalog keys aligned with English', () => {
     expect(Object.keys(frenchMessages).sort()).toEqual(Object.keys(messages).sort());
+  });
+
+  it('does not dehydrate a catalog for the default locale', () => {
+    // en renders off the inline `defaultMessage` ASTs instead; handing react-intl the
+    // catalog as well put the whole thing into the SSR payload of every page.
+    expect(getMessages('en')).toBeUndefined();
+    expect(getMessages('xx-LS')).toBeUndefined();
+    expect(getMessages('fr')).toBeDefined();
   });
 
   it('uses a nonce instead of unsafe-inline scripts in production CSP', () => {
