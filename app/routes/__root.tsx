@@ -18,7 +18,7 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
-      { name: 'viewport', content: 'minimum-scale=1, initial-scale=1, width=device-width' },
+      { name: 'viewport', content: 'minimum-scale=1, width=device-width' },
       { title: 'all-the-things' },
       { name: 'description', content: 'website created using all-the-things.' },
       { name: 'generator', content: 'all-the-things. https://github.com/mimecuvalo/all-the-things' },
