@@ -25,7 +25,10 @@
       "styles": ["./styles"],
       "util/*": ["./util/*"],
       "server/*": ["./server/*"],
-      "lib/*": ["./lib/*"]
+      "lib/*": ["./lib/*"],
+      // jest-dom's typings import `vitest` without declaring it; under bun's
+      // global store it then resolves from outside this project and misses.
+      "vitest": ["./node_modules/vitest"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
